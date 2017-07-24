@@ -7,7 +7,26 @@
 
 Matthew Cooper - matthew@pdxcodeguild.com
 
-<add students here, add to slack>
+Michele Jolie - Michele.Jolie@outlook.com
+
+Triste Ramirez - missramirez.tr@gmail.com
+
+Jessica Pavlinko - jlpavlinko@gmail.com
+
+Samantha Moad - samanthagmoad@gmail.com
+ 
+Rudolph Valentine - rudolphvdesign@gmail.com
+
+
+
+1. What is your prior experience in technology?
+
+2. What do you hope to gain from this course?
+
+3. Create Slack Account
+
+4. Create Github Account
+
 
 
 ## What is Programming?

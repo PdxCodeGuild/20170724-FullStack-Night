@@ -3,21 +3,21 @@
 
 ## Installing Python
 
-### Anaconda
+#### Anaconda
 
-This installs many packages and tools.
-
-https://www.continuum.io/downloads
+Anaconda contains the python interpreter and many other packages we'll be using, including Jupyter Notebook: https://www.continuum.io/downloads
 
 
-### Python and Pip
+#### Python and Pip
+
+If you don't want to use Anaconda, you can install python directly: https://www.python.org/downloads/.
 
 `Pip` is the package manager for python. Always start by updating pip itself, `pip3 install --upgrade pip`, Then you can install packages by running commands such as `pip3 install jupyter`.
 
 
 ## Using the CLI
 
-### Opening the CLI
+#### Opening the CLI
 
 In OS X, the default CLI is called `Terminal`, which you can find by typing `terminal` in search, or under `Finder -> Applications -> Utilities`.
 
@@ -25,7 +25,7 @@ In Windows, the default CLI is `cmd`, which you can find by typing `cmd` in sear
 
 In Linux, you can open a terminal with `Ctrl + Alt + T`.
 
-### Common CLI Commands
+#### Common CLI Commands
 
 - `pwd` displays the path of the current directory
 - `ls` lists the contents of the current directory
@@ -37,13 +37,16 @@ In Linux, you can open a terminal with `Ctrl + Alt + T`.
 - `rm <filename>` removes a file
 - `mv filename1 filename2` moves or renames a file
 - `cp filename1 filename2` copies a file
+- `up-arrow` will bring up the last command entered
+- `tab` will attempt to autocomplete whatever you're typing
+    - try `cd D` + `tab` + `tab`
 - `ctrl+c` kill currently running process
 
 
 ## Running Python via the CLI
 
 
-### Using the Python Interactive Interpreter
+#### Using the Python Interactive Interpreter
 
 Open a terminal and type `python`, you should see a welcome message, and be left with `>>>`. Try typing in the following commands.
 
@@ -63,8 +66,10 @@ We can let names stand for values, like in algebra.
 8
 ```
 
+To exit the python interpreter, type `exit()` or `quit()`
 
-### Executing Python Source Files
+
+#### Executing Python Source Files
 
 You can execute python code saved in a plain text file by typing `python filename`. Create a new file `temp.py` with the following contents:
 

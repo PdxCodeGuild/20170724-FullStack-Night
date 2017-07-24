@@ -7,11 +7,11 @@ How do multiple people work on a single program without
 
 Below are some benefits to using a VCS:
 
-- Security: Many hours of work goes into developing software, and it is thus highly valuable to a company or organization. What if a laptop is stolen, or a hurricane floods the datacenter, or hackers wipe your harddrives?
+- Security: Many hours of work goes into developing software, and it is thus highly valuable to a company or organization. What if a laptop is stolen, or a hurricane floods the data center, or hackers wipe your hard drives?
 
 - Collaboration: Multiple people can edit a program's source code simultaneously.
 
 - History: By keeping track of every change, one can easily reverse a mistaken change they'd made, and always has access to a 'working version' once established.
 
 
-
+[Git](https://git-scm.com/downloads) is a popular VCS we'll use in conjunction with [GitHub](https://github.com/).
