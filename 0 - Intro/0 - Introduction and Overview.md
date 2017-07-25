@@ -7,15 +7,13 @@
 
 Matthew Cooper - matthew@pdxcodeguild.com
 
-Michele Jolie - Michele.Jolie@outlook.com
-
-Triste Ramirez - missramirez.tr@gmail.com
+Trista Ramirez - missramirez.tr@gmail.com
 
 Jessica Pavlinko - jlpavlinko@gmail.com
 
 Samantha Moad - samanthagmoad@gmail.com
- 
-Rudolph Valentine - rudolphvdesign@gmail.com
+
+Rudolph 'Rudy' Valentine - rudolphvdesign@gmail.com
 
 
 

@@ -15,3 +15,12 @@ Below are some benefits to using a VCS:
 
 
 [Git](https://git-scm.com/downloads) is a popular VCS we'll use in conjunction with [GitHub](https://github.com/).
+
+
+`git status` displays changes on the current branch since your last commit
+
+`git add <files>` adds the specified files to the pending commit
+
+`git commit -m <message>` commits the changes to the local repository
+
+`git push <remote> <branch>` pushes the changes to the remote repository
