@@ -1,16 +1,14 @@
-#During the summer me and ________
-#                         person
-#like to do ___________
-#             adjective
-#while we eat ________
-#              food item.
+#During the summer my family and ________
+#                                person
+#like to do ______ while we eat ________.
+#           action            food item
 
-person = input ('name of person')
-action = input ('give me an action word')
-food = input ('give me a food item')
+person = input ('Name of person:')
+action = input ('Give me an action word:')
+food = input ('Give me a food item:')
 
-output =  ' During the summer me and ' + person
+output = 'During the summer my family and ' + person
 output += ' like to ' + action
-output += ' while we eating ' + food
+output += ' while we eat ' + food + '.' # Period added to the end.
 
 print(output)
