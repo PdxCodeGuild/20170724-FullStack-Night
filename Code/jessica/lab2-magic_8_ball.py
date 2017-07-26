@@ -1,7 +1,7 @@
 output = 'Welcome!'
 print (output)
 
-input('Ask the 8-ball a question:')
+question = ('Ask the 8-ball a question:')
 
 
 import random
