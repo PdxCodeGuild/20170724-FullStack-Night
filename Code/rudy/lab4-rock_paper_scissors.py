@@ -23,33 +23,27 @@ while True:
 
     computer = weapon
 
-    if player1 == r and computer == r:
+    if player1 == computer :
         print('It\'s a TIE. Try again?')
-        continue
+
     elif player1 == r and computer == p:
         print('You LOSE! Play Again?')
-        continue
+
     elif player1 == r and computer == s:
         print('You WIN! Play Again?')
-        continue
+
     elif player1 == p and computer == r:
         print('You WIN! Play Again?')
-        continue
-    elif player1 == p and computer == p:
-        print('It\'s a TIE! Play Again?')
-        continue
+
     elif player1 == p and computer == s:
         print('You LOSE! Play Again?')
-        continue
+
     elif player1 == s and computer == r:
         print('You LOSE! Play Again?')
-        continue
+
     elif player1 == s and computer == p:
         print('You WIN! Play Again?')
-        continue
-    elif player1 == s and computer == s:
-        print('It\'s a TIE! Play Again?')
-        continue
+
     else:
         print('Computer went Nuclear, get to your bunker NOW!!!')
-    break
+        break
