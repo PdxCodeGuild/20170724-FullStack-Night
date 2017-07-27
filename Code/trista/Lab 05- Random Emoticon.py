@@ -11,9 +11,7 @@ noses = random.choice(noses)
 mouths = [')', '/', '(']
 mouths = random.choice(mouths)
 
-emotions = ['Happy', 'Mad', 'Sad', 'Silly', 'Flirty']
-emotions = random.choice(emotions)
 
-print(eyes + noses + mouths + emotions)
+print(eyes + noses + mouths)
 
 
