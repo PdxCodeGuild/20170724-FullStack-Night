@@ -1,14 +1,21 @@
-amount = input('Enter total number in pennies ')
+amount = int(input('Enter total number in pennies '))
 
-n_quarters = int(amount) // 25
-n_dimes = (int(amount) - int(n_quarters) * 25) // 10
-n_nickels = (int(amount) - int(n_quarters) * 25 - int(n_dimes) * 10) // 5
-n_pennies = (int(amount) - int(n_quarters) * 25  - int(n_dimes) * 10 - int(n_nickels) * 5) // 1
+n_quarters = amount // 25
+amount -= n_quarters * 25
 
-print(n_quarters)
-print(n_dimes)
-print(n_nickels)
-print(n_pennies)
+n_dimes = amount // 10
+amount -= n_dimes * 10
+
+n_nickels = amount // 5
+amount -= n_nickels * 5
+
+n_pennies = amount
+
+
+print('Quarters: ' + str(n_quarters))
+print('Dimes: ' + str(n_dimes))
+print('Nickels: ' + str(n_nickels))
+print('Pennies: ' + str(n_pennies))
 
 
 
