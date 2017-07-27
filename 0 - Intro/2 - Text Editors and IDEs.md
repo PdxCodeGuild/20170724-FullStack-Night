@@ -50,4 +50,5 @@ The more features a program has, the more cluttered its interface will be, the l
 - https://neovim.io/
 - for 1337 H4XX0RZ only
 
-
+##### Notepad++
+- https://notepad-plus-plus.org/

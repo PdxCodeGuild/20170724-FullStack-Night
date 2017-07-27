@@ -1,12 +1,15 @@
+"""
+convert a number grade into a letter grade
+"""
 
-x = 5
-if x < 2:
-    print('x is less than 2')
-elif x < 10:
-    print('x is between 2 and 10')
+grade = int(input('what is the number grade? '))
+if grade >= 90:
+    print('A')
+elif grade >= 80:
+    print('B')
+elif grade >= 70:
+    print('C')
+elif grade >= 60:
+    print('D')
 else:
-    print('x is greater or equal to 10')
-
-
-
-
+    print('F')

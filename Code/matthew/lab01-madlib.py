@@ -7,6 +7,8 @@ play madlib: give a series of words, generate a silly sentence
     noun                          adjective
 """
 
+
+
 # get words from the user
 exclamation = input('give me an exclamation! ')
 adverb = input('give me a verb: ')
