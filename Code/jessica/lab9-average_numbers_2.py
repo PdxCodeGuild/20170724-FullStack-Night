@@ -7,7 +7,14 @@ while entering:
     else:
         numbers.append(int(n))
 
-    print(numbers)
+list_len = len(numbers)
+
+total = 0
+for n in numbers:
+    total += n
+    average = total / list_len
+print(average)
+
 
 
 
