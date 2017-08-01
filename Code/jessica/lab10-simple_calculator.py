@@ -1,32 +1,15 @@
-def x():
-    print(input('What is the first operation you want to perform: '))
-
-
-def a():
-    print(float(input('What is the first number: ')))
-
-
-def b():
-    print(float(input('What is the second number: ')))
-
-
-entering = True
-numbers = []
-while entering:
-    if x == ('+', '-', '/', '*'):
-        print(a())
-    elif a() == int:
-        print(b())
-    else:
-        print('try again')
-
-
-# def add():
-#     return a + b
-# def subtract():
-#     return a - b
-# def multiply():
-#     return a * b
-# def divide():
-#     return a / b
-
+while True:
+    operation = input('What is the first operation you want to perform: ')
+    if operation == 'done':
+        print('goodbye')
+        break
+    first_number = float(input('What is the first number? '))
+    second_number = float(input('What is the second number?'))
+    if operation == '+':
+        print(first_number + second_number)
+    elif operation == '-':
+        print(first_number - second_number)
+    elif operation == '*':
+        print(first_number * second_number)
+    elif operation == '/':
+        print(first_number / second_number)
