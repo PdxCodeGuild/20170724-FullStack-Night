@@ -8,7 +8,6 @@
 
 import random
 
-
 computer = random.randint(1, 10)  # variable computer is being assigned a number between 1 and 10 using the random module's function of random integer.
 print(computer)
 
