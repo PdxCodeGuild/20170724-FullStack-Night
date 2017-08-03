@@ -1,5 +1,5 @@
 """
-convert a number grade into a letter grade
+Lab 3: convert a number grade into a letter grade
 """
 
 grade = int(input('what is the number grade? '))
