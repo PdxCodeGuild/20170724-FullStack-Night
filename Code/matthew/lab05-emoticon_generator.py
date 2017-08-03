@@ -1,20 +1,23 @@
 """
-generate emoticons
+Lab 5: generate emoticons
 """
 
 import random
 
-list_eyes = [':', '=', ';']
-list_noses = ['', '-', '\'', '^', '+']
-list_mouths = [')', ']', '|', '/', '\\', 'D', 'P', '3']
 
-i = 0
-while i < 5:
+def create_emoticon():
+
+    list_eyes = [':', '=', ';']
+    list_noses = ['', '-', '\'', '^', '+']
+    list_mouths = [')', ']', '|', '/', '\\', 'D', 'P', '3']
+
     eyes = random.choice(list_eyes)
     nose = random.choice(list_noses)
     mouth = random.choice(list_mouths)
 
     emoticon = eyes + nose + mouth
-    print(emoticon)
+    return emoticon
 
-    i = i + 1
+if __name__ == '__main__':
+    for i in range(10):
+        print(create_emoticon())
