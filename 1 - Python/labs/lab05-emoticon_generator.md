@@ -5,6 +5,15 @@ Let's generate emoticons by assembling a randomly choosing a set of eyes, a nose
 
 e.g. :-) =^D
 
+
+## Concepts Covered
+
+- random.choice
+- string concatenation
+- print
+
+## Instructions
+
 1. Define a list of eyes
 2. Define a list of noses
 3. Define a list of mouths
@@ -26,12 +35,12 @@ print(fruit)
 
 Use a `while` loop to generate 5 emoticons.
 
-## Version 3
+## Version 3 (optional)
 
 Make a vertical emoticon
 
 e.g. (x_x)
 
-## Version 4
+## Version 4 (optional)
 
 Make complex multi-line emoticon.

@@ -3,6 +3,13 @@
 Write a simple program that, when run, prompts the user for several inputs then
  prints a [Mad Lib](https://en.wikipedia.org/wiki/Mad_Libs) as the result.
 
+
+## Concepts Covered
+
+- input, print
+- variables, assignment
+- string concatenation
+
 ## Instructions
 
 1. Search the interwebs for an example Mad Lib
@@ -31,18 +38,13 @@ Write a simple program that, when run, prompts the user for several inputs then
 
 -------
 
-## Advanced
-* Make a functional solution that utilizes lists. For example, ask the user for 3 adjectives, separated by commas, then use the .split() function to store each adjective and later use it in your story.
-* Add randomness! Use the random module, rather than selecting which adjective goes where in the story.
+## Version 2 (optional)
 
+Add randomness! Use `random.choice`, to randomly choose from a list of adjectives, verbs, nouns, etc.
 
-## Super Advanced
-* Not satisfied yet? Make it a repeatable game. Once you're done prompting the user for words, prompt them for whether they'd like to hear the story. Use a while loop to keep asking if they'd like to hear the story again until the answer is 'no'. You could then ask them if they'd like to make another story, and so on.
+## Version 3 (optional)
+Make the game repeatable: prompt for a list of words, print the story, then ask them if they'd like to do it again.
 
-------------
+## Version 4 (optional)
 
-## Key Concepts
-
-- Variables
-- String formatting¹
-- Handling user input
+Allow the user to enter multiple words at once, separated by commas. Use `split` to separate the whole string into a list of words.
