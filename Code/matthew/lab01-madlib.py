@@ -1,5 +1,6 @@
 """
-play madlib: give a series of words, generate a silly sentence
+Lab 1: Mad Lib
+give a series of words, generate a silly sentence
 
   "_____________! he said ________ as he jumped into his convertible
     exclamation            adverb

@@ -1,4 +1,5 @@
 """
+Lab 8: Guess the Number
 1) the computer will pick a random number between 1 and 10
 2) the user will try to guess that number
 3) if the guess is correct, tell the user "that's correct!"
@@ -14,17 +15,35 @@ import random
 
 target = random.randint(1, 10)
 
-guess = ''
+last_guess = None
+
+
+def calc_distance(target, guess):
+    return abs(target - guess)
+
 while True:
-    guess = input('guess the number! ')
-    guess = int(guess)
+    guess = int(input('guess the number! '))
     if guess == target:
         print('that\'s correct!')
         break
     else:
         print('that\'s incorrect!')
 
-    if target > guess:
-        print('guess higher!')
-    else:
-        print('guess lower!')
+    #if target > guess:
+    #    print('guess higher!')
+    #else:
+    #    print('guess lower!')
+
+    if last_guess is not None:
+        d_guess = calc_distance(target, guess)
+        d_last_guess = calc_distance(target, last_guess)
+        if d_guess < d_last_guess:
+            print('closer')
+        else:
+            print('further')
+
+    print('guess: ' + str(guess))
+    print('last guess: ' + str(last_guess))
+
+    last_guess = guess
+

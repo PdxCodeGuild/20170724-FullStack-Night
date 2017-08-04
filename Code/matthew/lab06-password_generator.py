@@ -1,5 +1,5 @@
 """
-generate a random password
+Lab 6: generate a random password
 """
 
 import random

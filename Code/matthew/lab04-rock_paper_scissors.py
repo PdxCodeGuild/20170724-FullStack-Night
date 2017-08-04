@@ -1,5 +1,5 @@
 """
-play rock-paper-scissors with the computer
+Lab 4: play rock-paper-scissors with the computer
 """
 
 import random
@@ -33,5 +33,3 @@ elif user_choice == 'scissors' and comp_choice == 'rock':
     print('computer wins!')
 elif user_choice == 'scissors' and comp_choice == 'paper':
     print('user wins!')
-
-

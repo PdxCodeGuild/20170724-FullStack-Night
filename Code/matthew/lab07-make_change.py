@@ -1,5 +1,5 @@
 """
-break an amount into quarters, dimes, nickles, pennies
+Lab 7: break an amount into quarters, dimes, nickles, pennies
 """
 
 # version 1: the user will enter something like 136, representing $1.36

@@ -1,5 +1,5 @@
 """
-this program simulates a magic 8-ball
+Lab 2: this program simulates a magic 8-ball
 """
 
 import random
