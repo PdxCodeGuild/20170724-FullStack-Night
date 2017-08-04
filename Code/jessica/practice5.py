@@ -32,19 +32,24 @@ def mode(nums):
 
 def median(nums):
     #sort list and find middle number
-    sorted_list = nums.sort()
-    list_len = len(nums)
+    sortednums = list(sorted(nums))
+    list_len = len(sortednums)
     index = list_len // 2
-    return nums[index]
+    return sortednums[index]
+
+#alternate sort method
+def median2(nums):
+    sortednums2 = nums.copy()
+    sortednums2.sort()
+    list_len = len(sortednums2)
+    index = list_len // 2
+    return sortednums2[index]
+
 
 def main():
     nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    print(minimum(nums), maximum(nums), mean(nums), median(nums))
+    print(minimum(nums), maximum(nums), mean(nums), median(nums), median2(nums)
+          )
 
 main()
 
-# 6 write a function that returns the reverse of a list
-# 7 write a function to find all common elements between two lists
-# 8 write a function to move all the elements of a list with value less than 10 to a new list and return it
-# 9 write a function to combine two lists into one, alternating elements
-    # e.g. combine(['a','b','c'],[1,2,3]) returns ['a', 1, 'b', 2, 'c', 3]
