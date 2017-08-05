@@ -23,7 +23,7 @@ fruits = ['apples', 'bananas', 'pears']
 random_element(fruits) could return 'apples', 'bananas' or 'pears'
 ```
 
-### Practice Problem 2
+### Practice Problem 3
 
 Write a function that returns the maximum of 3 parameters.
 
@@ -33,13 +33,13 @@ Write a function that returns the maximum of 3 parameters.
 
 `maximum_of_three(-4,3,10) will return 10`
 
-### Practice Problem 2
+### Practice Problem 4
 
 print out the powers of 2 from 2^0 to 2^20
 
-`2, 4, 8, 16, 32, ...`
+`1, 2, 4, 8, 16, 32, ...`
 
-### Practice Problem 3
+### Practice Problem 5
 Write functions to find the minimum, maximum, mean, and mode of a list of numbers.
 
 `def minimum(nums):`
@@ -51,24 +51,23 @@ Write functions to find the minimum, maximum, mean, and mode of a list of number
 `def mode(nums):`
 
 
-### Practice Problem 4
+### Practice Problem 6
 Write a function that returns the reverse of a list.
 
 `def reverse(nums):`
 
-
-### Practice Problem 5
+### Practice Problem 7
 Write a function to find all common elements between two lists.
 
 `def common_elements(nums1, nums2):`
 
-### Practice Problem 6
+### Practice Problem 8
 Write a function to move all the elements of a list with value less than 10 to a new list and return it.
 
 `def extract_less_than_ten(nums):`
 
-### Practice Problem 7
-Write a function to combine two lists into one, alternating elements.
+### Practice Problem 9
+Write a function to combine two lists of equal length into one, alternating elements.
 
 `def combine(nums1, nums2):`
 
