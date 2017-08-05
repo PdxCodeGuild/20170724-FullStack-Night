@@ -9,8 +9,5 @@ Write a program that decrypts a message encoded with ROT13 on each charachter st
 | ROT+13  | n| o| p| q| r| s| t| u| v| w| x| y| z| a| b| c| d| e| f| g| h| i| j| k| l| m|
 
 
-## Version 2
-Write the ROT Encrypter to go along with the decrypter, and allow encrypting of messages.
-
-## Version 3
+## Version 2 (optional)
 Allow the user to input the amount of rotation used in the encryption / decryption.
