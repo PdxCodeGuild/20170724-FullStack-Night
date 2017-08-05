@@ -6,9 +6,9 @@ alphabet = 'abcefghijklmnopqrstuvwxyz123456789!@#$%^&*()'
 i = 0
 password = ''
 while i < int(n):
-    password = password + str(i)
-    print(random.choice(alphabet))
-    i = i + 1
+    password += random.choice(alphabet)
+    i += 1
+
 print(password)
 
 
