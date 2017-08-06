@@ -54,16 +54,17 @@ def from_meters(distance, units):
         return distance / 0.0254
 
 
-print('Welcome to the Distance Converter 5001™')
-distance_in = float(input('what is the distance? '))
-units_in = input('what are the units you\'re converting from? ')
-units_out = input('what are the units you\'re converting to? ')
-distance_in_m = to_meters(distance_in, units_in)
-distance_out = from_meters(distance_in_m, units_out)
-output = str(distance_in) + ' ' + units_in + ' is '
-output += str(distance_out) + ' ' + units_out
-print(output)
+def main():
+    print('Welcome to the Distance Converter 5001™')
+    distance_in = float(input('what is the distance? '))
+    units_in = input('what are the units you\'re converting from? ')
+    units_out = input('what are the units you\'re converting to? ')
+    distance_in_m = to_meters(distance_in, units_in)
+    distance_out = from_meters(distance_in_m, units_out)
+    output = str(distance_in) + ' ' + units_in + ' is '
+    output += str(distance_out) + ' ' + units_out
+    print(output)
 
 
-
+main()
 
