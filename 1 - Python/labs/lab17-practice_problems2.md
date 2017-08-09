@@ -19,11 +19,32 @@ Write a REPL which asks users for a list of numbers, which they enter, until the
 
 ## Problem 2
 
+
+```
+nums = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+print_every_other(nums)
+```
+```
+0, 2, 4, 6, 8
+```
+
 Print out every other element of a list, first using a while loop, then using a for loop.
+
 
 ## Problem 3
 
 Given a list of numbers, and a target number, find a pair of numbers from the list that sum to a target number
+
+```
+nums = [5, 6, 2, 3]
+target = 7
+find_pair(nums, target)
+```
+```
+[5, 2]
+```
+
+
 
 ## Problem 4
 
