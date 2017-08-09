@@ -27,13 +27,13 @@ for i in range(width):
     for j in range(height):
         r, g, b = pixels[i, j]
 
-        di = i - width/2
+        '''di = i - width/2
         dj = j - height/2
         d = math.sqrt(di*di + dj*dj)
         if d < 100:
             g = r
-            b = r
+            b = r'''
 
-        pixels[i, j] = (r, g, b)
+        pixels[i, j] = (255-r, 255-g, 255-b)
 
 img.show()

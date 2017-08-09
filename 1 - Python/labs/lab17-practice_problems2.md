@@ -1,5 +1,3 @@
-
-
 # Lab 17: Practice Problems 2
 
 
@@ -35,3 +33,9 @@ Get a string from the user, print out another string, doubling every letter.
 >>> Enter some text: hello
 hheelloo
 ```
+
+# Problem 5
+
+Write a function that merges two lists into a single list, where each element of the outlist list is another list containing two elements.
+
+`merge([5,2,1], [6,8,2])` -> `[[5,6],[2,8],[1,2]]`
