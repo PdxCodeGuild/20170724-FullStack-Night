@@ -5,12 +5,13 @@ import random  # import will provide a function outside of this source code
 # r = rock
 # p = paper
 # s = scissors
+playing = True
 
-while True:
+while playing:
 
-    print('Rock = r')
-    print('Paper = p')
-    print('Scissor = s')
+    #print('Rock = r')
+    #print('Paper = p')
+    #print('Scissor = s')
     player1 = input('Player 1, please choose a weapon -> ')
 
     r = 'r'
