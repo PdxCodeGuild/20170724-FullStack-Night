@@ -1,4 +1,5 @@
 amount = int(input('Enter total number in pennies '))
+# amount = int(float(amount)*100 #convert it to pennies
 
 n_quarters = amount // 25
 amount -= n_quarters * 25
