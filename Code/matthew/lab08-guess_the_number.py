@@ -17,6 +17,8 @@ target = random.randint(1, 10)
 
 last_guess = None
 
+n_guesses = 0
+
 
 def calc_distance(target, guess):
     return abs(target - guess)
@@ -39,6 +41,8 @@ while True:
         d_last_guess = calc_distance(target, last_guess)
         if d_guess < d_last_guess:
             print('closer')
+        elif d_guess == d_last_guess:
+            print('you\'re the same distance away')
         else:
             print('further')
 
@@ -46,4 +50,8 @@ while True:
     print('last guess: ' + str(last_guess))
 
     last_guess = guess
+
+    n_guesses += 1
+
+print(f'You guessed {n_guesses} times!')
 

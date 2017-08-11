@@ -43,6 +43,7 @@ def maximum_of_three(a, b, c):
         else:
             return c
 
+
 # problem 4: print the powers of 2 --------------------
 
 
@@ -64,7 +65,7 @@ def minimum(nums):
 def minimum2(nums):
     min_value = None
     for num in nums:
-        if min_value is None or min_value > num:
+        if min_value is None or num < min_value:
             min_value = num
     return min_value
 
@@ -78,6 +79,7 @@ def maxmimum(nums):
 
 
 def median(nums):  # assume nums is sorted
+    # nums.sort()
     if is_odd(len(nums)):
         index = len(nums)//2
         return nums[index]
@@ -176,7 +178,7 @@ def combine(list1, list2):
 def combine_v2(list1, list2):
 
     if len(list1) > len(list2):
-        list1, list2 = list2, list1 #swap, so the smaller is first
+        list1, list2 = list2, list1  # swap, so the smaller is first
 
     list3 = []
     i = 0
@@ -190,7 +192,6 @@ def combine_v2(list1, list2):
         i += 1
 
     return list3
-
 
 
 # print(combine(['a','b','c'],[1,2,3]))

@@ -13,4 +13,7 @@ while i < 20:
     i = i + 1
 print(password)
 
-
+# alternatively, use a for-loop instead of a while-loop
+# for i in range(20):
+#     password += random.choice(alphabet)
+# print(password
