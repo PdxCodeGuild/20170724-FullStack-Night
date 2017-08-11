@@ -13,7 +13,7 @@ while True:
 
 total = 0
 for num in nums:
-    sum += num
+    total += num
 average = total/len(nums)
 print('average: ' + str(average))
 

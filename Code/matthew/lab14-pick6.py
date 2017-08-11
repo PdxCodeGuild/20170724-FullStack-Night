@@ -13,11 +13,14 @@ def pick6():
 
 
 def calc_payout(ticket, winners):
+
     n_matches = 0
     for i in range(6):
         if ticket[i] == winners[i]:
             n_matches += 1
-    return n_matches
+
+    payout = [0, 4, 7, 100, 50000, 1000000, 25000000]
+    return payout[n_matches]
 
 
 def main():
@@ -26,7 +29,7 @@ def main():
     expenses = 0
     for i in range(100000):
         ticket = pick6()
-        expenses -= 2
+        expenses += 2
         earnings += calc_payout(ticket, winners)
     balance = earnings-expenses
     roi = balance/expenses
