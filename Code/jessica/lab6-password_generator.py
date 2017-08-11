@@ -12,3 +12,5 @@ while i < int(n):
 print(password)
 
 
+# for i in range(20):
+    # password += random.choice(alphabet)

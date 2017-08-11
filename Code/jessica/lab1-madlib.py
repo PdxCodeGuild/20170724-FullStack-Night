@@ -1,18 +1,22 @@
-name = input ('what is your name?')
+name = input('what is your name?')
 
 output = 'hello, ' + name + '!'
-print(output)
+print(output) #output prints string + input(name)
 
 
-adjective = input ('give me an adjective')
-plural_noun = input ('give me a plural noun')
-plural_noun2 = input ('give me another plural noun')
-silly_word = input ('give me a silly word ')
-type_of_liquid = input ('give me a type of liquid')
+adjective = input('give me an adjective')
+plural_noun = input('give me a plural noun')
+plural_noun2 = input('give me another plural noun')
+silly_word = input('give me a silly word ')
+type_of_liquid = input('give me a type of liquid')
 
 output = 'American children are fascinated by ' + adjective
 output += ' stuff like stories that scare the ' + plural_noun
 output += ' off them or make their ' + plural_noun2
 output += ' stand on end. Scientists say this is because being frightened causes the ' + silly_word
 output += ' gland to function and puts ' + type_of_liquid + ' into their blood.'
-print (output)
+print(output)  # output prints string + above defined inputs (adj, pl.noun, pl.noun2,silly_word, type_of_liquid)
+
+# f string:
+# output = f'American children are fascinated by {adjective} stuff like stories that scare the {plural_noun}'
+# print(output)

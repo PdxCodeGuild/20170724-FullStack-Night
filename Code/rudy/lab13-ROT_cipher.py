@@ -16,9 +16,9 @@ def rot13(user_string):
     user_string13 = ''
     for i, char in enumerate(user_string):
         # print(str(i) + ' ' + str(char))
-        index_user = alphabet.find(char)
+        index_user = alphabet.find(char)        # finding the element and giving back the index
         # print(index_user)
-        char_rot = alphabet_rotated[index_user]
+        char_rot = alphabet_rotated[index_user] #using the index of alphabet.find(char) to reference the same index in alphabet_rotated
 
         user_string13 += char_rot
     return user_string13
