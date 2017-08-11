@@ -20,6 +20,9 @@ adjective = input('give me an adjective: ')
 output = exclamation + '! he said ' + adverb + ' as he jumped into his convertible '
 output += noun + ' and drove off with his ' + adjective + ' wife.'
 
+# alternatively, use an f-string
+output = f'{exclamation}! he said {adverb} as he jumped into his convertable {noun} and drove off with his {adjective} wife'
+
 # print the output
 print(output)
 

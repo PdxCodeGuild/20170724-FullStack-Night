@@ -24,7 +24,7 @@ instead, we'll just convert to meters, then convert to the target units
 
 # convert the given distance from the given units to meters
 def to_meters(distance, units):
-    if units == 'm': # meters
+    if units == 'm':  # meters
         return distance
     elif units == 'mi': # miles
         return distance * 1609.34
@@ -54,15 +54,37 @@ def from_meters(distance, units):
         return distance / 0.0254
 
 
+def standardize_units(units):
+    if units in ['m', 'meter', 'meters']:
+        return 'm'
+    elif units in ['mi', 'mile', 'miles']:
+        return 'mi'
+    elif units in ['ft', 'feet']:
+        return 'ft'
+    elif units in ['km', 'kilometer', 'kilometers']:
+        return 'km'
+    elif units in ['yd', 'yard', 'yards']:
+        return 'yd'
+    elif units in ['in', 'inch', 'inches']:
+        return 'in'
+
 def main():
     print('Welcome to the Distance Converter 5001™')
     distance_in = float(input('what is the distance? '))
     units_in = input('what are the units you\'re converting from? ')
     units_out = input('what are the units you\'re converting to? ')
+
+    units_in = standardize_units(units_in)
+    units_out = standardize_units(units_out)
+
+
     distance_in_m = to_meters(distance_in, units_in)
     distance_out = from_meters(distance_in_m, units_out)
-    output = str(distance_in) + ' ' + units_in + ' is '
-    output += str(distance_out) + ' ' + units_out
+
+    output = f'{distance_in} {units_in} is {distance_out} {units_out}'
+
+    # output = str(distance_in) + ' ' + units_in + ' is '
+    # output += str(distance_out) + ' ' + units_out
     print(output)
 
 
