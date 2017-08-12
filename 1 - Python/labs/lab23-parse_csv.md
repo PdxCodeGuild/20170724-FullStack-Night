@@ -1,8 +1,20 @@
 
-# Lab 22: Contact List
+# Lab 23: Contact List
 
 
-Let's build a program to manage a list of contacts. To start, we'll build a CSV ('comma separated values') together, and go over how to load that file. Headers might consist of `name`, `favorite fruit`, `favorite color`, `catch phrase`.
+Let's build a program to manage a list of contacts. To start, we'll build a CSV ('comma separated values') together, and go over how to load that file. Headers might consist of `name`, `favorite fruit`, `favorite color`, `catch phrase`. Open the CSV, convert the lines of text into a list of dictionaries, one dictionary for each user.
+
+
+```python
+contact1 = {'name':'matthew', 'favorite fruit':'blackberries', 'favorite color':'orange', 'catch phrase': 'yabba dabba doo'}
+print(contact1['favorite fruit'])
+```
+
+```python
+with open('contacts.csv', 'r') as file:
+    text = file.read()
+    print(text.split('\n'))
+```
 
 
 
