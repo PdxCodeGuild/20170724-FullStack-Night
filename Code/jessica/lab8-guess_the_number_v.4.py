@@ -7,7 +7,7 @@ computer_number = randint(1, 10)
 guesses = 1
 while guesses < 12:
     if guesses == 11:
-        print ('You lose!')
+        print('You lose!')
         guesses += 1
         continue
     else:

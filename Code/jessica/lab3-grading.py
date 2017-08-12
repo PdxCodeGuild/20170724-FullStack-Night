@@ -1,4 +1,4 @@
-x = int(input ('Enter a number representing the grade (0-100):'))
+x = int(input('Enter a number representing the grade (0-100):'))
 
 if x > 90:
     print('The grade is an A')
@@ -11,3 +11,4 @@ elif x >= 60 and x <= 69:
 else:
     print('The grade is an F')
 
+# and not necessary because elif's not exclusive once case >90 don't need additional and because already covered
