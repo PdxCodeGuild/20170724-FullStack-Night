@@ -29,11 +29,11 @@ Implement a CRUD REPL
 - **U**pdate a record: ask the user for the contact's name, then for which attribute of the user they'd like to update and the value of the attribute they'd like to set.
 - **D**elete a record: ask the user for the contact's name, remove the contact with the given name from the contact list.
 
-## Version 4
+## Version 3
 
 When REPL loop finishes, write the updated contact info to the CSV file to be saved.
 
-## Version 5
+## Version 4
 
 Add a `phone number` column. We'll use the Twilio API to send SMS messages from the terminal.
 
