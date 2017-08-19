@@ -1,7 +1,7 @@
 # Write a function that returns the number of occurrences of the 'hi' in a given string.
 def count_hi(word):
     count = 0
-    for i in range(len(word)):
+    for i in range(len(word)-1):
         if word[i] == 'h':
             if word[i+1] == 'i':
                 count += 1
