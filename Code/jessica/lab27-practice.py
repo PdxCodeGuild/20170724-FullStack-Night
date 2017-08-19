@@ -7,7 +7,6 @@ def opposite(a, b):
     else:
         return False
 
-
 def main():
     a = int(input('Enter a number: '))
     b = int(input('Enter another number: '))
