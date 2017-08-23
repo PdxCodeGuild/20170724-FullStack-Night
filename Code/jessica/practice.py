@@ -8,7 +8,7 @@ even_or_odd(5)
 
 
 def even_vs_odd(a):
-    if a % 2 >= 1:
+    if a % 2 == 1:
         print('odd')
     else:
         print('even')

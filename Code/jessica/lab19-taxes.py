@@ -1,5 +1,6 @@
 income = int(input('Enter your income: '))
 
+
 def incometax_bracket(income):
     if income <= 3350:
         return income * .05
