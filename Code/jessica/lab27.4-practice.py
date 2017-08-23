@@ -1,4 +1,5 @@
 # Write a function that returns the number of occurrences of the 'hi' in a given string.
+# Write a function that returns True if a given string contains the same number of 'cat' as it does 'dog'
 def count_hi(sentence):
     count = 0
     for i in range(len(sentence)-1):
