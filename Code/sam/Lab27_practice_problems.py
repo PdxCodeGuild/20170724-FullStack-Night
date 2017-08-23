@@ -9,7 +9,7 @@ def pos_and_neg(a, b):
     else:
         return False
 
-print(pos_and_neg(1, -5))
+print('problem 1:',  pos_and_neg(1, -5))
 
 
 # Problem 2 write a function that returns True if number within 10 and 100
@@ -20,7 +20,7 @@ def range_10_100(a):
     else:
         return False
 
-print(range_10_100(103))
+print('problem 2: ',  range_10_100(103))
 
 
 # Problem 3 Write a function that takes a string, and returns a list of strings, each missing a different character
@@ -32,7 +32,7 @@ def missing_char(a):
     return string_list
 
 
-print(missing_char('kitten'))
+print('problem 3: ', missing_char('kitten'))
 
 
 # Problem 4 write a function that returns number of occurrences of hi in a given string
@@ -44,7 +44,7 @@ def count_hi(sentence):
                 hi_count += 1
     return hi_count
 
-print(count_hi('hibyehibyehibyehibyehi'))
+print('Problem 4: ',  count_hi('hibyehibyehibyehibyehi'))
 
 
 # Problem 5 write a function that returns True if a given string contains the same number of 'cat' as it does 'dog'
@@ -62,7 +62,7 @@ def count(sentence, word):
             count += 1
     return count
 
-print(count('hibyehibyehibyehibyehi', 'hi'))
+
 
 # A generic function that checks to see if word is at index i of a sentence
 def match(sentence, word, i):
@@ -71,7 +71,7 @@ def match(sentence, word, i):
             return False
     return True
 
-# Write a function that returns True if a given string contains the same number of 'cat' as it does 'dog'
+
 def catdog(sentence):
     cat = count(sentence, 'cat')
     dog = count(sentence, 'dog')
@@ -80,7 +80,7 @@ def catdog(sentence):
     else:
         return False
 
-print(catdog('catdogcatdogcat'))
+print('Problem 5: ',  catdog('catdogcatdogcat'))
 
 
 # Problem 6 Write a function that takes a list of numbers, and returns True if there is an even number of even numbers.
@@ -94,7 +94,7 @@ def even_even(a):
     return even / 2 == even // 2
 
 
-print(even_even([4, 2, 4]))
+print('Problem 6: ',  even_even([4, 2, 4]))
 
 
 # Problem 7 Write a function combine_all that takes a list of lists, and returns a list containing each element from each of the lists.
@@ -109,7 +109,7 @@ def combine_all(nums):
             combine.append(j)
     return combine
 
-print(combine_all(nums))
+print('Problem 7: ',  combine_all(nums))
 
 
 # Problem 8 Write a function that takes n as a parameter, and returns a list containing the first n
@@ -124,7 +124,7 @@ def fibonacci(n):
             fib.append(fib[i - 1] + fib[i - 2])
     return fib
 
-print(fibonacci(8))
+print('Problem 8: ', fibonacci(8))
 
 
 
