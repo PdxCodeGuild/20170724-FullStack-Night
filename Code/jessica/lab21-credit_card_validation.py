@@ -8,6 +8,7 @@
 # 7. Take the second digit of that sum.
 # 8. If that matches the check digit, the whole card number is valid.
 
+
 def convert_credit_card(user_input):
     list_numbers = []
     for i in range(len(user_input)):

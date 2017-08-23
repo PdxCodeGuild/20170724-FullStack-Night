@@ -2,6 +2,7 @@ card1 = input('What is your first card? \n')
 card2 = input('What is your second card? \n')
 card3 = input('What is your third card? \n')
 
+
 def value_cards(card1):
     if card1 == 'A':
         return 1
@@ -30,6 +31,7 @@ def value_cards(card1):
 value_card1 = value_cards(card1)
 value_card2 = value_cards(card2)
 value_card3 = value_cards(card3)
+
 
 def main():
     total_cards = value_card1 + value_card2 + value_card3

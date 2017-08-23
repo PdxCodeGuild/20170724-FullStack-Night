@@ -6,6 +6,7 @@ def check_palindrome():
         print(f'{word} is not a palindrome')
 check_palindrome()
 
+
 def convert_word(word):
     word = word.lower()
     word = word.replace(' ', '')
@@ -13,7 +14,7 @@ def convert_word(word):
     return word
 
 
-def check_anagram(): #str(sorted())
+def check_anagram():  # str(sorted())
     first_word = input('Enter the first word: ')
     second_word = input('Enter the second word: ')
     first_word = convert_word(first_word)
@@ -24,6 +25,3 @@ def check_anagram(): #str(sorted())
         print('they are not anagrams.')
 
 check_anagram()
-
-
-
