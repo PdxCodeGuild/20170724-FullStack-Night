@@ -15,9 +15,9 @@ opposite(-1, -1) → False
 Write a function that returns True if a number within 10 of 100.
 
 ```python
-near_10(50) → False
-near_10(99) → True
-near_10(105) → True
+near_100(50) → False
+near_100(99) → True
+near_100(105) → True
 ```
 
 
@@ -32,7 +32,7 @@ missing_char('kitten') → ['itten', 'ktten', 'kiten', 'kiten', 'kittn', 'kitte'
 
 ## Problem 4
 
-Write a function that returns the number of occurances of the 'hi' in a given string.
+Write a function that returns the number of occurances of 'hi' in a given string.
 
 ```python
 count_hi('hihi') → 2
@@ -63,7 +63,7 @@ eveneven([5, 5, 2]) → False
 Write a function `combine_all` that takes a list of lists, and returns a list containing each element from each of the lists.
 
 ```python
-nums = [[5,2,3][4,5,1][7,6,3]]
+nums = [[5,2,3],[4,5,1],[7,6,3]]
 combine_all(nums) → [5,2,3,4,5,1,7,6,3]
 ```
 
