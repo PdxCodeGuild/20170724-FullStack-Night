@@ -2,18 +2,45 @@
 
 import random
 
-
-def ace_value():
-    pass
+'''                                     In progress, buggy as I need to execute the total value for each cards as it happening
+def ace_value(card):
+    cards = 0
+    total = 0
+    while total < 22:
+        if card == 'A':
+            if total < 11:
+                card_value = 11
+                total += card_value
+                cards += 1
+                return card_value
+            elif total > 11:
+                card_value = 1
+                total += card_value
+                cards += 1
+                return card_value
+'''
 
 
 def card_value(card):
+    '''
     card_list = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
     card_values = [1,2,3,4,5,6,7,8,9,10,10,10,10]
     card_index = card_list.index(card)
     card_value = card_values[card_index]
 
     return card_value
+
+'''
+    if card == 'A':
+        card_value = ace_value(card)
+        return card_value
+    if card == 'J' or 'Q' or 'K':
+        card_value = 10
+        return card_value
+    else:
+        card = int(card)
+        card_value = card
+        return card_value
 
 
 def random_card():

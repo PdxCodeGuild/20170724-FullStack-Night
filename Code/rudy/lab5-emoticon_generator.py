@@ -2,7 +2,7 @@
 
 import random
 
-eyes = ['^   ^', '*   *', '-   -']
+eyes = ['^   ^', '*   *', '-   -', 'O   O']
 noses = ['  o  ', '  0  ', '  v  ']
 mouths = [' -U- ', ' >-< ', ' d-b ']
 
@@ -13,6 +13,8 @@ while i < 10:
     mouth = random.choice(mouths)
     i = i + 1
 
-    print(eye)
-    print(nose)
-    print(mouth + '\n')
+    print(' -WWMWW-')
+    print(' /' + eye + '\\ ')
+    print('{ ' + nose + ' }')
+    print(' |' + mouth + '| \n')
+

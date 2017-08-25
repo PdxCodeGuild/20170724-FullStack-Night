@@ -12,7 +12,10 @@ elif user_input == '-':
 elif user_input == '*':
     print(var1 * var2)
 elif user_input == '/':
-    print(var1 / var2)
+    if var1 == 0 or var2 == 0:
+        print('Answer is undefined, cannot divide by zero.')
+    else:
+        print(var1 / var2)
 else:
     print('Unknown operator.')
 
