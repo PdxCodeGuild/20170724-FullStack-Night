@@ -17,7 +17,8 @@ def power_of_2(n):
 
 
 def main():
-    pow2_list = power_of_2(4)
+    n = input('Enter the number of powers you\' like to perform: ')
+    pow2_list = power_of_2(n)
     print(pow2_list)
 
 

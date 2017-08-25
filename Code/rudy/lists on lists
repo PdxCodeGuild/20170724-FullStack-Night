@@ -1,0 +1,20 @@
+    #most_frequent_words = []
+    #for word in counterfeit:
+    #    if counterfeit[word] > 20:
+    #        print(word + ' ' + str(counterfeit[word]))
+
+    #for i in range(100):
+    #    frequent_words = []
+    #    for word in counterfeit:
+    #        if len(counterfeit[word]) > i:
+    #            frequent_words.append((word, counterfeit[word]))
+    #    if len(frequent_words) <20:
+
+
+    #most_frequent_word = ''
+    #most_frequent_count = -1
+    #for word in counterfeit:
+    #    if counterfeit[word] > most_frequent_word:
+    #        most_frequent_count = counterfeit[word]
+    #        most_frequent_count = word
+    #print(most_frequent_word + ' ' + str(most_frequent_count))

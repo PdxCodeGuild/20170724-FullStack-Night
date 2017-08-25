@@ -12,14 +12,14 @@ while listing:
     else:
         numbers_list.append(int(n))
 
-total_numbers = len(numbers_list)
-       # print('You have ' + str(total_numbers) + ' numbers in your list.')
 
+print('You have ' + str(len(numbers_list)) + ' numbers in your list.')
+print(numbers_list)
 for n in numbers_list:
-        # sum += n
-       # print(sum)
+    sum += n
+#print(sum)
 
-    # average = sum / total_numbers
+average = sum / len(numbers_list)
 
-    print('Your list of numbers is ' + str(numbers_list))
-# print('The average number in your list is ' + str(average))
+#print('Your list of numbers is ' + str(numbers_list))
+print('The average of the numbers in your list is ' + str(average))

@@ -8,13 +8,13 @@ while True: # while is a loop    true is a condition of the loop.
     if x > 100:
         print('Sorry. That is not a valid score. You failed, try again.')
         continue # continue signals that the loop will restart to beginning
-    elif x > 90:
+    elif x >= 90:
         print('You scored an A')
-    elif x > 80:
+    elif x >= 80:
         print('You scored an B')
-    elif x > 70:
+    elif x >= 70:
         print('You scored an C')
-    elif x > 60:
+    elif x >= 60:
         print('You scored an D')
     else:
         print('You scored an F')

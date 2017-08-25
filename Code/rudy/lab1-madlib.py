@@ -18,7 +18,7 @@ verb1 = input('Give me a verb. ')
 verb2 = input('Give me a verb. ')
 verb3 = input('Give me your last verb. (Make it good)')
 
-output = 'Today I met a ' + noun1 + '. It ' + verb1 + 'ed ' 'as I moved closer to it. ' 'I ' + verb2 + 'ed so ' + adjective1 + ' Suddenly it woke up and ' + verb3 + 'ed me into a pool of ' + noun2 + '.'
+output = 'Today I met a ' + noun1 + '. It ' + verb1 + 'ed ' 'as I moved closer to it.\n' 'I ' + verb2 + 'ed when suddenly it woke up and ' + verb3 + 'ed me into a ' + adjective1 + ' pool of ' + noun2 + '.'
 print(output)
 
 

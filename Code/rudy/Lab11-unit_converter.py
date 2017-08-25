@@ -10,6 +10,10 @@ def standardize_inputs(units):
         return 'km'
     elif units in ['mi', 'mile', 'miles']:
         return 'mi'
+    elif units in ['yd', 'yard', 'yards']:
+        return 'yd'
+    elif units in ['in', 'inch', 'inches']:
+        return 'in'
     else:
         print('not a known distance.')
 
@@ -19,8 +23,14 @@ def convert_to_meters(distance, from_units):
         return distance * 0.3048
     if from_units == 'mi':
         return distance * 1609.34
+    if from_units == 'm':
+        return distance * 1
     if from_units == 'km':
         return distance * 1000
+    if from_units == 'yd':
+        return distance * 0.9144
+    if from_units == 'in':
+        return distance * 0.0254
 
 
 def convert_from_meters(distance, to_units):
@@ -28,9 +38,14 @@ def convert_from_meters(distance, to_units):
         return distance / 0.3048
     if to_units == 'mi':
         return distance / 1609.34
+    if to_units == 'm':
+        return distance / 1
     if to_units == 'km':
         return distance / 1000
-
+    if to_units == 'yd':
+        return distance / 0.9144
+    if to_units == 'in':
+        return distance / 0.0254
 
 def main():
     distance = float(input('What is the distance? '))
