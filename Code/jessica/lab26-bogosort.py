@@ -40,7 +40,7 @@ def bogosort(nums):
     print(count)
 
 
-nums = random_list(12)
+nums = random_list(7)
 print(nums)
 bogosort(nums)
 print(nums)
