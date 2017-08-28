@@ -16,7 +16,8 @@ tens_digit = number // 10
 words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 ones_word = words[ones_digit]
 
-teen_words = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+teen_words = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen',
+              'nineteen']
 teens = teen_words[ones_digit]
 
 tens_words = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
@@ -33,12 +34,13 @@ tens = tens_words[tens_digit - 2]
 
 if number <= 9:
     print(ones_word)
-elif 10 < number < 19:
+elif 10 <= number <= 19:
     print(teens)
-elif number >= 20:
-    print(tens + ones_word)
 elif number >= 20 and ones_digit == 0:
     print(tens)
+elif number > 20:
+    print(tens + ones_word)
+
 
 
 
