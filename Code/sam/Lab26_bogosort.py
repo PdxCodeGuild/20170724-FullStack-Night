@@ -12,7 +12,7 @@ def random_list(n):
 
 # randomly re-arranges a list
 
-nums = random_list(10)
+nums = random_list(8)
 print(nums)
 
 def shuffle(nums):
