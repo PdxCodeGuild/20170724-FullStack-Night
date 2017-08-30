@@ -36,4 +36,4 @@ def tax_brackets(income):
         accumulated_tax += percent*bracket_range
 
 
-print(tax_brackets(income))
+print('Total income tax:' + ' $', tax_brackets(income))

@@ -17,6 +17,7 @@ def rot13(phrase):
         index = alphabet.find(char)
         rot_char = rot_alphabet[index]
         new_phrase += rot_char
+    print(new_phrase)
 rot13(phrase)
 
 

@@ -1,40 +1,38 @@
-card1 = input('What is your first card? \n')
-card2 = input('What is your second card? \n')
-card3 = input('What is your third card? \n')
-
-
-def value_cards(card1):
-    if card1 == 'A':
+def value_cards(card):
+    if card == 'A':
         return 1
-    elif card1 == '2':
+    elif card == '2':
         return 2
-    elif card1 == '3':
+    elif card == '3':
         return 3
-    elif card1 == '4':
+    elif card == '4':
         return 4
-    elif card1 == '5':
+    elif card == '5':
         return 5
-    elif card1 == '6':
+    elif card == '6':
         return 6
-    elif card1 == '7':
+    elif card == '7':
         return 7
-    elif card1 == '8':
+    elif card == '8':
         return 8
-    elif card1 == '9':
+    elif card == '9':
         return 9
-    elif card1 == 'J':
+    elif card == 'J':
         return 10
-    elif card1 == 'Q':
+    elif card == 'Q':
         return 10
-    elif card1 == 'K':
+    elif card == 'K':
         return 10
-value_card1 = value_cards(card1)
-value_card2 = value_cards(card2)
-value_card3 = value_cards(card3)
+    return int(card)
 
 
 def main():
-    total_cards = value_card1 + value_card2 + value_card3
+    card1 = input('What is your first card? \n')
+    card2 = input('What is your second card? \n')
+    card3 = input('What is your third card? \n')
+
+    total_cards = value_cards(card1) + value_cards(card2) + value_cards(card3)
+
     print(total_cards)
     if total_cards < 17:
         print('hit')
