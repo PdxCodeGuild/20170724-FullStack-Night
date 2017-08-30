@@ -1,4 +1,4 @@
-user_input = input('What was your number grade?')
+user_input = input('What was your number grade? ')
 user_input = int(user_input)
 
 if user_input >= 90:
