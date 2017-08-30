@@ -78,12 +78,11 @@ def parse_txt(path):
         grade_scale = ari_scale[score]
         #print(grade_scale)
 
-        output = ''
-        output += ' ----------------------------------------------------------\n'
-        output += '  The ARI for ' + path + ' is ' + str(score) + '.\n'
-        output += '  This corresponds to a ' + grade_scale['grade_level'] + ' level of difficulty.\n'
-        output += '  That is suitable for an average person ' + grade_scale['ages'] + ' years old.\n'
-        output += ' ----------------------------------------------------------\n'
+        output = ' ----------------------------------------------------------\n'  # output ='-'*80 + '\n'
+        output += '\tThe ARI for ' + path + ' is ' + str(score) + '.\n'
+        output += '\tThis corresponds to a ' + grade_scale['grade_level'] + ' level of difficulty.\n'
+        output += '\tThat is suitable for an average person ' + grade_scale['ages'] + ' years old.\n'
+        output += ' ----------------------------------------------------------\n' # output ='-'*80
 
         print(output)
 

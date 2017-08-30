@@ -13,6 +13,7 @@ class ATM:
         return self.balance
 
     def check_withdrawal(self, amount):
+        # instead use return amount <= self.balance
         if amount > self.balance:
             return False
         return True
@@ -33,7 +34,7 @@ class ATM:
 
 
 def main():
-    atm = ATM()
+    atm = ATM() # calling initializer
     # atm.deposit(5)
     # atm.withdraw(2)
     # atm.list_transactions()
