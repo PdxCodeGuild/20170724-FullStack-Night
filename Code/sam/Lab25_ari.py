@@ -23,6 +23,8 @@ with open(path, 'r') as file:
     import math
     ari = ((4.71 * char_count / word_count + 0.5 * word_count / sentence_count - 21.43))
     ari = math.ceil(ari)
+    if ari > 14:
+        ari = 14
     print(ari)
 
     ari_scale = {
