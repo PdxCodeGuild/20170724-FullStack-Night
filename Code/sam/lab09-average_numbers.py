@@ -1,6 +1,5 @@
 
-
-nums = []
+nums = [5, 0, 8, 3, 4, 1, 8]
 list_len = len(nums)
 
 

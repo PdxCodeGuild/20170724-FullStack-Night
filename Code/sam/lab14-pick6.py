@@ -52,8 +52,8 @@ def main():                                         # defining the main function
 
 
     print('Your ticket: ' + str(ticket) + ' The winning numbers: ' + str(winning_numbers))
-    print(roi)
-    print(balance)
-    print(calculate_payout(ticket, winning_numbers))
+    print('roi', roi)
+    print('balance', balance)
+    print('payout', calculate_payout(ticket, winning_numbers))
 
-main()                                              # calling main function. (Nothing will appear if main function isn't called)
+main()
