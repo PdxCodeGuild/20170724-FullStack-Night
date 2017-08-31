@@ -85,7 +85,7 @@ def main():
     ari_grade = ari_scale[ari_score]
 
     print(f'\n''The ARI for {path} is ' + str(ari_score))
-    print('This corresponds to a ' + ari_grade['grade_level'] + ' level of difficulty\n''that is suitable for an average person ' +             ari_grade['ages'] + ' years old.')
+    print(f'This corresponds to a ' + ari_grade['grade_level'] + ' level of difficulty\n''that is suitable for an average person ' +             ari_grade['ages'] + ' years old.')
 
 
 main()
