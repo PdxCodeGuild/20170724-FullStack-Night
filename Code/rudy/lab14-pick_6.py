@@ -67,7 +67,7 @@ def main():
         payouts += payout       # variable 'payouts' adds any payout from the ticket, then repeats this until all tickets have been checked.
 
     expense = 2 * n_tickets     # cost of $2 multiplied by the user input n_tickets
-    print('You spent $' + str(expense) + ' on ' + str(n_tickets))
+    print('You spent $' + str(expense) + ' on ' + str(n_tickets) +' tickets.')
     print('You won $' + str(payouts))
     total_winnings = payouts - expense
     print('Your total winnings is $' + str(total_winnings))

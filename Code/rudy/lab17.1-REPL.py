@@ -10,7 +10,7 @@ def main():
             entering = False
         user_list.append(x)
 
-    print(user_list)
+    print(user_list[0: len(user_list)-1])
 
 
 main()

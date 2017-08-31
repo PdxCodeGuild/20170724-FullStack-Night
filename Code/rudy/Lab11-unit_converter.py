@@ -10,7 +10,7 @@ def standardize_inputs(units):
         return 'km'
     elif units in ['mi', 'mile', 'miles']:
         return 'mi'
-    elif units in ['yd', 'yard', 'yards']:
+    elif units in ['yd', 'yard', 'yds', 'yards']:
         return 'yd'
     elif units in ['in', 'inch', 'inches']:
         return 'in'

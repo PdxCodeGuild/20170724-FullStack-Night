@@ -3,6 +3,7 @@
 
 import random
 
+
 def randomized_list():
     random_list = []
     for i in range(20):
@@ -11,12 +12,14 @@ def randomized_list():
     return random_list
 
 
-def sum_nums(target,random_list):
-    for i in range(len(random_list)):
+def sum_nums(nums, target):
+    for i in range(len(nums)):
+        for j in range(len(nums)):
+            if i == j:
+                continue
+            if nums[i] + nums[j] == target:
+                    print(i, j)
 
-
-
-        return i
 
 def main():
     target = int(input('Enter a number under 20: '))
@@ -24,9 +27,10 @@ def main():
         if 2 > target < 20:
             print('error')
 
-    random_list = randomized_list()
-    print(random_list)
+    nums = randomized_list()
+    print(nums)
 
-    i = sum_nums(target, random_list)
-    print(i)
+    target_pair = sum_nums(nums, target)
+    #print(target_pair)
+
 main()
