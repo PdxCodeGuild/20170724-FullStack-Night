@@ -11,7 +11,6 @@ def income_tax_bracket_v1(income):
         return (income - 3350)*.07 + 167.50
     elif income <= 3350 + 5050 + 116000:
         return (income - (5050 + 3350))*.09 + 353.50 + 167.50
-
     else:
         return (income - (116000 + 5050 + 3350))*.099 + 353.50 + 167.50 + 10440
 # print(income_tax_bracket_v1(income))

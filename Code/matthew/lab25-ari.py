@@ -1,4 +1,5 @@
 
+import math
 
 file_name = 'the_flower_princess.txt'
 with open(file_name, 'r') as f:
@@ -24,7 +25,10 @@ with open(file_name, 'r') as f:
                 n_characters += 1
 
     ari = 4.71*(n_characters/n_words) + 0.5*(n_words/n_sentences)-21.43
-    ari = int(ari + 0.5)
+    ari = math.ceil(ari)
+    if ari > 14:
+        ari = 14
+
     ari_scale = {
         1: {'ages': '5-6', 'grade_level': 'Kindergarten'},
         2: {'ages': '6-7', 'grade_level': '1st Grade'},
@@ -41,7 +45,15 @@ with open(file_name, 'r') as f:
         13: {'ages': '17-18', 'grade_level': '12th Grade'},
         14: {'ages': '18-22', 'grade_level': 'College'}
     }
-    print(ari_scale[ari])
+
+    grade_level = ari_scale[ari]
+
+    output = '-'*80 + '\n'
+    output += 'The ARI for ' + file_name + ' is ' + str(ari) + '\n'
+    output += 'This corresponds to a ' + grade_level['grade_level'] + ' level of difficulty\n'
+    output += 'that is suitable for an average person ' + grade_level['ages'] + ' years old\n'
+    output += '-'*80
+    print(output)
 
 
 
