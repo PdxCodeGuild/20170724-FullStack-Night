@@ -37,7 +37,7 @@ def ones(second_dec):                    # defining function for ones digit
         return 'three'
     if second_dec == 2:
         return 'two'
-    if  second_dec == 1:
+    if second_dec == 1:
         return 'one'
 
 

@@ -8,6 +8,7 @@
 # using that index, find the character in the rotated alphabet
 # append that character to the output string
 
+
 def rot13(user_string):
     alphabet =         'abcdefghijklmnopqrstuvwxyz'
     alphabet_rotated = 'nopqrstuvwxyzabcdefghijklm'
@@ -27,11 +28,8 @@ def rot13(user_string):
 def main():
     user_string = input('Enter the message you would like to encrypt here: ')
 
-
     user_string13 = rot13(user_string)
     print(user_string13)
-
-
 
 main()
 

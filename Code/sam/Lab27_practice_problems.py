@@ -9,7 +9,7 @@ def pos_and_neg(a, b):
     else:
         return False
 
-print('problem 1:',  pos_and_neg(1, -5))
+print('problem 1:',  pos_and_neg(1, 5))
 
 
 # Problem 2 write a function that returns True if number within 10 and 100
