@@ -1,6 +1,7 @@
 """
 lab 12: practice problems
 """
+
 import random
 
 # problem 1: even or odd --------------------
@@ -55,6 +56,8 @@ def print_powers_of_two(n):
 
 
 def minimum(nums):
+    if len(nums) == 0:
+        return None
     min_value = nums[0]
     for num in nums:
         if num < min_value:
@@ -83,7 +86,9 @@ def median(nums):  # assume nums is sorted
     if is_odd(len(nums)):
         index = len(nums)//2
         return nums[index]
-    return None
+    else:
+        index = len(nums)//2
+        return [nums[index], nums[index+1]]
 
 
 def mean(nums):
@@ -136,6 +141,7 @@ def reverse_v2(nums):
 
         # a more python way to swap
         nums[i], nums[j] = nums[j], nums[i]
+
 
 # nums = [5, 6, 7, 8, 9, 10, 11, 12]
 # reverse(nums)

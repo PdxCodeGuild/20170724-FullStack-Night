@@ -12,8 +12,9 @@
 def get_second_digit(num):
     if num < 10:
         return None
-    num_str = str(num)
-    return int(num_str[1])
+    #num_str = str(num)
+    #return int(num_str[1])
+    return num%10
 
 
 def validate_credit_card(cc_str):

@@ -27,7 +27,7 @@ def find_pairs(nums, target):
     pairs = []
     for i in range(len(nums)):
         for j in range(len(nums)):
-            if nums[i] + nums[j] == target:
+            if i != j and nums[i] + nums[j] == target:
                 pairs.append([nums[i], nums[j]])
     return pairs
 

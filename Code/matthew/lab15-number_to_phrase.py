@@ -1,7 +1,9 @@
-# lab 22: convert a number between 0 and 99 to a phrase
+"""
+lab 22: convert a number between 0 and 99 to a phrase
 # e.g. 5 -> 'five'
 # e.g. 11 -> 'eleven'
 # e.g. 56 -> 'fifty-six'
+"""
 
 # alternatively, use a dictionary: ones = {0:'zero', 1:'one', 2:'two'
 ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
