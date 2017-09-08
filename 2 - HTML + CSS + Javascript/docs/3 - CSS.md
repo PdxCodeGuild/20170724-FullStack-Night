@@ -60,9 +60,10 @@ A third way to define CSS is via an 'external style-sheet' or a separate file wi
 
 
 
-## Style Attributes
+## CSS Properties
 
-For a complete list of attributes, look here: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+- https://www.w3schools.com/cssref/
 
 
 
@@ -103,7 +104,7 @@ Put a `.` before the class name
         border: 1px solid yellow;
     }
 </style>
-<div class="alert">This is an error message</div>
+<div class="error">This is an error message</div>
 <div class="warning">This is a warning</div>
 ```
 
