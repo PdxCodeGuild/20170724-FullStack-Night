@@ -1,7 +1,7 @@
 <html>
     <head>
         <style>
-            #everything: after {
+            /*#everything: after {
             position: absolute;
             top: 0;
             left: 0;
@@ -12,6 +12,10 @@
             background-image: url("https://i.stack.imgur.com/tc3b6.jpg");
             background-repeat: no-repeat;
             background-size: cover;
+            }*/
+            #everything {
+                margin: 0 200px;
+                background-color: rgba(255, 255, 102,.3)
             }
             body {
                 background-image: url("http://www.misucell.com/data/out/10/IMG_373670.gif");
@@ -19,29 +23,36 @@
                 background-size: cover;
             }
             h1 {
-                text-align: center;
+                text-align:center;
+                font-size: 40px;
             }
             img {
-                float: left;
-                margin: 20px;
+                border-radius:40px;
+                border:2px solid #ccff99;
+                float:left;
+                margin:20px;
             }
             #text_div {
-                float: right;
-                font-weight: bold;
-                font-size: 20px;
-                width:80%;
+                padding: 25px;
+                font-weight:bold;
+                font-size:20px;
+                width:90%;
+                text-align: center;
             }
-            ul {
-                margin: 20px;
+            table {
+            table-layout: fixed;
+            width: 80%;
             }
-
-            #quote {
+            #list {
                 clear:both;
+                margin: 10%;
+
+             }
+            #quote {
                 font-family:Papyrus;
-                font-size: 153%;
-                margin: 20px;
-                padding: 40px;
-                font-weight: bold
+                font-size:160%;
+                font-weight:bold
+                text-align: center;
             }
         </style>
     </head>
@@ -57,19 +68,28 @@
                     an amalgam of food literature, travel and memoir. Fisher believed that eating well was just one of the
                     "arts of life" and explored this in her writing. W. H. Auden once remarked, "I do not know of anyone in
                     the United States who writes better prose."</p>
-
-                <h2>Places Fisher lived:</h2>
-                <ul>
-                    <li>Albion, Michigan</li>
-                    <li>Whittier, California</li>
-                    <li>Dijon, France</li>
-                    <li>Vevey, France</li>
-                    <li>Provence, France</li>
-                    <li>St.Helena, California</li>
-                    <li>Glen Ellen, California</li>
-                </ul>
             </div>
-            <p id="quote">"Sharing our meals should be a joyful and a trustful act, rather than the cursory fulfillment of our social obligations." - MFK Fisher</p>
+            <table>
+                <tr>
+                    <td>
+                        <div id="list">
+                            <h2>Places Fisher lived:</h2>
+                            <ul>
+                                <li>Albion, Michigan</li>
+                                <li>Whittier, California</li>
+                                <li>Dijon, France</li>
+                                <li>Vevey, France</li>
+                                <li>Provence, France</li>
+                                <li>St. Helena, California</li>
+                                <li>Glen Ellen, California</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <p id="quote">"Sharing our meals should be a joyful and a trustful act, rather than the cursory fulfillment of our social obligations." - MFK Fisher</p>
+                    </td>
+                </tr>
+            </table>
         </div>
     </body>
 
