@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <script>
+            //pick a random int between 1 and 10
+
+            var computer = Math.floor(Math.random() * 10);
+            count = 0
+
+            function check_guess() {
+                count++;
+                //get value from text input. convert to int using parseInt
+                //compare it to the computer's guess
+                //if it's right, show 'correct!'
+                //if it's wrong, show 'incorrect!'
+                var guess = parseInt(document.getElementByID('user_input').value)
+
+                if (guess === computer); {
+                    alert("correct!");
+                }
+                else {
+                    alert("wrong!");
+                }
+                if (count >= 10); {
+                    alert("you lose!");
+                }
+            }
+        </script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h1>Guess the Number!</h1>
+        <table>
+            <tr>
+                <td>Guess: </td>
+                <td><input id = "user_input" type="text"></td>
+            </tr>
+        </table>
+        <button onclick="check_guess()">Guess</button>
+    </body>
+</html>
