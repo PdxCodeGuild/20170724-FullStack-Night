@@ -4,12 +4,10 @@ Write up a short bio webpage for yourself or someone famous.
 Include:
 
 * A written introduction
-* A link to their favorite Wikipedia article in that introduction
+* A link to a Wikipedia article in that introduction
 * A picture of them (or a placeholder)
 * A list of places where they've lived
 * A quote from them
-* Proper structuring HTML elements
-
 
 ## Part 2
 
@@ -22,12 +20,9 @@ Include:
 
 
 *   Pick a color scheme and modify the background, body text, and link text color.
-
 *   Change the typeface of the quote.
-
 *   Add a rounded border to the picture.
-
-*   Change the bullet points on the list of places to be the gaudy character `☞`.
+*   Change the bullet points on the list of places to be a different character, like `☞`.
 
 ## Part 4
 

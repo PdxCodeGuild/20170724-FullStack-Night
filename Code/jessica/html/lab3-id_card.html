@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /* General styles - put these straight into your stylesheet */
+
+            body {
+              margin: 0;
+            }
+
+            html {
+              font-family: 'Helvetica neue', Arial, 'sans serif';
+              font-size: 10px;
+              background-color: #ccc;
+            }
+
+            /* Selectors to be matched up with rulesets */
+            /* Rulesets to be matched up with selectors */
+
+            .card{
+              width: 35em;
+              height: 22em;
+              margin: 5em auto;
+              background-color: red;
+              border: 0.2em solid black;
+              border-radius: 1.5em;
+            }
+
+            .card header{
+              background-image: linear-gradient(to bottom,rgba(255,0,0,0.1), rgba(255,0,0,0));
+              border-radius: 1.5em 1.5em 0 0;
+              height: 3em;
+              padding: 1em;
+            }
+
+            .card footer{
+              background-image: linear-gradient(to bottom,rgba(255,0,0,0), rgba(255,0,0,0.1));
+              border-radius: 0 0 1.5em 1.5em;
+              height: 3em;
+              padding: 1em;
+            }
+
+            .card article img{
+              max-height: 100%;
+              float: right;
+              height: 12em;
+            }
+
+            h2 {
+                margin: 0;
+                font-size: 2em;
+                line-height: 1.5em;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            article {
+                height: 12em;
+                background-color: rgba(0,0,0,.3)
+            }
+
+            .card footer p {
+                font-size: 1.5em;
+                line-height: 1.5em;
+            }
+
+            .card article p {
+                padding: 1em;
+                color: white;
+            }
+        </style>
+        <meta charset="utf-8">
+        <title>Fundamental CSS comprehension</title>
+    </head>
+    <body>
+
+        <section class="card">
+            <header>
+                <h2>Chris Mills</h2>
+            </header>
+            <article>
+                <img src="chris.jpg" alt="A picture of Chris - a man with glasses, a beard, and a silly wooly hat">
+                <p>50 My Street</br>
+                    The Town<br>
+                    Gray Peach<br>
+                    UK<br>
+                    ZO50 1MU<br>
+                    <strong>Tel</strong>: 01234 567 890<br>
+                    <strong>Mail</strong>: chris@nothere.com</p>
+            </article>
+            <footer>
+                <p>Editing, writing, and web development services</p>
+            </footer>
+        </section>
+
+    </body>
+</html>
