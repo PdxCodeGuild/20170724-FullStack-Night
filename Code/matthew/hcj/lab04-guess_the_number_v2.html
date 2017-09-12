@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                font-family: 'Julius Sans One', sans-serif;
+            }
+            #maindiv {
+                margin: 40px auto;
+                width:40%;
+                text-align:center;
+            }
+            #guess_input {
+                border: none;
+                border-bottom: 1px solid black;
+                background:transparent;
+            }
+            #guess_input:focus {
+                outline:none;
+            }
+            button {
+                background-color:white;
+                border: 1px solid black;
+                font-family: 'Julius Sans One', sans-serif;
+            }
+            button:focus {
+                outline:none;
+            }
+            button:active {
+                background-color:black;
+                color:white;
+            }
+            #correct_div, #incorrect_div {
+                padding:10px;
+                margin: 20px auto;
+                border: 1px solid black;
+                width: 200px;
+            }
+            #background_div {
+                z-index:-1;
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                text-align:center;
+                color:lightgrey;
+                font-size:200px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="maindiv">
+            <h1>Guess the Number!</h1>
+            <div style="display:block">
+                <input id="guess_input" type="text"/>
+                <button onclick="check_guess()">guess</button>
+            </div>
+            <div id="correct_div">correct!</div>
+            <div id="incorrect_div">incorrect!</div>
+        </div>
+        <div id="background_div">
+        </div>
+        <script>
+
+            var correct_div = document.getElementById('correct_div');
+            var incorrect_div = document.getElementById('incorrect_div');
+            var guess_input = document.getElementById('guess_input');
+            var background_div = document.getElementById('background_div');
+
+            correct_div.style.display = 'none';
+            incorrect_div.style.display = 'none';
+
+            var comp_guess = Math.floor(Math.random()*10+1);
+            var n_guesses_remaining = 10;
+            function check_guess() {
+                var guess = parseInt(guess_input.value);
+                n_guesses_remaining--;
+                background_div.innerHTML = n_guesses_remaining;
+
+
+                if (guess === comp_guess) {
+                    correct_div.style.display = 'block';
+                    incorrect_div.style.display = 'none';
+                } else {
+                    correct_div.style.display = 'none';
+                    incorrect_div.style.display = 'block';
+                }
+            }
+        </script>
+    </body>
+</html>

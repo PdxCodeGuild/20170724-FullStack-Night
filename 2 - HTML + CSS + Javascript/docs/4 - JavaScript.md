@@ -50,6 +50,16 @@ var f = undefined; // undefined
 var fruits = ["apple", "bananana", "pear"] // array
 
 var person = {firstName:"John", lastName:"Doe", age:46}; // object
+person.age += 1;
+person.favorite_fruit = "orange";
+```
+
+To convert between types, use `parseInt`, `parseFloat` and `toString`.
+
+```JavaScript
+var x = parseInt('4');
+var y = parseFloat('4.2');
+var z = x.toString();
 ```
 
 ## Math
@@ -73,6 +83,37 @@ Math.cos(Math.PI/2) // 0.0
 ## Strings
 
 https://www.w3schools.com/jsref/jsref_obj_string.asp
+
+## Comparisons
+
+var x = 0;
+console.log(x == 0); // true
+console.log(x != 0); // false
+console.log(x < 10); // true
+console.log(x > 10); // false
+console.log(x <= 10); // true
+console.log(x >= 10); // false
+console.log(x > -10 && x < 10); //true
+console.log(x > -10 || x < 10); // true
+
+## Conditionals
+
+```
+var temperature = 56;
+if (x < 60)
+{
+    alert('cold');
+}
+elif (x < 80)
+{
+    alert('warm');
+}
+else
+{
+    alert('hot');
+}
+```
+
 
 ## Arrays and Loops
 
@@ -113,18 +154,24 @@ Get an element by ID and add some style:
 ```JavaScript
 <div id="demo_div"></div>
 ...
-demo_div = getElementById('demo_div');
+demo_div = document.getElementById('demo_div');
 demo_div.innerHTML = "Hello World!";
 demo_div.style.fontSize = 24;
 demo_div.name = "demo_div" // setting at attribute
+
+.....
+
+<div id="demo_div" style="font-size:24" name="demo_div">Hello World!</div>
+
+
 ```
 
 Get the value from an input:
 ```JavaScript
 <input id="user_input" type="text"/>
 ...
-text_field = document.getElementById('user_input');
-user_input = text_field.value;
+var text_field = document.getElementById('user_input');
+var user_input = text_field.value;
 ```
 
 Create a button, style it, and add it to a div

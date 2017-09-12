@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script>
+            var comp_guess = Math.floor(Math.random()*10+1);
+            function check_guess()
+            {
+                var guess = parseInt(document.getElementById('guess_input').value);
+                if (guess === comp_guess) {
+                    alert('correct!');
+                } else {
+                    alert('incorrect!');
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="maindiv">
+            <h1>Guess the Number!</h1>
+            enter your guess: <input id="guess_input" type="text"/>
+            <button onclick="check_guess()">guess</button>
+        </div>
+    </body>
+</html>

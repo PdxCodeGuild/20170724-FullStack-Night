@@ -129,3 +129,9 @@ Put a `#` in front of the ID, this allows you to address a specific tag.
 ### Universal Selector
 
 Using a `*` will select everything, it's generally better to apply a style to the `body` tag and let sub-tags pick it up.
+
+
+## CSS Properties
+
+
+`display: none`
