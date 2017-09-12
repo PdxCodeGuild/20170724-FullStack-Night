@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <script>
+            //pick a random int between 1 and 10
+
+            var computer = Math.floor(Math.random() * 10 + 1);
+            var count = 0;
+
+            function check_guess() {
+                count++;
+                //get value from text input. convert to int using parseInt
+                //compare it to the computer's guess
+                //if it's right, show 'correct!'
+                //if it's wrong, show 'incorrect!'
+                var guess = parseInt(document.getElementById('user_input').value);
+
+                if (guess === computer) {
+                    document.getElementById('correct').style.display = "inline";
+                    document.getElementById('wrong').style.display = "none";
+                    document.body.style.backgroundImage = 'url(https://st.depositphotos.com/2075965/4256/v/950/depositphotos_42566607-stock-illustration-fireworks-with-star-on-white.jpg)';
+                }
+                else {
+                    document.getElementById('wrong').style.display = "inline";
+                    document.getElementById('correct').style.display = "none";
+                }
+                if (count >= 10) {
+                    alert("you lose!");
+                }
+            }
+        </script>
+        <style>
+            h1 {
+                font-family: "Georgia";
+                font-size: 40px;
+                margin-left: 40px;
+
+            }
+            body {
+                background-image: url("https://thumbs.dreamstime.com/z/numbers-background-24939526.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+
+            }
+            table {
+                margin-left: 30px;
+            }
+
+            td {
+                padding: 10px;
+
+            }
+            button {
+                margin: 10px;
+                margin-left: 40px;
+            }
+            #correct {
+                color: green;
+                font: Georgia;
+                font-size: 25px;
+                font-weight: bold;
+                margin-left: 40px;
+                text-decoration: underline;
+
+            }
+            #wrong {
+                color: red;
+                font: Georgia;
+                font-size: 25px;
+                font-weight: bold;
+                margin-left: 40px;
+
+
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Guess the Number!</h1>
+        <table>
+            <tr>
+                <td>Guess: </td>
+                <td><input id = "user_input" type="text"></td>
+            </tr>
+        </table>
+        <button onclick="check_guess()">Guess</button>
+        <div id="correct" style="display:none">Correct</div>
+        <div id="wrong" style="display:none">Wrong</div>
+    </body>
+</html>
