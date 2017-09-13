@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contact List Tutorial</title>
+  <style>
+      body{
+  background-color: #0e78ff;
+  text-align: center;
+}
+
+table{
+    margin-left:auto;
+    margin-right:auto;
+  background-color: #000000;
+  color: white;
+
+
+  border-color: grey;
+  border-style: none outset inset outset;
+  padding: 4px
+}
+
+#submit{
+  color: yellow;
+  background-color: grey;
+  display: inline-block;
+  padding: 2px;
+  margin: 2px 0 0 0;
+  border: outset
+}
+  </style>
+</head>
+
+<body>
+  <h1>NEW CONTACT</h1>
+  <div id="table">
+  <table>
+    <tr>
+      <td>Name</td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td>Favorite Fruit</td>
+      <td>
+        <select>
+          <option value="apple">apple</option>
+          <option value="apricots">apricots</option>
+          <option value="banana">banana</option>
+          <option value="cantaloupe">cantaloupe</option>
+          <option value="cherries">cherries</option>
+          <option value="dragon fruit">dragon fruit</option>
+          <option value="grapes">grapes</option>
+          <option value="honeydew">honeydew</option>
+          <option value="pears">pears</option>
+          <option value="watermelon">watermelon</option>
+        </select>
+      </td>
+     </tr>
+    <tr>
+      <td>Favorite Color</td>
+      <td><input type="color"></td>
+    </tr>
+    <tr>
+      <td>Catch Phrase</td>
+      <td><input type ="text"></td>
+    </tr>
+  </table>
+  </div>
+  <div id="submit">Submit</div>
+</body>
+
+</html>

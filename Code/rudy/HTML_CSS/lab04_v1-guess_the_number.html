@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Number v01</title>
+    <script>
+        var x = Math.random()*10;       // variable 'x' using Math function 'random' to get a number between 0-9.9^10. We multiply by 10.
+        x = Math.floor(x);              // x = number random number multiplied by 10 and then we floor to get a whole number.
+        console.log(x);
+
+        function check_guess()          //write a function that checks the number
+        {//get the value of the user_input. store at as a value. get the computer guess and compare. if statements to determine correct or incorrect. Show outcome.
+
+            var text_field = document.getElementById('user_input');     // .getElementById returns the tag and saving it under the variable name text_field
+            var user_input = parseInt(text_field.value);          // text_field value that we received from the above code is saved under the variable user_input. parseInt turns the string into an Int.
+
+            if (user_input === x)
+            {
+                alert('correct!');
+            }
+            else if (user_input < x)
+            {
+                alert('too low!')
+            }
+            else if (user_input > x)
+            {
+                alert('too high!');
+            }
+            else
+            {
+                alert('whatever')
+            }
+        }
+    </script>
+    <style>
+        #container {
+            border-style: solid;
+            border-width: 4px;
+            background: #2E0620;
+            padding: 10%;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: gold;
+            margin: auto;
+            text-align: center;
+            }
+        #too_high, #correct, #too_low {
+            border-style: solid;
+            border-width: 2px;
+            padding: auto;
+            display: inline;
+            alignment: center;
+        }
+        #whatever {
+            font-size: 300%;
+            text-align: center;
+            height: auto;
+            width: auto;
+            border-width: 4px;
+            border-style: solid;
+            padding: auto;
+            display: inline-block;
+            margin: auto;
+        }
+        #sign {
+            border-style: dotted;
+            border-spacing: 4px;
+            border-width: 4px;
+        }
+        #title {
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1 id="title">Welcome to<br ><a id="sign">GUESS THAT NUMBER!</a></h1>
+        <div>
+            <h3>Enter number here!  <input id="user_input"  type="text"></h3>
+        </div>
+
+        <div id="too_high">
+            <a>Too High!</a>
+        </div>
+        <div id="correct">
+            <a>Correct!</a>
+        </div>
+        <div id="too_low">
+            <a>Too Low!</a>
+        </div>
+        <div id="whatever">
+            <a>Whatever!</a>
+        </div>
+
+
+    </div>
+    <button id="submit" onclick="check_guess()">Submit</button>
+</body>
+</html>
