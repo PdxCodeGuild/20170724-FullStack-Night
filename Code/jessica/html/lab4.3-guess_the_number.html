@@ -1,0 +1,148 @@
+<html>
+    <head>
+
+        <style>
+            h1 {
+                font-family: "Georgia";
+                font-size: 40px;
+                margin-left: 40px;
+                color: #68A3C5;
+            }
+            body {
+                background-image: url("https://thumbs.dreamstime.com/z/numbers-background-24939526.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            table {
+                margin-left: 30px;
+                font-family: "Georgia"
+                font-size: 20px;
+                color: #68A3C5;
+            }
+
+            td {
+                padding: 10px;
+            }
+            button {
+                margin: 10px;
+                margin-left: 40px;
+
+            }
+            #correct {
+                color: green;
+                font-family: "Georgia";
+                font-size: 20px;
+                font-weight: bold;
+                margin-left: 40px;
+                text-decoration: underline;
+            }
+            #wrong {
+                color: red;
+                font-family: "Georgia";
+                font-size: 20px;
+                font-weight: bold;
+                margin-left: 40px;
+            }
+            #lose {
+                color:#5F9ABA;
+                font-family: "Georgia";
+                font-size:20px;
+                font-weight: bold;
+                margin-left: 40px;
+            }
+            button {
+                background-color:#98CEF0;
+                color: white;
+                border:none;
+                font-size:20px;
+
+            }
+            button:disabled {
+                background-color:grey;
+                color:grey;
+                border:none;
+                font-size:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Guess the Number!</h1>
+        <div id="numbers"></div>
+        <table>
+            <tr>
+                <td>Guesses remaining: </td>
+                <td><div id="count"></div></td>
+            </tr>
+        </table>
+
+        <div id="correct" style="display:none">Correct</div>
+        <div id="wrong" style="display:none">Wrong</div>
+        <div id="already_guessed" style="display:none">You already guessed that number</div>
+        <div id="lose" style="display:none">You lose!</div>
+        <br/><button onclick="start_over()">Start Over</button>
+
+        <script>
+            var numbers = document.getElementById('numbers');
+            for(var i = 0; i < 10; ++i) {
+                var button = document.createElement('button');
+                button.innerHTML = (i+1).toString();
+                button.onclick = function(){
+                    this.disabled = "disabled";
+                    check_guess(parseInt(this.innerHTML));
+                };
+                numbers.appendChild(button);
+            }
+            //pick a random int between 1 and 10
+
+            var computer = Math.floor(Math.random() * 10 + 1);
+            var count = 8;
+            var guesses = [];
+            document.getElementById('count').innerHTML=count;
+            function check_guess(guess) {
+                //get value from text input. convert to int using parseInt
+                //compare it to the computer's guess
+                //if it's right, show 'correct!'
+                //if it's wrong, show 'incorrect!'
+                if (guesses.indexOf(guess) > -1) {
+                    document.getElementById('already_guessed').style.display = "inline";
+                    return;
+                }
+                guesses.push(guess);
+                count--;
+                document.getElementById('count').innerHTML=count;
+                if (guess === computer) {
+                    document.getElementById('correct').style.display = "inline";
+                    document.getElementById('wrong').style.display = "none";
+                    document.getElementById('already_guessed').style.display = "none";
+                    document.body.style.backgroundImage = 'url(https://st.depositphotos.com/2075965/4256/v/950/depositphotos_42566607-stock-illustration-fireworks-with-star-on-white.jpg)';
+                    //loop thru children of numbers
+                    for (var i = 0; i <numbers.children.length; ++i) {
+                        numbers.children[i].disabled = "disabled"
+                    }
+                }
+                else {
+                    document.getElementById('wrong').style.display = "inline";
+                    document.getElementById('correct').style.display = "none";
+                    document.getElementById('already_guessed').style.display = "none";
+                }
+                if (guess !== computer && count === 0) {
+                    document.getElementById('lose').style.display = "inline";
+                }
+            }
+            function start_over(){
+                document.body.style.backgroundImage = "url('https://thumbs.dreamstime.com/z/numbers-background-24939526.jpg')";
+                for (var i = 0; i <numbers.children.length; ++i) {
+                        numbers.children[i].removeAttribute("disabled")
+                    }
+                computer = Math.floor(Math.random() * 10 + 1);
+                count = 8;
+                guesses = [];
+                document.getElementById('count').innerHTML=count;
+                document.getElementById('wrong').style.display = "none";
+                document.getElementById('correct').style.display = "none";
+                document.getElementById('already_guessed').style.display = "none";
+                document.getElementById('lose').style.display = "none";
+            }
+        </script>
+    </body>
+</html>
