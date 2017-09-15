@@ -3,7 +3,11 @@
 
 
 
-Let's use an HTML canvas and an animation loop to draw a bouncing ball. Create an HTML page with a `canvas element`, preferably with a border so you can see the boundaries. Use the following to define a 'ball' object.
+Let's use an HTML canvas and an animation loop to draw a bouncing ball. Create an HTML page with a `canvas element`, preferably with a border so you can see the boundaries. Canvases require that `width` and `height` be set as attributes, rather than though CSS.
+
+`<canvas width="500" height="500"></canvas>`
+
+Use the following to define a 'ball' object. The attributes `px` and `py` represent the ball's location, and are initialized to a random place on the canvas, `width` and `height` are the dimensions of the canvas. The attributes `vx` and `vy` represent the ball's velocity.
 
 ```JavaScript
 var ball = {

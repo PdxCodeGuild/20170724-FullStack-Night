@@ -11,6 +11,8 @@ Keep track of the number of guesses, display that number to the user.
 
 Keep track of their previous guesses, if they repeat a number, indicate that to the user.
 
+Also display higher/lower (and closer/further if you want)
+
 ## Version 3
 
 Using Javascript, automatically generate a button for each number that can be guessed. When a user clicks a button, check if they're correct. When the user runs out of guesses or guesses correctly, disable everything, and give them the option to start over. 

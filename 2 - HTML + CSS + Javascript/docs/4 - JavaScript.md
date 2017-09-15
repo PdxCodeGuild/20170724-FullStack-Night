@@ -33,7 +33,7 @@ alert("Hello World!");
 console.log("Hello World!");
 ```
 
-In Chrome and Firefox, press `Ctrl + Shift + j` to open the JavaScript console, or `Ctrl + Shift + I` to bring up a view of the DOM. Or right-click an element, and select `inspect`.
+In your browser, you can open the developer tools by pressing `F12`. This contains a real-time view of the DOM, selecting an element will let you view the CSS it uses. The Dev Tools also contain a JavaScript Console that'll let you see the output of the page's JavaScript and any exceptions that occur.
 
 There's also `document.write(s)` which will replace all existing HTML on the page.
 
@@ -86,6 +86,7 @@ https://www.w3schools.com/jsref/jsref_obj_string.asp
 
 ## Comparisons
 
+```JavaScript
 var x = 0;
 console.log(x == 0); // true
 console.log(x != 0); // false
@@ -95,6 +96,7 @@ console.log(x <= 10); // true
 console.log(x >= 10); // false
 console.log(x > -10 && x < 10); //true
 console.log(x > -10 || x < 10); // true
+```
 
 ## Conditionals
 
@@ -117,13 +119,15 @@ else
 
 ## Arrays and Loops
 
-You can access an array's length with `fruits.length`, you can append an element like `fruits.push('dragonfruit');`.
+You can access an array's length with `fruits.length`, you can append an element like `fruits.push('dragonfruit');`. You can find more info [here](https://www.w3schools.com/jsref/jsref_obj_array.asp).
 
 ```JavaScript
 var fruits = ["apple", "bananana", "pear"]
+fruits.push('cherry');
 for (var i=0; i<fruits.length; ++i) {
     console.log(fruits[i]);
 }
+console.log(fruits.indexOf('bananana')); // 1
 ```
 
 
@@ -154,7 +158,7 @@ Get an element by ID and add some style:
 ```JavaScript
 <div id="demo_div"></div>
 ...
-demo_div = document.getElementById('demo_div');
+var demo_div = document.getElementById('demo_div');
 demo_div.innerHTML = "Hello World!";
 demo_div.style.fontSize = 24;
 demo_div.name = "demo_div" // setting at attribute
@@ -178,9 +182,9 @@ Create a button, style it, and add it to a div
 ```Javascript
 <div id="container_div"></div>
 ...
-var btn = document.createElement("BUTTON");
+var btn = document.createElement("button");
 btn.style.backgroundColor = "lightblue";
-btn.border = "1px solid white";
+btn.style.border = "1px solid white";
 
 var container_div = document.getElementById('container_div')
 container_div.appendChild(btn);
