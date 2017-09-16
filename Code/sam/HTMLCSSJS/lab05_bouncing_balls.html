@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bouncing Balls</title>
+    <style>
+        #cnv {
+            border: solid black;
+
+
+        }
+
+    </style>
+    </head>
+    <body>
+        <canvas id="cnv" width="500" height="500"></canvas>
+
+
+        <script>
+            var width = 500;
+            var height = 500;
+            var friction = .99;
+            var ball = {
+                radius: 4,
+                px: Math.random() * width,
+                py: Math.random() * height,
+                vx: (2 * Math.random() - 1) * 10,
+                vy: (2 * Math.random() - 1) * 10,
+
+                draw: function () {
+                    var cnv = document.getElementById('cnv');
+                    var ctx = cnv.getContext("2d");
+                    ctx.fillStyle = "#000000";
+                    ctx.clearRect(0, 0, cnv.width, cnv.height);
+                    ctx.beginPath();
+                    ctx.arc(ball.px, ball.py ,ball.radius ,0, Math.PI*2, false);
+                    ctx.fill();
+                   //ctx.fillRect(ball.px - ball.radius, ball.py - ball.radius, 2 * ball.radius, 2 * ball.radius);
+                }
+            };
+
+            function main_loop() {
+                ball.px += ball.vx * 1;
+                ball.py += ball.vy * 1;
+                ball.vy += .05;
+                if (ball.px > width) {
+                    ball.px = width;
+                    ball.vx = ball.vx * -1;
+                    ball.vx = ball.vx * friction;
+                    ball.vy = ball.vy * friction;
+                }
+                if ( ball.px < 0) {
+                    ball.px = 0;
+                    ball.vx = ball.vx * -1;
+                    ball.vx = ball.vx * friction;
+                    ball.vy = ball.vy * friction;
+                }
+                if (ball.py < 0) {
+                    ball.py = 0;
+                    ball.vy = ball.vy* -1;
+                    ball.vx = ball.vx * friction;
+                    ball.vy = ball.vy * friction;
+                }
+                if (ball.py > height) {
+                    ball.py = height;
+                    ball.vy = ball.vy * -1;
+                    ball.vx = ball.vx * friction;
+                    ball.vy = ball.vy * friction;
+                }
+                ball.draw();
+                window.requestAnimationFrame(main_loop);
+            }
+            window.requestAnimationFrame(main_loop);
+
+
+        </script>
+    </body>
+    </html>
