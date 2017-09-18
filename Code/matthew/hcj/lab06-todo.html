@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <style>
+            .list_item {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>To-do List</h1>
+        <div>
+            <input id="todo_input" type="text"/>
+            <button onclick="create_item()">add</button>
+        </div>
+        <div id="list">
+            <!--<div id="item0">
+                <span>wash the dishes</span>
+                <button>done</button>
+                <button>remove</button>
+            </div>
+            <div id="item1">
+                <span>wash the dishes</span>
+                <button>done</button>
+                <button>remove</button>
+            </div>
+            <div id="item2">
+                <span>wash the dishes</span>
+                <button>done</button>
+                <button>remove</button>
+            </div> -->
+        </div>
+        <script>
+            var list = document.getElementById('list');
+
+            function create_item() {
+                var text = document.getElementById('todo_input').value;
+
+                var item = document.createElement('div');
+                item.classList.add('list_item');
+
+                var span = document.createElement('span');
+                span.innerHTML = text;
+
+                var button_done = document.createElement('button');
+                button_done.innerHTML = 'done';
+
+                button_done.onclick = function() {
+                    console.log(this);
+                    console.log(this.parentElement);
+                    console.log(this.parentElement.children[0]);
+                    this.parentElement.remove();
+                };
+
+                var button_remove = document.createElement('button');
+                button_remove.innerHTML = 'remove';
+
+                item.appendChild(span);
+                item.appendChild(button_done);
+                item.appendChild(button_remove);
+
+                list.appendChild(item);
+            }
+
+        </script>
+    </body>
+</html>

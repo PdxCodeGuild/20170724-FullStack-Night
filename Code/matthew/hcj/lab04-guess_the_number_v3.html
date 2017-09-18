@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                font-family: 'Julius Sans One', sans-serif;
+                text-align:center;
+            }
+            button {
+                background-color: white;
+                border: 1px solid black;
+                border-radius: 2px;
+            }
+            button:focus {
+                outline:none;
+            }
+            button:active {
+                background-color:black;
+                color:white;
+            }
+            button:disabled {
+                color: darkgrey;
+                background-color:lightgrey;
+                border: 1px solid grey;
+
+            }
+            #background_div {
+                z-index:-1;
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                text-align:center;
+                color:lightgrey;
+                font-size:200px;
+            }
+            #button_div {
+                margin: 10px auto;
+                width: 100px;
+                text-align: center;
+            }
+            #restart_bt {
+                margin: 20px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Guess the Number!</h1>
+        <div id="button_div"></div>
+        <div id="response_div"></div>
+        <button id="restart_bt" onclick="start_over()">restart &#x21bb;</button>
+        <div id="background_div">
+        </div>
+        <script>
+
+            var response_div = document.getElementById('response_div');
+            var restart_bt = document.getElementById('restart_bt');
+            restart_bt.style.display = 'none';
+            var main_div = document.getElementById('main_div');
+            var button_div = document.getElementById('button_div');
+
+            var n_numbers = 10;
+            for (var i=0; i<n_numbers; ++i) {
+                var button = document.createElement('button');
+                button.innerHTML = (i+1).toString();
+                button.value = (i+1).toString();
+                button.style.margin = '4px';
+                button.onclick = function() {
+                    this.disabled = 'disabled';
+                    check_guess(parseInt(this.value));
+                };
+                button_div.appendChild(button);
+            }
+
+
+
+            var target_number;
+            var previous_guesses;
+            var n_guesses_remaining;
+
+            function check_guess(guess) {
+                previous_guesses.push(guess);
+                n_guesses_remaining--;
+                background_div.innerHTML = n_guesses_remaining.toString();
+                if (guess === target_number) {
+                    end_game('correct!');
+                } else {
+                    if (n_guesses_remaining === 0) {
+                        end_game('game over!');
+                    } else {
+                        if (guess < target_number) {
+                            response_div.innerHTML = 'higher!';
+                        } else if (guess > target_number) {
+                            response_div.innerHTML = 'lower!';
+                        }
+                    }
+                }
+            }
+
+            function end_game(response) {
+                response_div.innerHTML = response;
+                for (var i=0; i<button_div.children.length; ++i) {
+                    button_div.children[i].disabled = 'disabled';
+                }
+                restart_bt.style.display = 'block';
+            }
+
+
+            function start_over() {
+                target_number = Math.floor(Math.random()*10 + 1);
+                previous_guesses = [];
+                n_guesses_remaining = 4;
+                for (var i=0; i<button_div.children.length; ++i) {
+                    button_div.children[i].removeAttribute('disabled');
+                }
+                response_div.innerHTML = '';
+                restart_bt.style.display = 'none';
+                background_div.innerHTML = '';
+            }
+            start_over();
+
+
+        </script>
+    </body>
+</html>

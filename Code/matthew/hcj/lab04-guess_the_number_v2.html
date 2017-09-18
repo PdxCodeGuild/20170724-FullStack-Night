@@ -30,7 +30,7 @@
                 background-color:black;
                 color:white;
             }
-            #correct_div, #incorrect_div {
+            .show_response {
                 padding:10px;
                 margin: 20px auto;
                 border: 1px solid black;
@@ -54,11 +54,13 @@
         <div id="maindiv">
             <h1>Guess the Number!</h1>
             <div style="display:block">
-                <input id="guess_input" type="text"/>
+                <input id="guess_input" type="text" onkeydown="if (event.keyCode == 13) check_guess()"/>
                 <button onclick="check_guess()">guess</button>
             </div>
-            <div id="correct_div">correct!</div>
-            <div id="incorrect_div">incorrect!</div>
+            <div id="correct_div" class="show_response">correct!</div>
+            <div id="incorrect_div" class="show_response">incorrect!</div>
+            <div id="already_guessed_div" class="show_response">already guessed!</div>
+            <div id="previous_guesses_div"></div>
         </div>
         <div id="background_div">
         </div>
@@ -66,26 +68,57 @@
 
             var correct_div = document.getElementById('correct_div');
             var incorrect_div = document.getElementById('incorrect_div');
+            var already_guessed_div = document.getElementById('already_guessed_div');
             var guess_input = document.getElementById('guess_input');
             var background_div = document.getElementById('background_div');
+            var previous_guesses_div = document.getElementById('previous_guesses_div');
 
             correct_div.style.display = 'none';
             incorrect_div.style.display = 'none';
+            already_guessed_div.style.display = 'none';
 
             var comp_guess = Math.floor(Math.random()*10+1);
             var n_guesses_remaining = 10;
+            var previous_guesses = [];
+
+            function make_visible(tag) {
+                correct_div.style.display = 'none';
+                incorrect_div.style.display = 'none';
+                already_guessed_div.style.display = 'none';
+                tag.style.display = 'block';
+            }
+
+            function display_previous_guesses() {
+                var html_str = "";
+                for (var i=0; i<previous_guesses.length; ++i) {
+                    if (previous_guesses[i] !== comp_guess) {
+                        html_str += "<span><del>"+previous_guesses[i]+"</del></span>&nbsp;";
+                    } else {
+                        html_str += "<span>"+previous_guesses[i]+"&#x2714;</span>";
+                    }
+
+                }
+                previous_guesses_div.innerHTML = html_str;
+
+
+            }
+
             function check_guess() {
                 var guess = parseInt(guess_input.value);
+                if (previous_guesses.indexOf(guess) >= 0) {
+                    make_visible(already_guessed_div);
+                    return;
+                }
+                previous_guesses.push(guess);
+                display_previous_guesses();
+
                 n_guesses_remaining--;
                 background_div.innerHTML = n_guesses_remaining;
 
-
                 if (guess === comp_guess) {
-                    correct_div.style.display = 'block';
-                    incorrect_div.style.display = 'none';
+                    make_visible(correct_div);
                 } else {
-                    correct_div.style.display = 'none';
-                    incorrect_div.style.display = 'block';
+                    make_visible(incorrect_div);
                 }
             }
         </script>
