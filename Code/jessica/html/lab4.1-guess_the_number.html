@@ -5,6 +5,7 @@
 
             var computer = Math.floor(Math.random() * 10 + 1);
             var count = 0;
+            var guesses = []
 
             function check_guess() {
                 count++;
@@ -33,13 +34,11 @@
                 font-family: "Georgia";
                 font-size: 40px;
                 margin-left: 40px;
-
             }
             body {
                 background-image: url("https://thumbs.dreamstime.com/z/numbers-background-24939526.jpg");
                 background-repeat: no-repeat;
                 background-size: cover;
-
             }
             table {
                 margin-left: 30px;
@@ -47,7 +46,6 @@
 
             td {
                 padding: 10px;
-
             }
             button {
                 margin: 10px;
@@ -55,22 +53,18 @@
             }
             #correct {
                 color: green;
-                font: Georgia;
+                font-family: "Georgia";
                 font-size: 25px;
                 font-weight: bold;
                 margin-left: 40px;
                 text-decoration: underline;
-
             }
             #wrong {
                 color: red;
-                font: Georgia;
+                font-family: "Georgia";
                 font-size: 25px;
                 font-weight: bold;
                 margin-left: 40px;
-
-
-
             }
         </style>
     </head>

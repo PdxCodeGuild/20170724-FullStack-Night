@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <script>
+        </script>
+        <style>
+            canvas {
+                border: 5px solid;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="cnv" width="500" height="500">
+        </canvas>
+        <script>
+            var cnv = document.getElementById('cnv');
+            var gravity = .1;
+            var ball = {
+                radius: 4,
+                px: Math.random()*cnv.width,
+                py: Math.random()*cnv.height,
+                vx: (2*Math.random()-1)*10,
+                vy: (2*Math.random()-1)*10
+            };
+            //requestAnimationFrame
+            function main_loop() {
+                var cnv = document.getElementById('cnv');
+                var friction = .9;
+                // update the ball's position
+                ball.px += ball.vx;
+                ball.py += ball.vy;
+                ball.vy += gravity;
+                // check boundaries
+                if (ball.px < 0) {
+                    ball.px = 0;
+                    ball.vx *= -1;
+                    ball.vx *= friction;
+                    ball.vy *= friction;
+                }
+                else if (ball.px > cnv.width) {
+                    ball.px = cnv.width;
+                    ball.vx *= -1;
+                    ball.vx *= friction;
+                    ball.vy *= friction;
+                }
+                else if(ball.py < 0) {
+                    ball.py = 0;
+                    ball.vy *= -1;
+                    ball.vx *= friction;
+                    ball.vy *= friction;
+                }
+                else if(ball.py > cnv.height) {
+                    ball.py = cnv.height;
+                    ball.vy *= -1;
+                    ball.vx *= friction;
+                    ball.vy *= friction;
+                }
+                // draw the ball
+                var ctx = cnv.getContext("2d");
+                ctx.clearRect(0, 0, cnv.width, cnv.height);
+                //ctx.fillRect(0,0, cnv.width,cnv.height);
+                ctx.fillStyle = "#000000";
+                ctx.fillRect(ball.px-ball.radius, ball.py-ball.radius, 2*ball.radius, 2*ball.radius);
+                window.requestAnimationFrame(main_loop);
+            }
+            window.requestAnimationFrame(main_loop);
+        </script>
+    </body>
+</html>
