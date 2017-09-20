@@ -1,6 +1,7 @@
 
 # 4 - JavaScript
 
+JavaScript is a `scripting` language, meaning it's "quick and dirty" or "ad-hoc", its syntax rules are loose. This makes it quick to develop, but difficult to read and debug. Try to maintain an attention to detail, and whenever something isn't working, check the JavaScript console in your browser.
 
 ## Variables
 
@@ -16,7 +17,7 @@ Use `//` for line-comments, `/* ... */` for block-comments.
 
 JavaScript can be written inline, in a script tag, or in an external file.
 
-```JavaScript
+```HTML
 <button onclick="alert('Hello World!')">click me</button>
 
 <script>

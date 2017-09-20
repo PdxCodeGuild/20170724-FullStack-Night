@@ -25,13 +25,17 @@
 
 ### CSS
 
-- [Materialize](http://materializecss.com/)
 - [Bootstrap](http://getbootstrap.com/)
+- [Materialize](http://materializecss.com/)
+- [Pure.css](https://purecss.io/)
+- [Foundation](http://foundation.zurb.com/sites/docs/)
+- [Skeleton](http://getskeleton.com/)
+- [Material Design](https://material.io/guidelines/#)
 - [Kube](https://imperavi.com/kube/)
-- [Vuetify](https://vuetifyjs.com/) - for use with Vue.js
 - [Milligram](http://milligram.io/)
 - [Bulma](http://bulma.io/)
-- [Pure.css](https://purecss.io/)
+- [Vuetify](https://vuetifyjs.com/) - for use with Vue.js
+- [Material UI](http://www.material-ui.com/#/) - for use with React
 
 ### Back-End
 - [Django](https://www.djangoproject.com/)
