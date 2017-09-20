@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+
+
+    <style>
+        body {
+            background-image: url(http://clickible.com/brands/clickible.com/cms/wp-content/uploads/2016/04/what-is-affiliate-marketing-710x434.jpg);
+            background-size: cover;
+            text-align: center;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        #to_do {
+            background-color: rgba(255, 255, 255, .2);
+            width: 500px;
+            height: 600px;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+
+        #list {
+
+            margin: 0 auto;
+            text-align: center;
+            width: 300px;
+            background: transparent;
+        }
+
+        .list_item {
+            color: #f2f2f2;
+            font-family: 'Shadows Into Light', cursive;
+
+        }
+        h1 {
+            color: rgba(255, 255, 255, .3);
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 36px;
+            text-align: center;
+        }
+        #input {
+            color: #f2f2f2;
+            background-color: transparent;
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 24px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        #finished {
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 20px;
+            color: rgba(191, 191, 191, .5);
+            text-decoration: line-through;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="to_do">
+        <h1> Get it done! </h1>
+        <input id= "input" type="text" value="Things to do"/>
+        <button id='add' type="submit"  onclick="create_item()" ><img src="https://talk.turtlerockstudios.com/uploads/default/17502/a5bee7d91c165611.png" width="10"  alt="✔"></button>
+
+        <div id="list">
+        </div>
+        <div id="finished">
+
+        </div>
+
+    </div>
+
+    <script>
+        var list = document.getElementById('list');
+
+        function create_item() {
+            var text = document.getElementById('input').value;
+
+            var item = document.createElement('div');
+            item.classList.add('list_item');
+
+            var span = document.createElement('span');
+            span.innerHTML = text;
+            span.style.fontFamily = 'Shadows Into Light, cursive;';
+
+            var btn_done = document.createElement('button');
+            btn_done.innerHTML = '✓';
+            btn_done.style.float = 'right';
+            btn_done.style.size = '10px';
+            btn_done.onclick = function() {
+
+                var txt = this.parentElement.children[0].innerHTML;
+                this.parentElement.remove();
+                var done = document.getElementById('finished');
+                done.innerHTML += '<div>'+txt+'</div>';
+
+
+                console.log(done);
+
+
+            };
+
+
+            var btn_remove = document.createElement('button');
+            btn_remove.innerHTML = '✘';
+            btn_remove.style.float = 'right';
+            btn_remove.onclick = function() {
+                this.parentElement.remove();
+            };
+
+            item.appendChild(span);
+            item.appendChild(btn_done);
+            item.appendChild(btn_remove);
+
+
+            list.appendChild(item);
+        }
+
+
+
+
+    </script>
+</body>
+</html>
