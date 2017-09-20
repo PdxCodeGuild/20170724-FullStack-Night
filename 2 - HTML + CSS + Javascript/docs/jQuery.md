@@ -55,6 +55,11 @@ $('.person'); // select all elements with a class of 'person'
 ### HTML
 
 ```javascript
+// get the innerHTML on every li element
+$('li').html();
+```
+
+```javascript
 // set the innerHTML on every li element
 $('li').html('New HTML');
 ```
