@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+                var first_num;
+                var operator;
+
+                function contains(a, b) {
+                    return a.indexOf(b) != -1;
+                }
+
+                $('.container button').click(function() {
+                    var char = this.innerHTML;
+                    console.log(char);
+                    var nums = '.0123456789';
+                    var minus_operator = '\u2212';
+                    var divide_operator = '\u00F7';
+                    var times_operator = '\u00D7';
+                    var plus_operator = '\u002B';
+                    var plus_minus_operator =  '\u00B1';
+                    var backspace_operator = '\u232B';
+                    var operators = minus_operator +
+                                    divide_operator +
+                                    times_operator +
+                                    plus_operator +
+                                    plus_minus_operator +
+                                    backspace_operator;
+                    if (contains(nums, char)) {
+                        var val = $('#calc_view').val();
+                        $('#calc_view').val(val + char);
+                    } else if (contains(operators, char)) {
+                        if (char === plus_minus_operator) {
+                            var negate_num = $('#calc_view').val();
+                            // get the value
+                            // turn the value into a float
+                            negate_num = parseFloat(negate_num);
+                            // negate the float
+                            // set the float as the view's value
+                            negate_num = -negate_num;
+                            $('#calc_view').val(negate_num);
+                        } else {
+                            first_num = $('#calc_view').val(); //store input
+                            operator = char; //store operator
+                            $('#calc_view').val(''); //erase input
+                        }
+                    } else if (char === '=') {
+                        var second_num = $('#calc_view').val();
+                        var a = parseFloat(first_num);
+                        var b = parseFloat(second_num);
+                        var c;
+                        if (operator === plus_operator) {
+                            c = a + b;
+                        } else if (operator === minus_operator) {
+                            c = a - b;
+                        } else if (operator === divide_operator) {
+                            c = a / b;
+                        } else if (operator === times_operator) {
+                            c = a * b;
+                        }
+                        $('#calc_view').val(c);
+                    } else if (char === 'C') {
+                        first_num = null;
+                        operator = null;
+                        $('#calc_view').val('');
+                    }
+                })
+
+
+
+            });
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <style>
+            .container {
+                width:250px;
+                background-color: cornflowerblue;
+                padding:10px;
+                border-style:solid;
+                border-color:black;
+                border-width:2px;
+                border-radius:10px;
+
+            }
+            input[type=text] {
+                border-styple:solid;
+                border-color:grey;
+                border-width:1px;
+                border-radius:5px;
+            }
+            button {
+                width:40px;
+                margin: 2px;
+            }
+            #btzero {
+                width: 84px;
+            }
+            .col-md-auto {
+                padding:0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto"><input id="calc_view" type="text"/></div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto"><button type="button" class="btn btn-success">C</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">&#177</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">&divide;</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">&times;</button></div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto"><button type="button" class="btn btn-light">7</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">8</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">9</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">&minus;</button></div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto"><button type="button" class="btn btn-light">4</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">5</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">6</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">&plus;</button></div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto"><button type="button" class="btn btn-light">1</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">2</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">3</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">&equals;</button></div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto"><button id="btzero" type="button" class="btn btn-light">0</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">.</button></div>
+                <div class="col-md-auto"><button type="button" class="btn btn-light">&#9003</button></div>
+
+            </div>
+    </body>
+</html>
