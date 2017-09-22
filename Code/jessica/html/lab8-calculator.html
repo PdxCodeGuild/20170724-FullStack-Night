@@ -6,8 +6,50 @@
                 var first_num;
                 var operator;
 
+                function getNumberFromKeyCode(keycode) {
+                    var numpad_keycodes = [45,35,40,34,37,12,39,36,38,33];
+                    var index = numpad_keycodes.indexOf(keycode);
+                    if (index >= 0) {
+                        return index;
+                    } else if (keycode >= 48 && keycode <= 57) {
+                        return keycode - 48;
+                    } else {
+                        return -1;
+                    }
+
+                }
+                
+
+                $('html').on('keydown' , function(event) {
+                    var num = getNumberFromKeyCode(event.keyCode);
+                    var calc_view = $('#calc_view');
+                    if (num != -1) {
+                        if (num === '0' && calc_view.val() === '') {
+                            var val = calc_view.val();
+                            calc_view.val(val);
+                        } else {
+                            var val = calc_view.val();
+                            calc_view.val(val + num);
+                        }
+                    }
+                    //else if (keycode === 43) {
+                        //plus
+                    //} else if (keycode === 45) {
+                        // minus
+                    //} else if (keycode === 47) {
+                        // divide
+                    //} else if (keycode === 42) {
+                        // times
+                    //} else if (keycode === 99) {
+                        // clear
+                    //} else if (keycode === 13) {
+                        // equals
+                    //} else if (keycode === 8) {
+                        // backspace
+                });
+
                 function contains(a, b) {
-                    return a.indexOf(b) != -1;
+                    return a.indexOf(b) != -1; // or return a.indexOf(b) >= 0; is the same thing
                 }
 
                 $('.container button').click(function() {
@@ -24,28 +66,34 @@
                                     divide_operator +
                                     times_operator +
                                     plus_operator +
-                                    plus_minus_operator +
-                                    backspace_operator;
+                                    plus_minus_operator;
+                    var calc_view = $('#calc_view');
                     if (contains(nums, char)) {
-                        var val = $('#calc_view').val();
-                        $('#calc_view').val(val + char);
+                        if (char === '0' && calc_view.val() === '') {
+                            var val = calc_view.val();
+                            calc_view.val(val);
+                        } else {
+                            var val = calc_view.val();
+                            calc_view.val(val + char);
+                        }
                     } else if (contains(operators, char)) {
                         if (char === plus_minus_operator) {
-                            var negate_num = $('#calc_view').val();
+                            var negate_num = calc_view.val();
                             // get the value
                             // turn the value into a float
                             negate_num = parseFloat(negate_num);
                             // negate the float
                             // set the float as the view's value
                             negate_num = -negate_num;
-                            $('#calc_view').val(negate_num);
+                            calc_view.val(negate_num);
                         } else {
-                            first_num = $('#calc_view').val(); //store input
+                            first_num = calc_view.val(); //store input
                             operator = char; //store operator
-                            $('#calc_view').val(''); //erase input
+                            calc_view.val(''); //erase input
+                            $('#calc_view_mini').val(first_num + ' ' + char);
                         }
                     } else if (char === '=') {
-                        var second_num = $('#calc_view').val();
+                        var second_num = calc_view.val();
                         var a = parseFloat(first_num);
                         var b = parseFloat(second_num);
                         var c;
@@ -58,20 +106,27 @@
                         } else if (operator === times_operator) {
                             c = a * b;
                         }
-                        $('#calc_view').val(c);
+                        calc_view.val(c);
+                        $('#calc_view_mini').val('');
                     } else if (char === 'C') {
                         first_num = null;
                         operator = null;
-                        $('#calc_view').val('');
+                        calc_view.val('');
+                        $('#calc_view_mini').val('');
+                    } else if (char === backspace_operator) {
+                        var num_string = calc_view.val();
+                        var backspace = num_string.substring(0, num_string.length-1);
+                        calc_view.val(backspace);
                     }
                 })
-
-
-
             });
         </script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <style>
+            #calc_view_mini {
+                background-color: transparent;
+                border-style:none;
+            }
             .container {
                 width:250px;
                 background-color: cornflowerblue;
@@ -80,13 +135,13 @@
                 border-color:black;
                 border-width:2px;
                 border-radius:10px;
-
             }
             input[type=text] {
                 border-styple:solid;
                 border-color:grey;
                 border-width:1px;
                 border-radius:5px;
+                text-align:right;
             }
             button {
                 width:40px;
@@ -102,6 +157,9 @@
     </head>
     <body>
         <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto"><input id="calc_view_mini" type="text"/></div>
+            </div>
             <div class="row justify-content-md-center">
                 <div class="col-md-auto"><input id="calc_view" type="text"/></div>
             </div>
@@ -133,7 +191,6 @@
                 <div class="col-md-auto"><button id="btzero" type="button" class="btn btn-light">0</button></div>
                 <div class="col-md-auto"><button type="button" class="btn btn-light">.</button></div>
                 <div class="col-md-auto"><button type="button" class="btn btn-light">&#9003</button></div>
-
             </div>
     </body>
 </html>
