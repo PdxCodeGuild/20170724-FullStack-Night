@@ -11,11 +11,16 @@
 
     <style>
         body {
+            background-color: lightgray;
         }
 
         .container {
+            margin: 0 auto;
+            margin-top: 15%;
             width: 450px;
             background-color: #00796b;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px #888888;
         }
 
         .container .row {
@@ -24,29 +29,43 @@
 
         }
         .container .row input {
+            margin: 5px;
+            width: 440px;
+            border-radius: 10px;
             font-size: 36px;
             color: white;
+            background-color: #b2dfdb;
+            text-align: right;
+
+        }
+
+           .container .row #display{
+            margin-bottom: -55px;
+            padding-right: 5px;
+            width: 220px;
+            height: 25px;
+            border-radius: 8px;
+            font-size: 22px;
+            color: rgba(255, 255 ,255, .5);
+            background-color: rgba(178, 223, 219, .7);
             text-align: right;
 
         }
 
         .row .col {
             padding: 0;
-
-
-
-
         }
 
         .btn {
             background-color: #b2dfdb;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px 2px #004d40;
             margin: 4px;
             padding: 0;
             font-size: 35px;
             text-align: center;
             width: 100px;
             height: 40px;
-
         }
         .operation {
             background-color: #80cbc4;
@@ -58,22 +77,64 @@
     <script>
 
         $(function() {
+            function getNumberFromKeyCode(keycode) {
+                if (keycode >= 96 && keycode <= 105) {
+                    return keycode - 96;
+                } else if (keycode >= 48 && keycode <= 57) {
+                    return keycode - 48;
+                } else {
+                    return -1;
+                }
+            }
+
+            $('html').on('keydown', function (event) {
+                console.log(event.keyCode);
+                var num = getNumberFromKeyCode(event.keyCode);
+                var calc_view = $('#result');
+                if (num != -1) {
+                    if (num === '0' && calc_view.val() === '') {
+                        var val = calc_view.val();
+                        calc_view.val(val);
+                    } else {
+                        var val = calc_view.val();
+                        calc_view.val(val + num);
+                    }
+                }
+            });
             var scrn = $('#result');
+            var sub_scrn = $('#display');
             var first_num, operator;
             $('#buttons a').click(function() {
                 var char = this.innerHTML;
-                console.log(char);
                 var nums = '.0123456789';
-                var operators ='+-/x';
+                var operators ='+-/x%';
                 if (nums.indexOf(char) >= 0) {
                     var value = scrn.val();
                     scrn.val(value + char);
-                } else if (operators.indexOf(char) >= 0) {
+
+                }
+                else if (char === '%' || char === '±') {
                     first_num = scrn.val();
                     operator = char;
                     scrn.val('');
+                    if (operator === '%') {
+                        scrn.val(first_num / 100);
+                        sub_scrn.val(first_num + ' ' + operator);
+                    }
+                    else if (operator === '±') {
+                        scrn.val(first_num * -1);
+                        sub_scrn.val(first_num + ' ' + operator);
+                    }
+                }
+
+                else if (operators.indexOf(char) >= 0) {
+                    first_num = scrn.val();
+                    operator = char;
+                    sub_scrn.val(first_num + ' ' + operator);
+                    scrn.val('');
                 } else if (char === '=') {
                     var second_num = scrn.val();
+                    sub_scrn.val(first_num + ' ' + operator + ' ' + second_num);
                     first_num = parseFloat(first_num);
                     second_num = parseFloat(second_num);
                     if (operator === '+') {
@@ -86,17 +147,17 @@
                         scrn.val(first_num * second_num)
                     }
                     else if (operator === '/') {
-                        scrn.val(first_num / second_num)
+                        scrn.val(first_num / second_num);
                     }
                 }
-                 else if (char === 'c') {
-                        scrn.val('')
-                    }
-
-
+                else if (char === 'c') {
+                    scrn.val('');
+                    sub_scrn.val('');
+                }
 
             });
         });
+
 
     </script>
 </head>
@@ -104,9 +165,23 @@
 
     <div class="container">
         <div class="row">
-            <input id="result" type="text"/>
+            <div id="screen">
+                <input id="display" type="text"/>
+                <input id="result" type="text"/>
+            </div>
         </div>
         <div id="buttons">
+            <div class="row">
+                <div class="col s3">
+                    <a id="clear" class="waves-effect waves-light btn">c</a>
+                </div>
+                <div class="col s3">
+                    <a id="percent" class="waves-effect waves-light btn">%</a>
+                </div>
+                <div class="col s3">
+                    <a id="plusminus" class="waves-effect waves-light btn">±</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col s3">
                     <a id="seven" class="waves-effect waves-light btn">7</a>
@@ -151,7 +226,7 @@
             </div>
             <div class="row">
                 <div class="col s3">
-                    <a class="waves-effect waves-light btn">c</a>
+                    <a class="waves-effect waves-light btn">.</a>
                 </div>
                 <div class="col s3">
                     <a class="waves-effect waves-light btn">0</a>
