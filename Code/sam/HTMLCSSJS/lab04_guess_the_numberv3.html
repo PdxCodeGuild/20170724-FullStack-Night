@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+        <meta charset="UTF-8">
+        <title>Guess the Number</title>
+        <style>
+            body {
+                background-image: url(http://www.wrmf.com/wp-content/uploads/2017/08/Numbers-1.jpg);
+                /*Alternate bg image url: https://ak4.picdn.net/shutterstock/videos/21640684/thumb/1.jpg?i10c=img*/
+                background-size: 100%;
+
+                margin: 10% 20% 10% 20%
+            }
+
+             .guessthenumber {
+                color: white;
+                border: solid black;
+                height: 300px;
+                width: 300px;
+                margin: 0% 10% 10% 10%;
+                padding: 0 25% 15% 25%;
+                background-color: rgba(166, 166, 166, .8);
+            }
+
+            #userguesses {
+                font-size: 20px;
+
+
+            }
+
+            header {
+                color: white;
+                font-family: 'Russo One', sans-serif;
+                font-size: 35px;
+
+            }
+
+
+
+            #correct {
+                color: white;
+                background-color: transparent;
+                font-size: 40px;
+                font-family: 'Russo One', sans-serif;
+#                -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+                -webkit-animation-duration: 8s; /* Safari 4.0 - 8.0 */
+                animation-name: example;
+                animation-duration: 8s;
+
+            }
+
+            @-webkit-keyframes example {
+                from {color: purple;}
+                to {color: blue;}
+
+            }
+
+            @keyframes example {
+                0% {
+                    color: red;
+                    left: 0px;
+                    top: 0px;
+                }
+                25% {
+                    color: yellow;
+                    left: 200px;
+                    top: 0px;
+                }
+                50% {
+                    color: blue;
+                    left: 200px;
+                    top: 200px;
+                }
+                75% {
+                    color: green;
+                    left: 0px;
+                    top: 200px;
+                }
+                100% {
+                    color: red;
+                    left: 0px;
+                    top: 0px;
+                }
+            }
+
+            #incorrect {
+                color:white;
+                font-size: 40px;
+                font-family: 'Russo One', sans-serif;
+
+            }
+
+            #repeatguess {
+                color: red;
+                font-size: 30px;
+                font-family: 'Russo One', sans-serif;
+
+            }
+
+            #buttons disabled {}
+
+
+        </style>
+
+    </head>
+    <body>
+
+        <section class="guessthenumber">
+                <header>
+                    <h1>Guess the Number!</h1>
+                </header>
+
+                <div id="correct" style="display: none">
+                    Correct!
+                </div>
+
+
+                <div id="incorrect" style="display: none">
+                    Incorrect!
+                </div>
+                <div id="repeatguess" style="display: none">
+                    Repeat Guess!
+                </div>
+
+
+                <div id="userguesses">
+                </div>
+
+                <div id="buttons">
+                </div>
+
+                <div id="replay">
+
+                </div>
+
+        </section>
+
+
+        <script>
+
+            var pc_guess = Math.floor(Math.random() * 10 + 1);
+            console.log(pc_guess);
+
+
+            guesses = [];
+            var numguesses = 0;
+            function check_guess(userguess) {
+
+
+                var correct = document.getElementById('correct');
+                var incorrect = document.getElementById('incorrect');
+                var repeatguess = document.getElementById('repeatguess');
+
+                if (guesses.indexOf(userguess) >= 0) {
+                    repeatguess.style.display = 'initial';
+                    correct.style.display = 'none';
+                    incorrect.style.display = 'none';
+                    return;
+                }
+                guesses.push(userguess);
+                if (pc_guess === userguess) {
+                   correct.style.display = 'initial';
+                   incorrect.style.display = 'none';
+                   repeatguess.style.display = 'none';
+                   replaybtn();
+
+
+
+                }
+                else {
+                    incorrect.style.display = 'initial';
+                    correct.style.display = 'none';
+                    repeatguess.style.display = 'none';
+                }
+
+
+                numguesses += 1;
+
+                document.getElementById('userguesses').innerHTML = numguesses.toString();
+            }
+
+            var buttons = document.getElementById('buttons');
+            for (var i=0; i<10; ++i) {
+                var btn = document.createElement('button');
+                btn.innerHTML = (i + 1).toString();
+                btn.value = (i + 1).toString();
+                btn.style.color= 'white';
+                btn.style.backgroundColor = 'transparent';
+                btn.style.fontSize = '18px';
+                btn.style.width = '60px';
+                btn.style.height = '60px';
+                btn.onclick = function() {
+                    this.disabled = 'disabled';
+                    var guess = parseInt(this.value);
+                    check_guess(guess);
+
+                };
+                buttons.appendChild(btn);
+            }
+
+            function replaybtn() {
+            var replay = document.getElementById('replay');
+            var rply = document.createElement('button');
+            var txt = document.createTextNode('Replay!');
+            rply.appendChild(txt);
+            rply.onclick = function() {
+               location.reload();
+            };
+            replay.appendChild(rply)
+            }
+
+
+
+        </script>
+    </body>
+</html>

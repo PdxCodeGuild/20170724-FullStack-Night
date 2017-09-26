@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script
+     src="https://code.jquery.com/jquery-3.2.1.min.js"
+     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+    <style>
+        body {
+        }
+
+        .container {
+            width: 450px;
+            background-color: #00796b;
+        }
+
+        .container .row {
+            margin: 0;
+
+
+        }
+        .container .row input {
+            font-size: 36px;
+            color: white;
+            text-align: right;
+
+        }
+
+        .row .col {
+            padding: 0;
+
+
+
+
+        }
+
+        .btn {
+            background-color: #b2dfdb;
+            margin: 4px;
+            padding: 0;
+            font-size: 35px;
+            text-align: center;
+            width: 100px;
+            height: 40px;
+
+        }
+        .operation {
+            background-color: #80cbc4;
+        }
+        .equal {
+            background-color: #e57373;
+        }
+    </style>
+    <script>
+
+        $(function() {
+            var scrn = $('#result');
+            var first_num, operator;
+            $('#buttons a').click(function() {
+                var char = this.innerHTML;
+                console.log(char);
+                var nums = '.0123456789';
+                var operators ='+-/x';
+                if (nums.indexOf(char) >= 0) {
+                    var value = scrn.val();
+                    scrn.val(value + char);
+                } else if (operators.indexOf(char) >= 0) {
+                    first_num = scrn.val();
+                    operator = char;
+                    scrn.val('');
+                } else if (char === '=') {
+                    var second_num = scrn.val();
+                    first_num = parseFloat(first_num);
+                    second_num = parseFloat(second_num);
+                    if (operator === '+') {
+                        scrn.val(first_num + second_num)
+                    }
+                    else if (operator === '-') {
+                        scrn.val(first_num - second_num)
+                    }
+                    else if (operator === 'x') {
+                        scrn.val(first_num * second_num)
+                    }
+                    else if (operator === '/') {
+                        scrn.val(first_num / second_num)
+                    }
+                }
+                 else if (char === 'c') {
+                        scrn.val('')
+                    }
+
+
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <input id="result" type="text"/>
+        </div>
+        <div id="buttons">
+            <div class="row">
+                <div class="col s3">
+                    <a id="seven" class="waves-effect waves-light btn">7</a>
+                </div>
+                <div class="col s3">
+                    <a id="eight" class="waves-effect waves-light btn">8</a>
+                </div>
+                <div class="col s3">
+                    <a id="nine" class="waves-effect waves-light btn">9</a>
+                </div>
+                <div class="col s3">
+                    <a id="plus" class="waves-effect waves-light btn operation">+</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <a id="four" class="waves-effect waves-light btn">4</a>
+                </div>
+                <div class="col s3">
+                    <a id="five" class="waves-effect waves-light btn">5</a>
+                </div>
+                <div class="col s3">
+                    <a id="six" class="waves-effect waves-light btn">6</a>
+                </div>
+                <div class="col s3">
+                    <a id="sub" class="waves-effect waves-light btn operation">-</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <a id="one" class="waves-effect waves-light btn">1</a>
+                </div>
+                <div class="col s3">
+                    <a id="two" class="waves-effect waves-light btn">2</a>
+                </div>
+                <div class="col s3">
+                    <a id="three" class="waves-effect waves-light btn">3</a>
+                </div>
+                <div class="col s3">
+                    <a id="mul" class="waves-effect waves-light btn operation">x</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s3">
+                    <a class="waves-effect waves-light btn">c</a>
+                </div>
+                <div class="col s3">
+                    <a class="waves-effect waves-light btn">0</a>
+                </div>
+                <div class="col s3">
+                    <a class="waves-effect waves-light btn equal">=</a>
+                </div>
+                <div class="col s3">
+                    <a class="waves-effect waves-light btn operation">/</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
