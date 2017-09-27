@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+    <link href="https://fonts.googleapis.com/css?family=Codystar:300|Londrina+Outline" rel="stylesheet">
+    <style>
+
+        #body {
+            background-color:
+        }
+
+        #clock_container {
+
+            text-align: center;
+            font-size: 120px;
+            font-family: 'Londrina Outline', cursive;
+            padding-top: 100px;
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        #sw_container {
+            text-align: center;
+            font-size: 120px;
+            font-family: 'Londrina Outline', cursive;
+            padding-top: 100px;
+            margin: 0 auto;
+            width: 800px;
+        }
+
+         #cd_container {
+            text-align: center;
+            font-size: 120px;
+            font-family: 'Londrina Outline', cursive;
+            padding-top: 100px;
+            margin: 0 auto;
+            width: 800px;
+        }
+
+
+
+    </style>
+</head>
+    <body>
+        <div class="btns">
+            <button id="btn_clock">Clock</button>
+            <button id="btn_sw">Stopwatch</button>
+            <button id="btn_cd">Countdown</button>
+
+        </div>
+
+        <div id="clock_container">
+            <div id="clock">
+            </div>
+        </div>
+
+        <div id="sw_container">
+            <div id="stopwatch">
+            </div>
+
+
+                <button id="start_sw" onclick="start_stopwatch()">START</button>
+                <button id="stop_sw" onclick="stop_stopwatch()">STOP</button>
+
+
+
+        </div>
+        <div id="cd_container">
+            <div id="countdown">
+            </div>
+
+                <button id="cd_start" onclick="start_countdown()">START</button>
+
+
+                <button id="cd_stop" onclick="clearInterval(cd_interval)">STOP</button>
+
+
+
+            <div id="user_countdown">
+                <input id="time" type="text"/>
+                <select id="units">
+                <option>hours</option>
+                <option>minutes</option>
+                <option>seconds</option>
+                </select>
+            </div>
+        </div>
+
+
+
+        <script>
+            var btn_clock = document.getElementById('btn_clock');
+            var btn_sw = document.getElementById('btn_sw');
+            var btn_cd = document.getElementById('btn_cd');
+
+            var clock_div = document.getElementById('clock_container');
+            var sw_div = document.getElementById('sw_container');
+            var cd_div = document.getElementById('cd_container');
+
+            sw_div.style.display = 'none';
+            cd_div.style.display = 'none';
+            btn_clock.disabled = 'disabled';
+
+            btn_clock.onclick = function() {
+                clock_div.style.display = 'block';
+                sw_div.style.display = 'none';
+                cd_div.style.display='none';
+                btn_clock.disabled = 'disabled';
+                btn_sw.removeAttribute('disabled');
+                btn_cd.removeAttribute('disabled');
+            };
+
+            btn_sw.onclick = function() {
+                clock_div.style.display = 'none';
+                sw_div.style.display = 'block';
+                cd_div.style.display = 'none';
+                btn_clock.removeAttribute('disabled');
+                btn_sw.disabled = 'disabled';
+                btn_cd.removeAttribute('disabled');
+            };
+
+            btn_cd.onclick = function() {
+                clock_div.style.display = 'none';
+                sw_div.style.display = 'none';
+                cd_div.style.display = 'block';
+                btn_clock.removeAttribute('disabled');
+                btn_sw.removeAttribute('disabled');
+                btn_cd.disabled = 'disabled';
+            };
+
+
+            function add0(n) {
+                return (n < 10) ? '0'+n: n;
+            }
+
+
+            function clock() {
+                var date = new Date();
+                var hr = add0(date.getHours());
+                var min = add0(date.getMinutes());
+                var sec = add0(date.getSeconds());
+                document.getElementById('clock').innerHTML = hr + ':' + min + ':' + sec;
+            }
+            clock();
+            var clock_interval = setInterval(clock, 1000);
+
+            var stopwatch;
+
+            function display_stopwatch() {
+                stopwatch = new Date();
+                stopwatch.setHours(0,0,0,0);
+                document.getElementById('stopwatch').innerHTML = '00:00:00'
+            }
+            display_stopwatch();
+
+            function update_stopwatch() {
+                var sec = stopwatch.getSeconds();
+                stopwatch.setSeconds(sec + 1);
+                var hr = add0(stopwatch.getHours());
+                var min = add0(stopwatch.getMinutes());
+                var sec = add0(stopwatch.getSeconds());
+
+                document.getElementById('stopwatch').innerHTML = hr + ':' + min + ':' + sec;
+            }
+
+            var sw_interval;
+            function start_stopwatch() {
+                sw_interval = setInterval(update_stopwatch, 1000);
+            }
+
+            function stop_stopwatch() {
+                clearInterval(sw_interval)
+            }
+
+            var countdown;
+            var cd_interval;
+            function start_countdown() {
+                var user_time = document.getElementById('time').value;
+                user_time = parseInt(user_time);
+                if (isNaN(user_time)) {
+                    alert('Invalid value!!!');
+                    return;
+                }
+                var user_units = document.getElementById('units');
+                var units = user_units.options[user_units.selectedIndex].text;
+
+                countdown = new Date();
+                countdown.setHours(0,0,0,0);
+
+                if (units === 'hours') {
+                    countdown.setHours(user_time);
+                } else if (units === 'minutes') {
+                    countdown.setMinutes(user_time);
+                } else if (units === 'seconds') {
+                    countdown.setSeconds(user_time);
+                }
+                console.log(user_time);
+                show_countdown();
+                cd_interval = setInterval(update_countdown, 1000);
+            }
+
+            document.getElementById('countdown').innerHTML = '00:00:00';
+            function show_countdown() {
+                //console.log(countdown);
+                var hr = add0(countdown.getHours());
+                var min = add0(countdown.getMinutes());
+                var sec = add0(countdown.getSeconds());
+                document.getElementById('countdown').innerHTML = hr + ':' + min + ':' + sec;
+            }
+
+
+            function update_countdown() {
+
+                var sec = countdown.getSeconds();
+                countdown.setSeconds(sec-1);
+                show_countdown();
+                // check if the timer has run out
+                // if it has, alert the user and clear the interval
+                //clearInterval(cd_interval);
+            }
+
+
+        </script>
+    </body>
+</html>
