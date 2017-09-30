@@ -2,7 +2,10 @@
     <head>
         <style>
             .list_item {
-                border: 1px solid red;
+                margin: 10px;
+            }
+            .list_item span {
+                width:500px;
             }
         </style>
     </head>
@@ -44,15 +47,17 @@
                 var button_done = document.createElement('button');
                 button_done.innerHTML = 'done';
 
-                button_done.onclick = function() {
-                    console.log(this);
-                    console.log(this.parentElement);
-                    console.log(this.parentElement.children[0]);
-                    this.parentElement.remove();
-                };
+
 
                 var button_remove = document.createElement('button');
                 button_remove.innerHTML = 'remove';
+
+                button_remove.onclick = function() {
+                    console.log(this);
+                    console.log(this.parentElement);
+                    console.log(this.parentElement.children[0].innerHTML);
+                    this.parentElement.remove();
+                };
 
                 item.appendChild(span);
                 item.appendChild(button_done);

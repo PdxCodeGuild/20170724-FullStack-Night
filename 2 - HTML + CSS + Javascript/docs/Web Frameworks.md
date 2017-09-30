@@ -1,27 +1,14 @@
-
-
-
-## Python Frameworks
-
-### UI
-
-- [Tkinter](https://wiki.python.org/moin/TkInter)
-- [PythonQT](http://pythonqt.sourceforge.net/)
-- [Kivy](https://kivy.org/#home)
-
-
-### Data Visualization
-
-- [Bokeh](http://bokeh.pydata.org/en/latest/)
-- [matplotlib](http://matplotlib.org/)
-- [Seaborn](https://community.modeanalytics.com/python/libraries/seaborn/)
-- [Pygal](http://www.pygal.org/en/latest/index.html)
-
-### Image Manipulation
-
-- [Pillow](https://python-pillow.org/)
-
 ## Web Frameworks
+
+### Back-End
+- [Django](https://www.djangoproject.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Flask](http://flask.pocoo.org/)
+- [Ruby on Rails](http://rubyonrails.org/)
+- [Spark](http://sparkjava.com/)
+
+
+### Front-End
 
 ### CSS
 
@@ -37,17 +24,8 @@
 - [Vuetify](https://vuetifyjs.com/) - for use with Vue.js
 - [Material UI](http://www.material-ui.com/#/) - for use with React
 
-### Back-End
-- [Django](https://www.djangoproject.com/)
-- [Node.js](https://nodejs.org/en/)
-- [Flask](http://flask.pocoo.org/)
-- [Ruby on Rails](http://rubyonrails.org/)
-- [Spark](http://sparkjava.com/)
 
-
-### Front-End
-
-#### UI
+#### General UI
 
 - [AngularJS](https://angularjs.org/)
 - [Angular](https://angular.io/)
