@@ -3,7 +3,7 @@
 
 jQuery is a JavaScript library that can . It makes general DOM manipulation easier, enables some operations that are difficult in 'Vanilla' JS, and standardizes cross-browser compatibility. It's still very popular (and thus worth familiarizing yourself with), but it was more useful in the past. JavaScript got better, and front-end frameworks like Angular, Reach, and Vue emerged. TL;DR, you shouldn't build complex pages using jQuery because they quickly become unmanageable, but it's still very common and useful.
 
-You can find jQuery tutorials on [w3schools](https://www.w3schools.com/jquery/), [tutorials point](https://www.tutorialspoint.com/jquery/), [jQuery learning center](https://learn.jquery.com/). There's also [jQuery Mobile](http://jquerymobile.com/) and [jQuery UI](https://jqueryui.com/).
+You can find jQuery tutorials on [w3schools](https://www.w3schools.com/jquery/5 - jQuery.md), [tutorials point](https://www.tutorialspoint.com/jquery/5 - jQuery.md), [jQuery learning center](https://learn.jquery.com/5 - jQuery.md). There's also [jQuery Mobile](http://jquerymobile.com/) and [jQuery UI](https://jqueryui.com/).
 
 
 You can include jQuery by adding the following tag in your `head`.
@@ -41,7 +41,7 @@ $(function() {
 
 ## Selecting Elements
 
-One major advantage of jQuery is that it simplifies the selection of elements, and enable you to use CSS selectors. Note that these return special jQuery objects, which are wrapped around the Vanilla JS objects. You can find more about selectors [here](http://api.jquery.com/category/selectors/).
+One major advantage of jQuery is that it simplifies the selection of elements, and enable you to use CSS selectors. Note that these return special jQuery objects, which are wrapped around the Vanilla JS objects. You can find more about selectors [here](http://api.jquery.com/category/selectors/5 - jQuery.md).
 
 ```
 $('#header'); // select the element with an ID of 'header'

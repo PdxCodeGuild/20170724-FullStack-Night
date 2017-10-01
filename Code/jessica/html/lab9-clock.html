@@ -1,0 +1,284 @@
+<html>
+    <head>
+        <style>
+            #clock {
+                text-align: center;
+                font-size: 100px;
+                margin-top: 100px;
+                font-weight: bold;
+            }
+            #whole_date{
+                text-align: center;
+            }
+            #day, #month, #date, #year {
+                display: inline;
+                font-weight: bold;
+                font-size: 20px;
+            }
+            #month {
+                margin-left: 5px;
+            }
+            #countdown_timer {
+                text-align: center;
+            }
+            #timer {
+                font-size: 100px;
+                margin-top: 100px;
+                font-weight: bold;
+
+            }
+            #div_stopwatch {
+                text-align: center;
+            }
+            #stopwatch {
+                font-size: 100px;
+                margin-top: 100px;
+                font-weight: bold;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button onclick="show_clock()">Clock</button>
+        <button onclick="show_countdown()">Countdown</button>
+        <button onclick="show_stopwatch()">Stopwatch</button>
+        <div id="div_clock">
+            <div id="clock"></div>
+            <div id="whole_date">
+                <div id="day"></div>
+                <div id="month"></div>
+                <div id="date"></div>
+                <div id ="year"></div>
+            </div>
+        </div>
+        <div id="countdown_timer">
+            <input id="number" type="text"/>
+            <select id="units">
+                <option value="seconds">Seconds</option>
+                <option value="minutes" selected>Minutes</option>
+                <option value="hours">Hours</option>
+            </select>
+            <button id="countdown_start" onclick="start_countdown()">Start</button>
+            <button id="countdown_pause" onclick="pause_countdown()">Pause</button>
+            <button id="countdown_resume" onclick="resume_countdown()">Resume</button>
+            <button id="countdown_stop" onclick="stop_countdown()">Stop</button>
+            <div id="timer"></div>
+        </div>
+        <div id="div_stopwatch">
+            <button id="stopwatch_start" onclick="start_stopwatch()">Start</button>
+            <button id="stopwatch_pause" onclick="pause_stopwatch()">Pause</button>
+            <button id="stopwatch_resume" onclick="resume_stopwatch()">Resume</button>
+            <button id="stopwatch_stop" onclick="stop_stopwatch()">Stop</button>
+            <div id="stopwatch"></div>
+        </div>
+
+
+
+    </body>
+    <script>
+
+        document.getElementById('countdown_timer').style.display = "none";
+        document.getElementById('div_stopwatch').style.display = "none";
+
+        // -----------------------------CLOCK SECTION ---------------------------------------------------
+        var interval = setInterval(update_clock, 1000);
+
+        function update_clock() {
+
+            var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            var months = ['January','February','March','April','May','June','July','August','September','October','Novermber','December'];
+
+            var date = new Date();
+
+
+            document.getElementById("clock").innerHTML = date.toLocaleTimeString();
+
+            var day = date.getDay();
+            document.getElementById("day").innerHTML = days[day];
+            var month = date.getMonth();
+            document.getElementById("month").innerHTML = months[month];
+            var day_month = date.getDate();
+            document.getElementById("date").innerHTML = day_month;
+            var year = date.getFullYear();
+            document.getElementById("year").innerHTML = year;
+
+        }
+        // -----------------DISPLAY SECTION----------------------------------------
+        var countdown_timer = document.getElementById("countdown_timer");
+        var div_clock = document.getElementById("div_clock");
+        var div_stopwatch = document.getElementById("div_stopwatch");
+
+
+        function show_clock() {
+            div_clock.style.display = "block";
+            countdown_timer.style.display = "none";
+            div_stopwatch.style.display = "none";
+            document.body.style.backgroundColor = 'transparent';
+        }
+
+        function show_countdown() {
+            div_clock.style.display = "none";
+            countdown_timer.style.display = "block";
+            div_stopwatch.style.display = "none";
+        }
+
+        function show_stopwatch() {
+            div_clock.style.display = "none";
+            countdown_timer.style.display = "none";
+            div_stopwatch.style.display = "block";
+            document.body.style.backgroundColor = 'transparent';
+        }
+
+        function add0(n) {
+            if (n < 10) {  //return (n<10)? '0'+n: n;
+                return '0'+n
+            }else return n;
+        }
+
+        function show_countdown_value(){
+            //document.getElementById("timer").innerHTML = countdown_date.toLocaleTimeString();
+            var hours = add0(countdown_date.getHours());
+            var minutes = add0(countdown_date.getMinutes());
+            var seconds = add0(countdown_date.getSeconds());
+            var hms = hours + ':' + minutes + ':' + seconds;
+            document.getElementById("timer").innerHTML = hms;
+        }
+
+        // ---------------------------COUNTDOWN TIMER SECTION -------------------------------------------
+
+        var bt_countdown_start = document.getElementById('countdown_start');
+        var bt_countdown_stop = document.getElementById('countdown_stop');
+        var bt_countdown_pause = document.getElementById('countdown_pause');
+        var bt_countdown_resume = document.getElementById('countdown_resume');
+
+        bt_countdown_pause.style.display = "none";
+        bt_countdown_resume.style.display = "none";
+        bt_countdown_stop.style.display = "none";
+
+
+        var countdown_date = new Date();
+        var countdown_interval;
+        function start_countdown() {
+            countdown_date.setHours(0,0,0,0);
+            var countdown_time = document.getElementById('number').value;
+            var user_countdown_unit = document.getElementById('units');
+            var countdown_unit = user_countdown_unit.options[user_countdown_unit.selectedIndex].value;
+            //alt mthd: var countdown_units = document.querySelector.('#units options:checked').value;
+
+            if (countdown_unit === 'seconds') {
+                countdown_date.setHours(0,0,countdown_time,0)
+            }else if (countdown_unit === 'minutes') {
+                countdown_date.setHours(0,countdown_time,0,0)
+            }else if (countdown_unit === 'hours') {
+                countdown_date.setHours(countdown_unit,0,0,0)
+            }
+
+            countdown_interval = setInterval(update_countdown, 1000);
+            document.body.style.backgroundColor = 'transparent';
+            bt_countdown_start.style.display = 'none';
+            bt_countdown_stop.style.display = 'initial';
+            bt_countdown_pause.style.display = 'initial';
+            bt_countdown_resume.style.display = 'none';
+
+        }
+
+        function update_countdown() {
+            var seconds = countdown_date.getSeconds();
+            countdown_date.setSeconds(seconds - 1);
+            show_countdown_value();
+            if (countdown_date.getSeconds() <= 0 && countdown_date.getMinutes() <= 0 && countdown_date.getHours() <= 0) {
+                document.body.style.backgroundColor = 'red';
+                clearInterval(countdown_interval);
+            }
+        }
+
+        function pause_countdown() {
+            clearInterval(countdown_interval);
+            bt_countdown_start.style.display = 'none';
+            bt_countdown_stop.style.display = 'initial';
+            bt_countdown_pause.style.display = 'none';
+            bt_countdown_resume.style.display = 'initial';
+        }
+
+        function stop_countdown() {
+            clearInterval(countdown_interval);
+            countdown_date.setHours(0,0,0,0);
+            show_countdown_value();
+            bt_countdown_start.style.display = 'initial';
+            bt_countdown_stop.style.display = 'none';
+            bt_countdown_pause.style.display = 'none';
+            bt_countdown_resume.style.display = 'none';
+        }
+
+        function resume_countdown() {
+            countdown_interval = setInterval(update_countdown, 1000);
+            bt_countdown_start.style.display = 'none';
+            bt_countdown_stop.style.display = 'initial';
+            bt_countdown_pause.style.display = 'initial';
+            bt_countdown_resume.style.display = 'none';
+        }
+
+        var stopwatch_date = new Date();
+        var stopwatch_interval;
+
+        function show_stopwatch_value() {
+            var hours = add0(stopwatch_date.getHours());
+            var minutes = add0(stopwatch_date.getMinutes());
+            var seconds = add0(stopwatch_date.getSeconds());
+            var hms = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('stopwatch').innerHTML = hms;
+        }
+
+        // ---------------------------STOPWATCH SECTION --------------------------------------------------
+
+        var bt_stopwatch_start = document.getElementById('stopwatch_start');
+        var bt_stopwatch_pause = document.getElementById('stopwatch_pause');
+        var bt_stopwatch_stop = document.getElementById('stopwatch_stop');
+        var bt_stopwatch_resume = document.getElementById('stopwatch_resume');
+
+        bt_stopwatch_pause.style.display = "none";
+        bt_stopwatch_resume.style.display = "none";
+        bt_stopwatch_stop.style.display = "none";
+
+        function start_stopwatch() {
+            stopwatch_date.setHours(0,0,0,0);
+            stopwatch_interval = setInterval(update_stopwatch, 1000);
+            bt_stopwatch_pause.style.display = 'initial';
+            bt_stopwatch_stop.style.display = 'initial';
+            bt_stopwatch_start.style.display = 'none';
+            bt_stopwatch_resume.style.display = 'none';
+        }
+        function update_stopwatch() {
+            var seconds = stopwatch_date.getSeconds();
+            stopwatch_date.setSeconds(seconds + 1);
+            show_stopwatch_value();
+        }
+
+        function pause_stopwatch() {
+            clearInterval(stopwatch_interval);
+            bt_stopwatch_pause.style.display = 'none';
+            bt_stopwatch_stop.style.dispaly = 'none';
+            bt_stopwatch_start.style.dispaly = 'none';
+            bt_stopwatch_resume.style.display = 'initial';
+
+        }
+
+        function stop_stopwatch() {
+            clearInterval(stopwatch_interval);
+            stopwatch_date.setHours(0,0,0,0);
+            show_stopwatch_value();
+            bt_stopwatch_pause.style.display = 'none';
+            bt_stopwatch_stop.style.display = 'none';
+            bt_stopwatch_start.style.display = 'initial';
+            bt_stopwatch_resume.style.display = 'none';
+        }
+
+        function resume_stopwatch() {
+            stopwatch_interval = setInterval(update_stopwatch, 1000);
+            bt_stopwatch_pause.style.display = 'initial';
+            bt_stopwatch_stop.style.dispaly = 'initial';
+            bt_stopwatch_start.style.dispaly = 'none';
+            bt_stopwatch_resume.style.display = 'none';
+        }
+        </script>
+</html>

@@ -1,0 +1,260 @@
+
+<html>
+    <head>
+        <title>calculator</title>
+
+        <!-- materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <style>
+            body {
+                background-color: rgb(245, 242, 240);
+            }
+            #calculator {
+                margin: 50px auto;
+                width:440px;
+            }
+            .row {
+                margin-bottom:4px;
+            }
+            .col {
+                padding:0 !important;
+            }
+            #buttons a {
+                width:106px;
+            }
+            #calc_view {
+                text-align:right;
+            }
+            #calc_view_top {
+                text-align:right;
+                font-size:10px;
+                color:grey;
+                width:100%;
+                border:none;
+                background-color:transparent;
+            }
+            #calc_view_top:focus {
+                outline:none;
+            }
+        </style>
+        <script>
+
+            $(function() {
+
+                var nums = '.0123456789';
+
+                var percent_operator = '%';
+                var plus_minus_operator = '\u00B1';
+                var factorial_operator = '!';
+                var unary_operators = percent_operator +
+                                        plus_minus_operator +
+                                        factorial_operator;
+
+
+                var plus_operator = '+';
+                var minus_operator = '\u2212';
+                var times_operator = '\u00D7';
+                var divide_operator = '\u00F7';
+                var power_operator = '^';
+
+                var binary_operators = plus_operator +
+                                minus_operator +
+                                times_operator +
+                                divide_operator +
+                                power_operator;
+
+                var backspace_char = '\u232B';
+
+                var first_num = null;
+                var operator = null;
+                var second_num = null;
+
+
+                function factorial(n) {
+                    if (n === 0) {
+                        return 1;
+                    }
+                    return n*factorial(n-1);
+                }
+
+
+                function apply_operator(first_num, operator, second_num) {
+                    var a = parseFloat(first_num);
+                    var b = parseFloat(second_num);
+                    var c;
+                    if (operator === plus_operator) {
+                        c = a + b;
+                    } else if (operator === minus_operator) {
+                        c = a - b;
+                    } else if (operator === times_operator) {
+                        c = a * b;
+                    } else if (operator === divide_operator) {
+                        c = a / b;
+                    } else if (operator === power_operator) {
+                        c = Math.pow(a, b);
+                    }
+                    return c.toString();
+                }
+
+
+                // 3 / 2 = -
+
+
+                $('#buttons a').click(function() {
+
+                    var char = this.innerHTML;
+                    var calc_view = $('#calc_view');
+                    var calc_view_top = $('#calc_view_top');
+                    if (nums.indexOf(char) >= 0) {
+                        calc_view.val(calc_view.val() + char);
+                    } else if (unary_operators.indexOf(char) >= 0) {
+                        var a = calc_view.val();
+                        if (char === percent_operator) {
+                            a /= 100.0;
+                        } else if (char === plus_minus_operator) {
+                            a *= -1;
+                        } else if (char === factorial_operator) {
+                            a = factorial(a);
+                        }
+                        calc_view.val(a);
+
+                    } else if (binary_operators.indexOf(char) >= 0) {
+                        if (first_num === null) {
+                            first_num = calc_view.val();
+                            operator = char;
+                            calc_view.val('');
+                            calc_view_top.val(first_num + ' ' + operator);
+                        } else {
+                            second_num = calc_view.val();
+                            first_num = apply_operator(first_num, operator, second_num);
+                            operator = char;
+                            second_num = null;
+                            calc_view_top.val(first_num + ' ' + operator);
+                            calc_view.val('');
+                        }
+                    } else if (char === '=') {
+                        if (second_num === null) {
+                            second_num = calc_view.val();
+                        } else {
+                            first_num = calc_view.val();
+                        }
+                        var third_num = apply_operator(first_num, operator, second_num);
+                        calc_view.val(third_num);
+                        calc_view_top.val(first_num + ' ' + operator + ' ' + second_num + ' =');
+                        first_num = third_num;
+                    } else if (char === 'C') {
+                        first_num = null;
+                        second_num = null;
+                        operator = null;
+                        calc_view.val('');
+                        calc_view_top.val('');
+                    } else if (char === 'CE') {
+                        calc_view.val('');
+                    } else if (char === backspace_char) {
+                        var txt = calc_view.val();
+                        if (txt.length > 0) {
+                            txt = txt.substring(0, txt.length - 1);
+                        }
+                        calc_view.val(txt);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="calculator">
+            <input id="calc_view_top" class="browser-default" type="text"/>
+            <input id="calc_view" type="text"/>
+            <div id="buttons">
+                <div class="row">
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn"></a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">CE</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">C</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">&#x232b;</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">!</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">&plusmn;</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">%</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">^</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">7</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">8</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">9</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn cyan lighten-1">&divide;</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">4</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">5</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">6</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn cyan lighten-1">&times;</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">1</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">2</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">3</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn cyan lighten-1">&minus;</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">0</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn">.</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light light-blue btn">=</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="waves-effect waves-light btn cyan lighten-1">&plus;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
