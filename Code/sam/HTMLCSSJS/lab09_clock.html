@@ -3,41 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <title>Clock</title>
-    <link href="https://fonts.googleapis.com/css?family=Codystar:300|Londrina+Outline" rel="stylesheet">
-    <style>
 
-        #body {
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Audiowide|Black+Ops+One" rel="stylesheet">
+
+    <style>
+       #body {
             background-color:
         }
 
-        #clock_container {
+        .main_container {
+            background-image: url(http://www.homedepot.com/catalog/productImages/1000/4c/4ca85dba-9792-4438-b892-0aeb67208667_1000.jpg);
+            margin: 0 auto;
+            margin-top: 40px;
+            width: 800px;
+            border: 2px solid darkgray;
 
+            border-radius: 10px;
+        }
+        .btns {
+            margin: 0 auto;
+            width: 400px;
+            text-align: center;
+            background-color:
+        }
+        #btn_clock {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            text-shadow: 2px 2px #cccccc;
+        }
+        #btn_sw {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            text-shadow: 2px 2px #cccccc;
+        }
+        #btn_cd {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            text-shadow: 2px 2px #cccccc;
+        }
+
+        #clock_container {
+            color: #e6e6e6;
             text-align: center;
             font-size: 120px;
-            font-family: 'Londrina Outline', cursive;
+            font-family: 'Alegreya Sans SC', sans-serif;
             padding-top: 100px;
             margin: 0 auto;
             width: 800px;
         }
 
         #sw_container {
+            color: rgba(230, 230,230, .7);
             text-align: center;
             font-size: 120px;
-            font-family: 'Londrina Outline', cursive;
+            font-family: 'Alegreya Sans SC', sans-serif;
             padding-top: 100px;
             margin: 0 auto;
             width: 800px;
         }
 
          #cd_container {
+            color: #e6e6e6;
             text-align: center;
-            font-size: 120px;
-            font-family: 'Londrina Outline', cursive;
             padding-top: 100px;
             margin: 0 auto;
             width: 800px;
         }
-
+        #countdown {
+            font-size: 120px;
+            font-family: 'Alegreya Sans SC', sans-serif;
+        }
 
 
     </style>
@@ -49,41 +87,36 @@
             <button id="btn_cd">Countdown</button>
 
         </div>
-
-        <div id="clock_container">
-            <div id="clock">
-            </div>
-        </div>
-
-        <div id="sw_container">
-            <div id="stopwatch">
+        <div class="main_container">
+            <div id="clock_container">
+                <div id="clock">
+                </div>
             </div>
 
+            <div id="sw_container">
+                <div id="stopwatch">
+                </div>
 
-                <button id="start_sw" onclick="start_stopwatch()">START</button>
-                <button id="stop_sw" onclick="stop_stopwatch()">STOP</button>
+
+                    <button id="start_sw" onclick="start_stopwatch()">START</button>
+                    <button id="stop_sw" onclick="stop_stopwatch()">STOP</button>
 
 
 
-        </div>
-        <div id="cd_container">
-            <div id="countdown">
             </div>
-
+            <div id="cd_container">
+                <div id="countdown">
+                </div>
                 <button id="cd_start" onclick="start_countdown()">START</button>
-
-
                 <button id="cd_stop" onclick="clearInterval(cd_interval)">STOP</button>
-
-
-
-            <div id="user_countdown">
-                <input id="time" type="text"/>
-                <select id="units">
-                <option>hours</option>
-                <option>minutes</option>
-                <option>seconds</option>
-                </select>
+                <div>
+                    <input id="time" type="text"/>
+                    <select id="units">
+                        <option value="hours">hours</option>
+                        <option value="minutes">minutes</option>
+                        <option value="seconds">seconds</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -183,7 +216,7 @@
                     return;
                 }
                 var user_units = document.getElementById('units');
-                var units = user_units.options[user_units.selectedIndex].text;
+                var units = user_units.options[user_units.selectedIndex].value;
 
                 countdown = new Date();
                 countdown.setHours(0,0,0,0);
