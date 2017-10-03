@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <title>Clock</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Audiowide|Black+Ops+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Asset" rel="stylesheet">
+    <link href="owfont-master/css/owfont-regular.css" rel="stylesheet" type="text/css">
 
     <style>
+
         body {
-            background-image: url(https://cdn.pixabay.com/photo/2017/07/25/14/54/rain-2538430_960_720.jpg);
-            background-color: rgba(255, 255, 255, .3);
+            background: url(https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?w=800&h=500&auto=compress&cs=tinysrgb) no-repeat;
+            background-size: 100%;
+
+
         }
 
+
+
         .main_container {
-            background-color:black;
+
             margin: 0 auto;
             margin-top: 40px;
             width: 800px;
-
-
             border-radius: 10px;
         }
+
 
         .btns {
             margin: 0 auto;
@@ -33,7 +38,6 @@
             background-color: transparent;
             border: none;
             font-size: 24px;
-            text-shadow: 2px 2px #cccccc;
         }
 
         #btn_sw {
@@ -51,27 +55,42 @@
         }
 
         #clock_container {
-            color: #e6e6e6;
+            color: rgba(242, 242, 242, .4);
             text-align: center;
             font-size: 120px;
-            font-family: 'Alegreya Sans SC', sans-serif;
+            padding-top: 100px;
+            margin: 0 auto;
+            width: 800px;
+            text-shadow: 0 5px 10px ;
+        }
+        #seconds {
+            float: right;
+            font-size: 60px;
+        }
+        #session {
+            font-size: 60px;
+        }
+        #icons {
+            float: left;
+            font-size: 60px;
+        }
+        #sw_container {
+            color: rgba(242, 242, 242, .4);
+            text-shadow: 0 5px 10px ;
+            text-align: center;
             padding-top: 100px;
             margin: 0 auto;
             width: 800px;
         }
-
-        #sw_container {
-            color: rgba(230, 230, 230, .7);
-            text-align: center;
+        #stopwatch {
             font-size: 120px;
-            font-family: 'Alegreya Sans SC', sans-serif;
-            padding-top: 100px;
-            margin: 0 auto;
-            width: 800px;
+
+
         }
 
         #cd_container {
-            color: #e6e6e6;
+            color: rgba(242, 242, 242, .4);
+            text-shadow: 0 5px 10px ;
             text-align: center;
             padding-top: 100px;
             margin: 0 auto;
@@ -80,9 +99,16 @@
 
         #countdown {
             font-size: 120px;
-            font-family: 'Alegreya Sans SC', sans-serif;
-        }
 
+        }
+        #time {
+            background-color: transparent;
+            border-width: 0 0 1px 0;
+        }
+        #units {
+            background-color: transparent;
+            border-width: 0;
+        }
 
     </style>
 </head>
@@ -94,20 +120,26 @@
 
 </div>
 <div class="main_container">
+
     <div id="clock_container">
-        <div id="clock">
-        </div>
+        <table>
+            <tr>
+                <td id="icons">
+                    <i id='weather_icon'></i>
+                </td>
+                <td id="clock"></td>
+                <td id="seconds"></td>
+                <td id="session"></td>
+
+            </tr>
+        </table>
     </div>
 
     <div id="sw_container">
         <div id="stopwatch">
         </div>
-
-
         <button id="start_sw" onclick="start_stopwatch()">START</button>
         <button id="stop_sw" onclick="stop_stopwatch()">STOP</button>
-
-
     </div>
     <div id="cd_container">
         <div id="countdown">
@@ -117,7 +149,7 @@
         <div>
             <input id="time" type="text"/>
             <select id="units">
-                <option value="hours">hours</option>
+                <option value="hours" style="background:transparent;">hours</option>
                 <option value="minutes">minutes</option>
                 <option value="seconds">seconds</option>
             </select>
@@ -179,7 +211,18 @@
         var hr = add0(date.getHours());
         var min = add0(date.getMinutes());
         var sec = add0(date.getSeconds());
-        document.getElementById('clock').innerHTML = hr + ':' + min + ':' + sec;
+        var session = 'AM';
+        if (hr <= 12) {
+            hr = 12;
+        }
+        if (hr > 12) {
+            hr = hr - 12;
+            session = 'PM';
+        }
+
+        document.getElementById('clock').innerHTML = hr + ':' + min;
+        document.getElementById('seconds').innerHTML = sec;
+        document.getElementById('session').innerHTML = session;
     }
 
     clock();
@@ -265,7 +308,7 @@
     }
     // ===END CLOCK===
 
-    // --- START API REQUESTS ---
+    // --- START WEATHER ---
     function http_get(url, success) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -287,13 +330,33 @@
             var longitude = data.longitude;
             var weather_url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=b03cb314cd65e6faa00dc416bd075c78';
             http_get(weather_url, function(data) {
-                var id_category = Math.floor(data.weather[0].id/100);
+
+                var id_category = data.weather[0].id;
                 var description = data.weather[0].description;
+                var weather_icon = document.getElementById('weather_icon');
+                weather_icon.classList = 'owf owf-' + id_category;
+
+
+                /*var id_category = Math.floor(data.weather[0].id/100);
+                var description = data.weather[0].description;
+                if (id_category === 2) {
+                    document.getElementById('icons').innerHTML = '⛈';
+                } else if (id_category === 3) {
+                    document.getElementById('icons').innerHTML = '🌧';
+                } else if (id_category === 5) {
+                    document.getElementById('icons').innerHTML = '🌧';
+                } else if (id_category === 6) {
+                    document.getElementById('icons').innerHTML = '☃';
+                } else if (id_category === 7) {
+                    document.getElementById('icons').innerHTML = '🌫';
+                } else if (id_category === 8) {
+                    document.getElementById('icons').innerHTML = '🌣'
+                }*/
 
             });
         });
     });
-
+    // --- END WEATHER ---
 </script>
 </body>
 </html>
