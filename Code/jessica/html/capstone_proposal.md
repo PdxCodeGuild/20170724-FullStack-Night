@@ -1,15 +1,24 @@
-#Capstone Proposal:  Trends in Food Access and Insecurity
+#Capstone Proposal:  Visualize Food Access by County in the United States
 ##Product Overview: 
-To analyze food environment access and compare to health outcomes. Visualize data using D3
+Visualize food access data by county in each state. 
 ##Specific Functionality:
-map of the United states plot by color (heat-map) % of population with low access to food. 
-##Data Model:
+Plot by color (heat-map) percent of population with low access to food on map of the United States by specific counties in each state.
+##Data Model: 
+The data model contains a list of floats where the percent of population with low access to food at the county level. Low access is defined as: "Number of people in a county living more than 1 mile from a supermarket, supercenter
+or large grocery store if in an urban area, or more than 10 miles from a supermarket or
+large grocery store if in a rural area." This data is from the Food Environment Atlas from the USDA Economic Research Service. 
+https://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-documentation-downloads/
 ##Technical Components:
+1. Open excel data in python using pandas package (pandas.read_excel)
+2. Put data into database using SQLite
+3. Visualize data using D3. D3 supports SVG which will be used in the process of mapping the counties in each state. 
+ 
 ##Schedule:
+
 ##Further Work:
-1. open excel in python using pandas package
-2. use pandas to calculate correlations, calculate access % change over five years, compare food insecurity over time by state
-3. what kind of data it will result in (model) correlation matrix, % change in access
-4. how to visualize that data using d3: 
+Other things to calculate using pandas package in python, transfer data from python to database using SQLite, and visualize data using D3:
+1. Correlations between food access and health outcomes (pandas.DataFrame.corr)
+2. Calculate access % change over five years (pandas.DataFrame.pct_change)
+3. Visualize food insecurity over time by state
 
 
