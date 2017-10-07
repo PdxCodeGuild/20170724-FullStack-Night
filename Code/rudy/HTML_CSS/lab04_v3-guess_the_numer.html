@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Number v03</title>
+    <style>
+        body {
+            border-style: solid;
+            border-width: 4px;
+            background: #2E0620;
+            padding: 10%;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #c88b01;
+            margin: auto;
+            text-align: center;
+            }
+        #title {
+            margin-bottom: 30px;
+        }
+        #sign {
+            box-shadow: 0 0 25px gold;
+            border-style: dotted;
+            border-spacing: 4px;
+            border-width: 4px;
+            margin-top: 60px;
+            color: #FFFFFF;
+        }
+        #too_high, #correct, #too_low, #whatever {
+            position: relative;
+            font-size: 300%;
+            text-align: center;
+            padding: auto;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<h1 id="title">Welcome to<br /><a id="sign">GUESS THAT NUMBER!</a></h1>
+        <div id="main_div">
+
+        </div>
+
+        <a id="counter_x"></a>
+
+        <div id="too_high">
+            <a>Too High!</a>
+        </div>
+        <div id="correct">
+            <a>Correct!</a>
+        </div>
+        <div id="too_low">
+            <a>Too Low!</a>
+        </div>
+        <div id="whatever">
+            <a>Whatever!</a>
+        </div>
+
+        <script>
+            var x = Math.random()*10;
+            x = Math.floor(x);
+            console.log(x);
+
+            var main_div = document.getElementById('main_div');   // main_div is getting tag of Id 'main_div'
+            for (var i=0; i<10; ++i)                // for loop initialize i to zero, while i is less than 10, each loop add i
+            {
+                var button = document.createElement('button');
+                button.innerHTML = i.toString();
+                //button.toString();
+                button.id = 'btn'+i;
+                button.value = i.toString();
+
+                button.onclick = function()
+                {
+                    var guess_button_id = document.getElementById(this.id);
+                    console.log(guess_button_id);
+                    var guess = parseInt(this.value);
+                    check_guess(guess,guess_button_id);
+                };
+                button.style.fontSize = '24pt';
+
+                button.style.backgroundColor = '#FF0000';
+                main_div.appendChild(button);
+            }
+
+            var correct = document.getElementById('correct');
+            var too_high = document.getElementById('too_high');
+            var too_low = document.getElementById('too_low');
+            var whatever = document.getElementById('whatever');
+
+            correct.style.display = 'none';
+            too_high.style.display = 'none';
+            too_low.style.display = 'none';
+            whatever.style.display = 'none';
+
+
+
+            var n_guesses_remaining = 5;
+            var counter_x = document.getElementById('counter_x');
+            counter_x.innerHTML = 'Remaining guesses: ' + n_guesses_remaining;
+
+
+            function check_guess(guess, guess_button)
+            {
+
+                if (guess === x)
+                {
+                    correct.style.display = 'block';
+                    too_high.style.display = 'none';
+                    too_low.style.display = 'none';
+                    whatever.style.display = 'none';
+                    //reset();
+                }
+                else if (guess < x)
+                {
+                    guess_button.style.opacity = 0.4;
+                    guess_button.disabled = 'disabled';
+                    n_guesses_remaining--;
+                    counter_x = document.getElementById('counter_x');
+                    counter_x.innerHTML = 'Remaining guesses: ' + n_guesses_remaining;
+
+                    correct.style.display = 'none';
+                    too_high.style.display = 'none';
+                    too_low.style.display = 'block';
+                    whatever.style.display = 'none';
+                    if (n_guesses_remaining === 0)
+                    {
+                        reset();
+                    }
+                }
+                else if (guess > x)
+                {
+                    button.style.opacity = 0.4;
+                    button.disabled = 'disabled';
+                    n_guesses_remaining--;
+                    counter_x = document.getElementById('counter_x');
+                    counter_x.innerHTML = 'Remaining guesses: ' + n_guesses_remaining;
+                    correct.style.display = 'none';
+                    too_high.style.display = 'block';
+                    too_low.style.display = 'none';
+                    whatever.style.display = 'none';
+                    if (n_guesses_remaining === 0)
+                    {
+                        reset();
+                    }
+                }
+                else
+                {
+                    guess_button.style.opacity = 0.4;
+                    guess_button.disabled = 'disabled';
+                    n_guesses_remaining--;
+                    counter_x = document.getElementById('counter_x');
+                    counter_x.innerHTML = 'Remaining guesses: ' + n_guesses_remaining;
+                    correct.style.display = 'none';
+                    too_high.style.display = 'none';
+                    too_low.style.display = 'none';
+                    whatever.style.display = 'block';
+                    if (n_guesses_remaining === 0)
+                    {
+                        reset();
+                    }
+                }
+                function reset()
+                {
+                    x = Math.random()*10;
+                    x = Math.floor(x);
+                    button.style.opacity = 1;
+                    button.removeAttribute('disabled');
+                    n_guesses_remaining = 5;
+                    correct.style.display = 'none';
+                    too_high.style.display = 'none';
+                    too_low.style.display = 'none';
+                    whatever.style.display = 'none';
+
+                }
+            }
+
+        </script>
+</body>
+</html>
