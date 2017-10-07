@@ -13,23 +13,6 @@
     <body>
         <canvas id="cnv" width="1000" height="500"></canvas>
         <script>
-
-
-            var catalog = {
-                books: [
-                    {
-                        id: 'bk101',
-                        author: 'Gambardella, Matthew'
-                    },
-                    {
-                        id: 'bk102',
-                        author: 'Ralls, Kim'
-                    }
-
-                ]
-            };
-
-
             var cnv = document.getElementById('cnv');
             var friction = 0.999;
 
@@ -49,42 +32,21 @@
                 var mouse_position = getMousePosition(evt);
 
                 balls = [];
-                for (var i=0; i<4; ++i) {
+                for (var i=0; i<1000; ++i) {
                     var radius = Math.random()*10;
                     var angle = Math.random()*Math.PI*2;
                     var vx = radius*Math.cos(angle);
                     var vy = radius*Math.sin(angle);
                     var ball = {
-                        radius: 20,
-                        mass: 1,
-                        px: Math.random()*cnv.width,//mouse_position.x,
-                        py: Math.random()*cnv.height,//mouse_position.y,
+                        radius: 1,
+                        px: mouse_position.x,
+                        py: mouse_position.y,
                         vx: vx,
                         vy: vy
                     };
                     balls.push(ball);
                 }
             };
-
-
-            function calculate_collision(bi, bj) {
-                var cpx = ((bi.px * bj.radius) + (bj.px * bi.radius))/(bi.radius + bj.radius);
-                var cpy = ((bi.py * bj.radius) + (bj.py * bi.radius))/(bi.radius + bj.radius);
-                var nvx1 = (bi.vx * (bi.mass-bj.mass) + (2 * bj.mass*bj.vx)) / (bi.mass+bj.mass);
-                var nvy1 = (bi.vy * (bi.mass-bj.mass) + (2 * bj.mass*bj.vy)) / (bi.mass+bj.mass);
-                var nvx2 = (bj.vx * (bj.mass-bi.mass) + (2 * bi.mass*bi.vx)) / (bi.mass+bj.mass);
-                var nvy2 = (bj.vy * (bj.mass-bi.mass) + (2 * bi.mass*bi.vy)) / (bi.mass+bj.mass);
-
-                bi.vx = nvx1;
-                bi.vy = nvy1;
-                bj.vx = nvx2;
-                bj.vy = nvy2;
-
-                bi.px += bi.vx;
-                bi.py += bi.vy;
-                bj.px += bj.vx;
-                bj.py += bj.vy;
-            }
 
 
             function update(dt) {
@@ -117,29 +79,12 @@
                         ball.vx *= friction;
                         ball.vy *= friction;
                     }
-
-
-                    for (var j=i+1; j<balls.length; ++j) {
-                        var bi = balls[i];
-                        var bj = balls[j];
-                        var dx = bi.px - bj.px;
-                        var dy = bi.py - bj.py;
-                        var d = Math.sqrt(dx*dx + dy*dy);
-                        if (d < bi.radius + bj.radius) {
-                            calculate_collision(bi, bj);
-
-
-
-                        }
-                    }
                 }
-
-
             }
             function draw() {
                 var ctx = cnv.getContext("2d");
                 //ctx.clearRect(0, 0, cnv.width, cnv.height);
-                ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+                ctx.fillStyle = "rgba(0, 0, 0, 0.01)";
                 ctx.fillRect(0, 0, cnv.width, cnv.height);
 
                 ctx.fillStyle = "#FFFFFF";

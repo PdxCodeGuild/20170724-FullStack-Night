@@ -1,12 +1,13 @@
 
 # 4 - JavaScript
 
+JavaScript is a `scripting` language, meaning it's "quick and dirty" or "ad-hoc", its syntax rules are loose. This makes it quick to develop, but difficult to read and debug. Try to maintain an attention to detail, and whenever something isn't working, check the JavaScript console in your browser.
 
 ## Variables
 
 In JavaScript, we declare a variable by writing `var`. Unlike Python, JavaScript uses c-styled syntax: each statement is terminated with a semi-colon, white-space doesn't matter, and the bodies of objects, loops, and functions use curly-braces. Like Python, however, strings can use either single-quotes or double-quotes, and use escape sequences for newlines, tabs, and backslashes.
 
-```JavaScript
+```javascript
 var a = 5;
 var b = 10.4;
 var c = "hello!";
@@ -16,7 +17,7 @@ Use `//` for line-comments, `/* ... */` for block-comments.
 
 JavaScript can be written inline, in a script tag, or in an external file.
 
-```JavaScript
+```HTML
 <button onclick="alert('Hello World!')">click me</button>
 
 <script>
@@ -28,7 +29,7 @@ JavaScript can be written inline, in a script tag, or in an external file.
 
 Getting output to the user can be done three ways. Using the console won't display the output to a user, but will display it in the developer tools. This also gives you a way to pick through an object, attribute by attribute, rather than looking at a messy string.
 
-```
+```javascript
 alert("Hello World!");
 console.log("Hello World!");
 ```

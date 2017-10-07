@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <style>
+            body {
+                background-image: url("https://wallpaperscraft.com/image/notepad_pencil_notebook_7745_1600x1200.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+
+            }
+            h1 {
+                text-align: center;
+                font-family: Courier;
+                font-weight: bold;
+                font-size: 45px;
+            }
+            #info {
+                text-align: center;
+                font-family: Courier;
+                font-weight: bold;
+
+            }
+            #list {
+                text-align:center;
+                padding: 10px;
+                font-family: Courier;
+                font-weight: bold;
+                font-size: 25px;
+            }
+            span {
+                margin: 10px;
+            }
+            button {
+                margin: 2px;
+            }
+            #finished {
+                text-align: center;
+                text-decoration: line-through;
+                font-family: Courier;
+                font-weight: bold;
+                font-size: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>To Do List</h1>
+        <div id="info"><input id="user_input" type="text"> <button onclick="add()">Add to List</button></div>
+        <div id="list"></div>
+        <div id="finished"></div>
+
+        <!--<div id="item">
+            <span>Items</span>
+            <button onclick="complete()">&#10004</button>
+            <button onclick="remove()">&#10008</button>
+        </div>-->
+        <script>
+            //add item to list
+            function add() {
+
+                var list = document.getElementById('list');
+                var text = document.getElementById('user_input').value;
+                var item = document.createElement('div');
+                item.classList.add('list_item');
+                var span = document.createElement('span');
+                span.innerHTML = text;
+                var button_complete = document.createElement('button');
+                button_complete.innerHTML = '&#10004;';
+                button_complete.onclick = function() { //mark item as complete
+                    var complete = document.createElement('div');
+                    var finished = document.getElementById('finished');
+                    complete.innerHTML = this.parentElement.children[0].innerHTML;
+                    finished.appendChild(complete);
+                    this.parentElement.remove();
+                };
+                var button_remove = document.createElement('button');
+                button_remove.onclick = function() { //remove item from list
+                    this.parentElement.remove();
+                    //console.log(this.parentElement.children[0]);
+                };
+                button_remove.innerHTML = '&#10008;';
+
+
+                item.appendChild(span);
+                item.appendChild(button_complete);
+                item.appendChild(button_remove);
+                list.appendChild(item);
+            }
+                };
+        </script>
+    </body>
+</html>

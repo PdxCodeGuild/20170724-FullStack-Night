@@ -29,11 +29,12 @@ ctx.fillStyle = "#000000";
 ctx.fillRect(ball.px-ball.radius, ball.py-ball.radius, 2*ball.radius, 2*ball.radius);
 ```
 
-We'll use `requestAnimationFrame` to update the ball's position and re-draw it each frame. You can detect when a ball hits a side when its x-position or y-position goes beyond the boundaries of the canvas. When this happens, reset its location to be within the boundaries, and negate its velocity depending on which side it hit. When the ball hits the left or right side, negate its x-velocity. When the ball hits the top or bottom side, negate its y-velocity.
+We'll use `requestAnimationFrame` to update the ball's position and re-draw it each frame. You can detect when a ball hits a side when its x-position or y-position goes beyond the boundaries of the canvas. When this happens, reset its location to be within the boundaries, and negate its velocity depending on which side it hit. When the ball hits the left or right side, negate its x-velocity. When the ball hits the top or bottom side, negate its y-velocity. This will cause it to "bounce" off the sides.
 
 ```JavaScript
 function main_loop() {
     // update the ball's position
+    // check if it hit a boundary
     // draw the ball
     window.requestAnimationFrame(main_loop);
 }
@@ -42,9 +43,18 @@ window.requestAnimationFrame(main_loop);
 
 ## Version 2
 
-Let's add some gravity, which is a constant downward acceleration. We can represent this by a constant value we add to the ball's y-velocity each frame.
+- Draw a circle instead of a square:
 
-Let's also add some friction. Each time the ball makes contant with a side, try multipling its x-velocity and y-velocity by 0.99. This means each time it hides a side, it'll lose 1% of its velocity.
+```JavaScript
+context.beginPath();
+context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+context.fillStyle = 'green';
+context.fill();
+```
+
+- Add some gravity, which is a constant downward acceleration. We can represent this by a constant value we add to the ball's y-velocity each frame.
+
+- Also add some friction. Each time the ball makes contact with a boundary, try multipling its x-velocity and y-velocity by 0.99. This means each time it hides a side, it'll lose 1% of its velocity.
 
 ## Version 3 (other options)
 
@@ -52,4 +62,6 @@ Let's also add some friction. Each time the ball makes contant with a side, try 
 
 - add multiple balls, each with their own radius, and mass (which would effect their acceleration)
 
-- have balls bounce off of eachother
+- have balls bounce off of eachother ([link](https://gamedevelopment.tutsplus.com/tutorials/when-worlds-collide-simulating-circle-circle-collisions--gamedev-769))
+
+- Add gravitational attraction between balls: the acceleration due to gravity can be calculated using [Newton's Universal Law of Gravitation](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation#Modern_form)

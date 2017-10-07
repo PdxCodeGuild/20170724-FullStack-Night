@@ -35,7 +35,11 @@ When REPL loop finishes, write the updated contact info to the CSV file to be sa
 
 ## Version 4
 
-Add a `phone number` column. We'll use the Twilio API to send SMS messages from the terminal.
+Add a `phone number` column to the CSV, with each contact's phone number. We'll use the Twilio API to send SMS messages from the terminal.
+
+Add an additional command to the REPL `send sms`, ask for the contact's name, and the message you'd like to send them.
+
+
 
 
 ```python
@@ -44,12 +48,12 @@ Add a `phone number` column. We'll use the Twilio API to send SMS messages from 
 from twilio.rest import Client
 
 # Find these values at https://twilio.com/user/account
-account_sid = "ACXXXXXXXXXXXXXXXXX"
-auth_token = "YYYYYYYYYYYYYYYYYY"
+account_sid = "XXXX"
+auth_token = "XXXX"
 client = Client(account_sid, auth_token)
 
-message = client.api.account.messages.create(to="+12316851234",
-                                             from_="+15555555555",
+message = client.api.account.messages.create(to="<whatever you like>",
+                                             from_="+19718033720",
                                              body="Hello there!")
 ```
 

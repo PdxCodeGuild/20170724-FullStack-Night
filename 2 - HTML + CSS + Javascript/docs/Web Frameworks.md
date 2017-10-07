@@ -1,37 +1,4 @@
-
-
-
-## Python Frameworks
-
-### UI
-
-- [Tkinter](https://wiki.python.org/moin/TkInter)
-- [PythonQT](http://pythonqt.sourceforge.net/)
-- [Kivy](https://kivy.org/#home)
-
-
-### Data Visualization
-
-- [Bokeh](http://bokeh.pydata.org/en/latest/)
-- [matplotlib](http://matplotlib.org/)
-- [Seaborn](https://community.modeanalytics.com/python/libraries/seaborn/)
-- [Pygal](http://www.pygal.org/en/latest/index.html)
-
-### Image Manipulation
-
-- [Pillow](https://python-pillow.org/)
-
 ## Web Frameworks
-
-### CSS
-
-- [Materialize](http://materializecss.com/)
-- [Bootstrap](http://getbootstrap.com/)
-- [Kube](https://imperavi.com/kube/)
-- [Vuetify](https://vuetifyjs.com/) - for use with Vue.js
-- [Milligram](http://milligram.io/)
-- [Bulma](http://bulma.io/)
-- [Pure.css](https://purecss.io/)
 
 ### Back-End
 - [Django](https://www.djangoproject.com/)
@@ -43,7 +10,22 @@
 
 ### Front-End
 
-#### UI
+### CSS
+
+- [Bootstrap](http://getbootstrap.com/)
+- [Materialize](http://materializecss.com/)
+- [Pure.css](https://purecss.io/)
+- [Foundation](http://foundation.zurb.com/sites/docs/)
+- [Skeleton](http://getskeleton.com/)
+- [Material Design](https://material.io/guidelines/#)
+- [Kube](https://imperavi.com/kube/)
+- [Milligram](http://milligram.io/)
+- [Bulma](http://bulma.io/)
+- [Vuetify](https://vuetifyjs.com/) - for use with Vue.js
+- [Material UI](http://www.material-ui.com/#/) - for use with React
+
+
+#### General UI
 
 - [AngularJS](https://angularjs.org/)
 - [Angular](https://angular.io/)

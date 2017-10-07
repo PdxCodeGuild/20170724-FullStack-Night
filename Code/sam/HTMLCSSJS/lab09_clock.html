@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Audiowide|Black+Ops+One" rel="stylesheet">
+
+    <style>
+       #body {
+            background-color:
+        }
+
+        .main_container {
+            background-image: url(http://www.homedepot.com/catalog/productImages/1000/4c/4ca85dba-9792-4438-b892-0aeb67208667_1000.jpg);
+            margin: 0 auto;
+            margin-top: 40px;
+            width: 800px;
+            border: 2px solid darkgray;
+
+            border-radius: 10px;
+        }
+        .btns {
+            margin: 0 auto;
+            width: 400px;
+            text-align: center;
+            background-color:
+        }
+        #btn_clock {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            text-shadow: 2px 2px #cccccc;
+        }
+        #btn_sw {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            text-shadow: 2px 2px #cccccc;
+        }
+        #btn_cd {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            text-shadow: 2px 2px #cccccc;
+        }
+
+        #clock_container {
+            color: #e6e6e6;
+            text-align: center;
+            font-size: 120px;
+            font-family: 'Alegreya Sans SC', sans-serif;
+            padding-top: 100px;
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        #sw_container {
+            color: rgba(230, 230,230, .7);
+            text-align: center;
+            font-size: 120px;
+            font-family: 'Alegreya Sans SC', sans-serif;
+            padding-top: 100px;
+            margin: 0 auto;
+            width: 800px;
+        }
+
+         #cd_container {
+            color: #e6e6e6;
+            text-align: center;
+            padding-top: 100px;
+            margin: 0 auto;
+            width: 800px;
+        }
+        #countdown {
+            font-size: 120px;
+            font-family: 'Alegreya Sans SC', sans-serif;
+        }
+
+
+    </style>
+</head>
+    <body>
+        <div class="btns">
+            <button id="btn_clock">Clock</button>
+            <button id="btn_sw">Stopwatch</button>
+            <button id="btn_cd">Countdown</button>
+
+        </div>
+        <div class="main_container">
+            <div id="clock_container">
+                <div id="clock">
+                </div>
+            </div>
+
+            <div id="sw_container">
+                <div id="stopwatch">
+                </div>
+
+
+                    <button id="start_sw" onclick="start_stopwatch()">START</button>
+                    <button id="stop_sw" onclick="stop_stopwatch()">STOP</button>
+
+
+
+            </div>
+            <div id="cd_container">
+                <div id="countdown">
+                </div>
+                <button id="cd_start" onclick="start_countdown()">START</button>
+                <button id="cd_stop" onclick="clearInterval(cd_interval)">STOP</button>
+                <div>
+                    <input id="time" type="text"/>
+                    <select id="units">
+                        <option value="hours">hours</option>
+                        <option value="minutes">minutes</option>
+                        <option value="seconds">seconds</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+            var btn_clock = document.getElementById('btn_clock');
+            var btn_sw = document.getElementById('btn_sw');
+            var btn_cd = document.getElementById('btn_cd');
+
+            var clock_div = document.getElementById('clock_container');
+            var sw_div = document.getElementById('sw_container');
+            var cd_div = document.getElementById('cd_container');
+
+            sw_div.style.display = 'none';
+            cd_div.style.display = 'none';
+            btn_clock.disabled = 'disabled';
+
+            btn_clock.onclick = function() {
+                clock_div.style.display = 'block';
+                sw_div.style.display = 'none';
+                cd_div.style.display='none';
+                btn_clock.disabled = 'disabled';
+                btn_sw.removeAttribute('disabled');
+                btn_cd.removeAttribute('disabled');
+            };
+
+            btn_sw.onclick = function() {
+                clock_div.style.display = 'none';
+                sw_div.style.display = 'block';
+                cd_div.style.display = 'none';
+                btn_clock.removeAttribute('disabled');
+                btn_sw.disabled = 'disabled';
+                btn_cd.removeAttribute('disabled');
+            };
+
+            btn_cd.onclick = function() {
+                clock_div.style.display = 'none';
+                sw_div.style.display = 'none';
+                cd_div.style.display = 'block';
+                btn_clock.removeAttribute('disabled');
+                btn_sw.removeAttribute('disabled');
+                btn_cd.disabled = 'disabled';
+            };
+
+
+            function add0(n) {
+                return (n < 10) ? '0'+n: n;
+            }
+
+
+            function clock() {
+                var date = new Date();
+                var hr = add0(date.getHours());
+                var min = add0(date.getMinutes());
+                var sec = add0(date.getSeconds());
+                document.getElementById('clock').innerHTML = hr + ':' + min + ':' + sec;
+            }
+            clock();
+            var clock_interval = setInterval(clock, 1000);
+
+            var stopwatch;
+
+            function display_stopwatch() {
+                stopwatch = new Date();
+                stopwatch.setHours(0,0,0,0);
+                document.getElementById('stopwatch').innerHTML = '00:00:00'
+            }
+            display_stopwatch();
+
+            function update_stopwatch() {
+                var sec = stopwatch.getSeconds();
+                stopwatch.setSeconds(sec + 1);
+                var hr = add0(stopwatch.getHours());
+                var min = add0(stopwatch.getMinutes());
+                var sec = add0(stopwatch.getSeconds());
+
+                document.getElementById('stopwatch').innerHTML = hr + ':' + min + ':' + sec;
+            }
+
+            var sw_interval;
+            function start_stopwatch() {
+                sw_interval = setInterval(update_stopwatch, 1000);
+            }
+
+            function stop_stopwatch() {
+                clearInterval(sw_interval)
+            }
+
+            var countdown;
+            var cd_interval;
+            function start_countdown() {
+                var user_time = document.getElementById('time').value;
+                user_time = parseInt(user_time);
+                if (isNaN(user_time)) {
+                    alert('Invalid value!!!');
+                    return;
+                }
+                var user_units = document.getElementById('units');
+                var units = user_units.options[user_units.selectedIndex].value;
+
+                countdown = new Date();
+                countdown.setHours(0,0,0,0);
+
+                if (units === 'hours') {
+                    countdown.setHours(user_time);
+                } else if (units === 'minutes') {
+                    countdown.setMinutes(user_time);
+                } else if (units === 'seconds') {
+                    countdown.setSeconds(user_time);
+                }
+                console.log(user_time);
+                show_countdown();
+                cd_interval = setInterval(update_countdown, 1000);
+            }
+
+            document.getElementById('countdown').innerHTML = '00:00:00';
+            function show_countdown() {
+                //console.log(countdown);
+                var hr = add0(countdown.getHours());
+                var min = add0(countdown.getMinutes());
+                var sec = add0(countdown.getSeconds());
+                document.getElementById('countdown').innerHTML = hr + ':' + min + ':' + sec;
+            }
+
+
+            function update_countdown() {
+
+                var sec = countdown.getSeconds();
+                countdown.setSeconds(sec-1);
+                show_countdown();
+                // check if the timer has run out
+                // if it has, alert the user and clear the interval
+                //clearInterval(cd_interval);
+            }
+
+
+        </script>
+    </body>
+</html>
