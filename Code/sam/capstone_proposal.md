@@ -1,14 +1,14 @@
 #Sihir
 
 ###Product Overview: 
-Web based side scrolling game. User will enter username to begin playing. Will feature a list of top 5 high scores and associated users at end of level. 
+Web based side scrolling game. User will create an account to begin playing. Will feature a list of top 5 high scores and associated users at end of level. 
 
 ###Specific Functionality: 
 
-User will interact with game by using the arrow key and space bar as controls. As the user advances through the game the high score data will be continuously updated. 
+User will interact with game by using the arrow key and space bar as controls. As the user advances through the game, without colliding with an enemy, the high score data will be continuously updated. 
 
 ### Data Model: 
-user names and high scores will be saved in a table in the database. 
+user accounts, including high score will be saved in a table in the database. 
 
 ### Technical Components: 
 I will program the game using phaser. I will use inkscape to design the graphics. Front-end will be done in HTML/CSS and JS. Backend will use Django. 
