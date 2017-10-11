@@ -3,7 +3,7 @@
 
 Regular expressions are a way to match patterns in strings. They can be used to validate a phone number or address in an input field on a website, they can be used to find the occurances of a phrase in a block of text, etc.
 
-You can find out more about regular expressions [here](https://docs.python.org/3.6/howto/regex.html#regex-howto) [here](https://docs.python.org/3.6/library/re.html#re-syntax).
+You can find out more about regular expressions [here](https://docs.python.org/3.6/howto/regex.html#regex-howto) and [here](https://docs.python.org/3.6/library/re.html#re-syntax).
 
 
 - `[]` define a character class
