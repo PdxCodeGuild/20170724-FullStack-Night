@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+
+</head>
+<body>
+    <input id="new_list_item" type="text">New Item</input>
+    <button onclick="create_item()">add</button>
+
+    <div id="list" style="border: 1px solid black">
+        <!--<div id="list_item">
+            <span>text</span>
+            <button>done</button>
+            <button>remove</button>
+        </div>
+        <div id="list_item">
+            <span>text</span>
+            <button>done</button>
+            <button>remove</button>
+        </div>
+        <div id="list_item">
+            <span>text</span>
+            <button>done</button>
+            <button>remove</button>
+        </div>-->
+
+    </div>
+    <!--<div id="completed_list" style="border: 1px solid green">
+
+    </div>-->
+    <div id="removed_list" style="border: 1px solid red">
+
+    </div>
+
+
+    <script>
+        function create_item()
+        {
+            var new_list_item = document.getElementById('new_list_item').value;
+
+            var list = document.getElementById('list');
+
+            var list_item_x = document.createElement('div');
+
+            var span = document.createElement('span');
+            span.innerHTML = new_list_item;
+
+            var btn_complete = document.createElement('button');
+            btn_complete.onclick = completed;
+            btn_complete.innerHTML = 'complete';
+
+            var btn_remove = document.createElement('button');
+            btn_remove.onclick = remove_list_item;
+            btn_remove.innerHTML = 'remove';
+
+            list_item_x.appendChild(span);
+            list_item_x.appendChild(btn_complete);
+            list_item_x.appendChild(btn_remove);
+
+            list.appendChild(list_item_x);
+        }
+
+
+        function completed()
+        {
+            var create_comp_list = document.createElement('div').toString;
+            create_comp_list.style.border = 'solid';
+            var completed_list = document.getElementById(create_comp_list);
+
+            var completed_item = this.parentElement;
+            completed_list.appendChild(completed_item);
+        }
+
+        function remove_list_item()
+        {
+            var removed_list = document.getElementById('removed_list');
+
+            var removed_item = this.parentElement;
+            removed_list.appendChild(removed_item);
+        }
+
+    </script>
+</body>
+</html>

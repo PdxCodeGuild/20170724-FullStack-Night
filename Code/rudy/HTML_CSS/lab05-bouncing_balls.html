@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Balls</title>
+</head>
+<body>
+    <canvas id="cnv" height="500" width="500" style="border: 2px solid black"></canvas>
+    <script>
+        var cnv = document.getElementById('cnv');
+
+        var ball = {
+            radius: 5,
+            /*
+            px: Math.random()*canvas.width,
+            py: Math.random()*canvas.height,*/
+            vx: (2*Math.random()-1)*50,   //velocity of x direction
+            vy: (2*Math.random()-1)*50,      //velocity of y direction
+            px: cnv.width/2,                //starting position of the ball on the x axis
+            py: cnv.height/2               //starting position of the ball on the y axis
+
+        };
+
+        var ctx = cnv.getContext("2d");
+        ctx.clearRect(0, 0, cnv.width, cnv.height);
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(ball.px-ball.radius, ball.py-ball.radius, 2*ball.radius, 2*ball.radius);
+
+        function main_loop()
+        {
+            // update the ball's position
+            var dt = 1/30;
+            ball.vy += .1*dt;          //force of gravity increasing velocity .1 distance over time
+            ball.px +=ball.vx*dt;
+            ball.py +=ball.vy*dt;
+            if (ball.px < 0)
+            {
+                ball.px = 0;
+                ball.vx *= -1;
+            }
+            if (ball.px > cnv.width)
+            {
+                ball.px = cnv.width;
+                ball.vx *= -1;
+            }
+            if (ball.py < 0)
+            {
+                ball.py = 0;
+                ball.vy *= -1;
+            }
+            if (ball.py > cnv.height)
+            {
+                ball.py = cnv.height;
+                ball.vy *= -1;
+            }
+            // draw the ball
+            var ctx = cnv.getContext("2d");
+            ctx.clearRect(0, 0, cnv.width, cnv.height);
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(ball.px-ball.radius, ball.py-ball.radius, 2*ball.radius, 2*ball.radius);
+            window.requestAnimationFrame(main_loop);
+        }
+        window.requestAnimationFrame(main_loop);
+
+
+    </script>
+</body>
+</html>
