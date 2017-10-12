@@ -5,7 +5,7 @@ Web based side scrolling game. User will create an account to begin playing. Wil
 
 ###Specific Functionality: 
 
-User will interact with game by using the arrow key and space bar as controls. As the user advances through the game, without colliding with an enemy, the high score data will be continuously updated. 
+User will interact with game by using the uparrow or spacebar to jump. As the user advances through the game, without colliding with a block, the high score data will be continuously updated. 
 
 ### Data Model: 
 user accounts, including high score will be saved in a table in the database. 
