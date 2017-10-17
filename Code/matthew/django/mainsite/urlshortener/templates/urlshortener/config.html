@@ -1,0 +1,13 @@
+<form action="{% url 'urlshortener:addurl' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="url"/>
+    <button type="submit">shorten</button>
+</form>
+<table>
+    {% for reroute in reroutes %}
+    <tr>
+        <td>{{ reroute.code }}</td>
+        <td>{{ reroute.url }}</td>
+    </tr>
+    {% endfor %}
+</table>
