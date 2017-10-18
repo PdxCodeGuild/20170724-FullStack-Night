@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ajaxdemo.apps.AjaxdemoConfig',
     'polls.apps.PollsConfig',
     'todos.apps.TodosConfig',
     'urlshortener.apps.UrlshortenerConfig',
