@@ -8,6 +8,7 @@ def index(request):
 
 
 def postdata(request):
+    print(request.body)
     received_json_data = json.loads(request.body)
     print(received_json_data)
     return HttpResponse('OK')

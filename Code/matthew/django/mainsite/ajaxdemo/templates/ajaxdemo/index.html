@@ -1,5 +1,9 @@
 
 
+
+<!-- XMLHttpRequest example -->
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 
 <script>
@@ -15,6 +19,8 @@
         xhttp.send();
     }
 
+
+    //http_get("localhost:8000/getdata", funct...
     http_get("{% url 'ajaxdemo:getdata' %}", function(data) {
         console.log(data);
     });
@@ -42,5 +48,41 @@
     http_post("{% url 'ajaxdemo:postdata' %}", data, function(data) {
         console.log(data);
     });
+
+</script>
+
+
+
+<!-- jQuery example -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+<script>
+
+    $.ajax({
+        method: "GET",
+        url: "{% url 'ajaxdemo:getdata' %}"
+    }).done(function(data) {
+        console.log('jQuery');
+        console.log(data);
+    }).fail(function() {
+        alert("error");
+    });
+
+
+
+    data = {name:"John Rambo", time:"2pm"};
+    $.ajax({
+        method: "POST",
+        url: "{% url 'ajaxdemo:postdata' %}",
+        headers: {'X-CSRFToken': '{{ csrf_token }}'},
+        data: JSON.stringify(data)
+    }).done(function(response_data, status, jqXHR) {
+        console.log('jQuery');
+        console.log(response_data);
+    }).fail(function(xhr, status, error) {
+        alert('error');
+    });
+
 
 </script>
