@@ -1,0 +1,18 @@
+<form action="{% url 'dictionary:add'%}" method="post">
+    {% csrf_token %}
+    <input type="text" name="word_entry" placeholder="word">
+    <input type="text" name="definition_entry" placeholder="definition">
+    <button type="submit" name="Submit">Submit</button>
+</form>
+
+<ul>
+    {% for word in words %}
+    <li><a href="{% url 'dictionary:detail' word.id%}">{{word.word}}</a></li>
+    <li>
+        <form action="{% url dictionary:delete'}" method="delete">
+            <button type="submit">Delete</button>
+
+        </form>
+    </li>
+    {% endfor %}
+</ul>

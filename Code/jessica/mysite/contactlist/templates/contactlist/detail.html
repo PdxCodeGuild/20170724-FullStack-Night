@@ -1,0 +1,16 @@
+<h1>Name: {{name.name}}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p>Phone Number: {{name.phone_number}}</p>
+<p>Favorite Color: {{name.favorite_color}}</p>
+<p>Favorite Fruit: {{name.favorite_fruit}}</p>
+<p>Catch Phrase: {{name.catch_phrase}}</p>
+
+<form action="{% url 'contactlist:sms'%}" method="post">
+    {%csrf_token%}
+    <input type="text" name="sms_text"/>
+    <input type="hidden" name="id" value="{{name.id}}"/>
+    <button type="submit">SMS</button>
+
+</form>

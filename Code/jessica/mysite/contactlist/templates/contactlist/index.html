@@ -1,0 +1,15 @@
+<form action ="{% url 'contactlist:add'%}" method="post">
+    {% csrf_token %}
+    <input type="text" name="name_entry" placeholder="name">
+    <input type="text" name="phone_number" placeholder="phone number">
+    <input type="text" name="favorite_fruit" placeholder="favorite fruit">
+    <input type="text" name="favorite_color" placeholder="favorite color">
+    <input type="text" name="catch_phrase" placeholder="catch phrase">
+    <button type="submit">Submit</button>
+</form>
+
+<ul>
+    {% for name in names %}
+    <li><a href="{% url 'contactlist:detail' name.id%}">{{name.name}}</a></li>
+    {% endfor %}
+</ul>
