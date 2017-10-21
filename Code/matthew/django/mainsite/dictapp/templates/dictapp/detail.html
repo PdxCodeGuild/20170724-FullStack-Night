@@ -1,2 +1,6 @@
-<h1>{{entry.name}}</h1>
+{% extends 'dictapp/base.html' %}
+
+{% block content %}
+<h1>{{entry.word}}</h1>
 <p>{{entry.definition}}</p>
+{% endblock %}

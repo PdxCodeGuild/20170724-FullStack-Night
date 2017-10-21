@@ -1,0 +1,78 @@
+
+<h1>Todos AJAX</h1>
+
+
+<input id="todo_input" type="text"/>
+<button id="todo_input_button">+</button>
+<ul id="todo_items">
+</ul>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+
+
+<script>
+    function http_get(url, success) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                var data = JSON.parse(xhttp.responseText);
+                success(data);
+            }
+        };
+        xhttp.open("GET", url);
+        xhttp.send();
+    }
+
+    function http_post(url, data, success) {
+        var csrf_token = Cookies.get('csrftoken');
+        console.log(csrf_token);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                success(xhttp.responseText);
+            }
+        };
+        xhttp.open("POST", url);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.setRequestHeader('X-CSRFToken', csrf_token);
+        xhttp.send(JSON.stringify(data));
+    }
+
+    function refresh_list() {
+        http_get("{% url 'todosajax:getitems' %}", function(data) {
+            var todo_items = document.getElementById('todo_items');
+            while (todo_items.hasChildNodes()) {
+                todo_items.removeChild(todo_items.lastChild);
+            }
+
+            for (var i=0; i<data.items.length; ++i) {
+                var li = document.createElement('li');
+                li.innerHTML = data.items[i];
+                todo_items.appendChild(li);
+            }
+        });
+    }
+
+
+    refresh_list();
+
+
+    var todo_input_button = document.getElementById('todo_input_button');
+    var todo_input = document.getElementById('todo_input');
+    todo_input_button.onclick = function() {
+        var todo_text = todo_input.value;
+        var data = {'todo_text': todo_text};
+        http_post("{% url 'todosajax:postitem' %}", data, function(response) {
+            console.log(response);
+            refresh_list();
+        });
+    }
+
+
+    /*data = {name:"John Rambo", time:"2pm"};
+    http_post("{% url 'ajaxdemo:postdata' %}", data, function(data) {
+        console.log(data);
+    });*/
+</script>
+
+

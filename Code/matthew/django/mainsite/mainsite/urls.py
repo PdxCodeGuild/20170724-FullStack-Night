@@ -23,5 +23,6 @@ urlpatterns = [
     url('^ajaxdemo/', include('ajaxdemo.urls')),
     url(r'^polls/', include('polls.urls')),
     url('^todos/', include('todos.urls')),
+    url('^todosajax/', include('todosajax.urls')),
     url(r'^urlshortener/', include('urlshortener.urls'))
 ]

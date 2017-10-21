@@ -45,8 +45,8 @@
 
 
     data = {name:"John Rambo", time:"2pm"};
-    http_post("{% url 'ajaxdemo:postdata' %}", data, function(data) {
-        console.log(data);
+    http_post("{% url 'ajaxdemo:postdata' %}", data, function(response) {
+        console.log(response);
     });
 
 </script>

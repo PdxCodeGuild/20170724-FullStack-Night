@@ -1,4 +1,6 @@
+{% extends 'dictapp/base.html' %}
 
+{% block content %}
 <ul>
 {% for entry in entries %}
     <li>
@@ -6,3 +8,4 @@
     </li>
 {% endfor %}
 </ul>
+{% endblock %}
