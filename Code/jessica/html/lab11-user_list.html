@@ -7,72 +7,100 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <style>
-
+            body {
+                text-align: center;
+            }
+            ul {
+                list-style: none;
+            }
+            .pagination {
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
         <h1>User List</h1>
+        <div id ="modal_background" style="display:none">
+            <div id="modal"></div>
+        </div>
         <ul id="users"></ul>
         <ul id="page_list" class="pagination">
         </ul>
         <script>
 
+           window.onload = function() {
+               function http_get(url, success) {
+                   var xhttp = new XMLHttpRequest();
+                   xhttp.onreadystatechange = function () {
+                       if (this.readyState === 4 && this.status === 200) {
+                           var data = JSON.parse(xhttp.responseText);
+                           success(data);
+                       }
+                   };
+                   xhttp.open("GET", url, true);
+                   xhttp.send();
+               }
 
-            function http_get(url, success) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState === 4 && this.status === 200) {
-                        var data = JSON.parse(xhttp.responseText);
-                        success(data);
-                    }
-                };
-                xhttp.open("GET", url, true);
-                xhttp.send();
-            }
+               function load_users(page_num) {
+                   var next_users = 'https://reqres.in/api/users?page=' + page_num;
+                   http_get(next_users, function (data) {
+                       console.log(data);
+                       var users = data.data;
+                       show_users(users);
+                   });
+               }
 
-            function load_users(page_num) {
-                var next_users = 'https://reqres.in/api/users?page='+page_num;
-                http_get(next_users,function(data) {
-                    console.log(data);
-                    var users = data.data;
-                    show_users(users);
-                });
-            }
+               function show_users(users) {
+                   //remove page 1 users when click on page 2, etc//
+                   var user_list = document.getElementById('users');
+                   while (user_list.firstChild) {
+                       user_list.removeChild(user_list.firstChild);
+                   }
 
-            function show_users(users) {
-                //remove page 1 users when click on page 2, etc//
-                var user_list = document.getElementById('users');
-                while (user_list.firstChild) {
-                    user_list.removeChild(user_list.firstChild);
-                }
+                   for (var i = 0; i < users.length; i++) {
+                       var user = users[i].first_name + ' ' + users[i].last_name;
+                       var user_entry = document.createElement('li');
+                       document.getElementById('users').onclick = function () {
+                           this.style.diplay = 'inline';
+                       };
+                       user_entry.innerHTML = user;
+                       user_list.appendChild(user_entry);
 
-                for (var i = 0; i < users.length; i++) {
-                   var user = users[i].first_name+' '+users[i].last_name;
-                   var user_entry = document.createElement('li');
-                   user_entry.innerHTML = user;
-                   user_list.appendChild(list_user);
+                   }
+               }
 
-                }
+               var list_users = 'https://reqres.in/api/users?page=1';
+               http_get(list_users, function (data) {
+                   show_users(data.data);
+                   console.log(data);
+                   var total_pages = data.total_pages;
+                   for (var i = 0; i < total_pages; i++) {
+                       var page = document.createElement('li');
+                       var a = document.createElement('a');
+                       a.onclick = function () {
+                           var page_num = this.innerHTML;
+                           load_users(page_num);
+                       };
+                       a.innerHTML = i + 1;
+                       page.appendChild(a);
+                       document.getElementById('page_list').appendChild(page);
+                   }
+               });
 
-            }
-            var list_users = 'https://reqres.in/api/users?page=1';
-            http_get(list_users,function(data) {
-                show_users(data.data);
-                console.log(data);
-                var total_pages = data.total_pages;
-                for (var i=0; i<total_pages; i++) {
-                    var page = document.createElement('li');
-                    var a = document.createElement('a');
-                    a.onclick = function(){
-                        var page_num = this.innerHTML;
-                        load_users(page_num);
-                    };
-                    a.innerHTML = i+1;
-                    page.appendChild(a);
-                    document.getElementById('page_list').appendChild(page);
-                }
+               document.getElementById('modal_background').onclick = function () {
+                   this.style.display = 'none';
+               };
+               document.getElementById('modal').onclick = function (e) {
+                   e.stopPropagation();
+               };
+               var single_user = 'https://reqres.in/api/users/2';
+               http_get(single_user, function (data) {
+                   console.log(data);
 
-            });
+
+               });
+           }
+
 
 
 
