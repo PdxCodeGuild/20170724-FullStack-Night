@@ -19,6 +19,7 @@ def open_data():
     data_column = sheet['PCT_LACCESS_POP10']
     state_column = sheet['State']
     county_column = sheet['County']
+    county_id_column = sheet['FIPS']
     #print(type(data_column))
     #print(len(data_column))
     #print(data_column[0])
@@ -29,8 +30,9 @@ def open_data():
         pct_access = data_column[i]
         state = state_column[i]
         county = county_column[i]
+        county_id = county_id_column[i]
 
-        all_data = AccessData(state=state, county=county, pct_access=pct_access)
+        all_data = AccessData(state=state, county=county, pct_access=pct_access, county_id=county_id)
         all_data.save()
 
 

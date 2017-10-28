@@ -35,6 +35,8 @@ var color = d3.scaleThreshold()
     .domain(d3.range(2, 10))
     .range(d3.schemeBlues[9]);
 
+
+
 var g = svg.append("g")
     .attr("class", "key")
     .attr("transform", "translate(0,40)");
@@ -48,7 +50,7 @@ g.selectAll("rect")
     }))
   .enter().append("rect")
     .attr("height", 8)
-    .attr("x", function(d) { return x(d[0]); })
+    .attr("x", function(d) { console.log(x(d[0])); return x(d[0]); })
     .attr("width", function(d) { return x(d[1]) - x(d[0]); })
     .attr("fill", function(d) { return color(d[0]); });
 
@@ -85,6 +87,7 @@ function ready(error, us) {
       .attr("d", path)
     .append("title")
       .text(function(d) { return d.rate + "%"; });
+
 
   svg.append("path")
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
