@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <form action="{% url 'URLshortener:generator' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="url_text"/>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

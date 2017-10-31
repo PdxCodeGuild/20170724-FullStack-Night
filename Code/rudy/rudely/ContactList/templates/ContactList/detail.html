@@ -1,0 +1,32 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ contact_item.contact_name }} Details</title>
+
+    <style>
+        .info {
+            margin: auto;
+        }
+        a {
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'ContactList/style.css' %}"></link>
+
+</head>
+<body>
+    <div id="container">
+        <div id="contact">
+        {{ contact_item.contact_name }}'s Contact Details
+        <div class="info">Name: {{ contact_item.contact_name }}</div>
+        <div class="info">Color: {{ contact_item.contact_color }}</div>
+        <div class="info">Fruit: {{ contact_item.contact_fruit }}</div>
+        <div class="info">Quote: </div>
+        <a href="{% url 'ContactList:index' %}">Back to Contact List</a>
+        </div>
+    </div>
+
+</body>
+</html>

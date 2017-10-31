@@ -1,0 +1,20 @@
+
+body {
+    background-color: black
+}
+
+#container{
+
+    border: 2pt solid white;
+    background-color: #1b3b3b;
+    color: #26fd16;
+    width: 60%;
+    height: auto;
+}
+ #input_div, #submit {
+        text-align:center;
+        justify-content: center;
+    }
+a {
+    color: white;
+}
