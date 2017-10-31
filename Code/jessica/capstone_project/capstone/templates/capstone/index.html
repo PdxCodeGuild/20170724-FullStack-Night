@@ -1,0 +1,119 @@
+{% load static %}
+
+<h1>Percent of Population with Low Access to Grocery Stores by County</h1>
+<div id="map"></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script> <!--from d3 website-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script> script used in tutorial-->
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+<!--<script src="../../visualization.js"></script> tutorial uses separate document-->
+
+<svg width="960" height="600"></svg>
+
+<script>
+    function http_get(url, success) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                var data = JSON.parse(xhttp.responseText);
+                success(data);
+            }
+        };
+        xhttp.open("GET", url);
+        xhttp.send();
+    }
+
+    function refresh() {
+        http_get("{% url 'capstone:getdata' %}", function(data) {
+            console.log(data)
+        })
+    }
+
+    refresh();
+
+    var svg = d3.select("svg"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
+
+    var access = d3.map();
+
+    var path = d3.geoPath();
+
+    //DRAW KEY
+    var x = d3.scaleLinear()
+        .domain([1, 10])
+        .rangeRound([600, 860]);
+
+    // ADD COLOR SCALE TO THE KEY
+    var color = d3.scaleThreshold()
+        .domain(d3.range(2, 10))
+        //.domain([0.02, 0.04, 0.06, 0.08, 0.10])
+        //.range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+        .range(['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#08519c','#08306b']);
+
+    var g = svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(0,40)");
+
+    g.selectAll("rect")
+      .data(color.range().map(function(d) {
+          d = color.invertExtent(d);
+          if (d[0] == null) d[0] = x.domain()[0];
+          if (d[1] == null) d[1] = x.domain()[1];
+          return d;
+        }))
+      .enter().append("rect")
+        .attr("height", 8)
+        .attr("x", function(d) { console.log(x(d[0])); return x(d[0]); })
+        .attr("width", function(d) { return x(d[1]) - x(d[0]); })
+        .attr("fill", function(d) { return color(d[0]); });
+
+    // DRAW THE TITLE OVER THE KEY
+    g.append("text")
+        .attr("class", "caption")
+        .attr("x", x.range()[0])
+        .attr("y", -6)
+        .attr("fill", "#000")
+        .attr("text-anchor", "start")
+        .attr("font-weight", "bold")
+        .text("Access to Grocery Stores");
+
+    // DRAW NUMBERS BELOW KEY
+    g.call(d3.axisBottom(x)
+        .tickSize(13)
+        .tickFormat(function(x, i) { return Math.floor(3 + i/9*(80-3))+'%'; })
+        .tickValues(color.domain()))
+      .select(".domain")
+        .remove();
+
+    //ADD JSON FILES FOR MAP AND DATA
+    d3.queue()
+        .defer(d3.json, "https://d3js.org/us-10m.v1.json")
+        .defer(d3.json, "{% url 'capstone:getdata' %}", function(d) { access.set(d.county_id, +d.pct_access); })
+        .await(ready);
+
+    // DRAWS THE MAP
+    function ready(error, us) {
+      if (error) throw error;
+
+      svg.append("g")
+          .attr("class", "counties")
+        .selectAll("path")
+        .data(topojson.feature(us, us.objects.counties).features)
+        .enter().append("path")
+          .attr("fill", function(d) { return color(d.pct_access = access.get(d.county_id)); })
+          .attr("d", path)
+        .append("title")
+          .text(function(d) { return d.pct_access + "%"; });
+
+      // DRAWS STATE LINES
+      svg.append("path")
+          .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+          .attr("class", "states")
+          .attr("d", path);
+    }
+
+
+</script>
