@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brain X | Registration</title>
+</head>
+<body>
+    <div id="user_reg_container">
+        <h1> Let's Get Started</h1>
+        <form action="{% url 'brainex:createuser' %}" method="post">
+            {% csrf_token %}
+            <div id="user_reg_div">
+                <h4>Complete the Registration below</h4>
+                <pre>
+                <input class="new" type="text" placeholder="Username" name="new_username" value="gypsyqueen"/>
+                <input class="new" type="password" placeholder="Password" name="new_password" value="pass1234"/>
+                <input class="new" type="text" placeholder="First Name" name="new_first"/>
+                <input class="new" type="text" placeholder="Last Name" name="new_last"/>
+                <input class="new" type="text" placeholder="Email Address" name="new_email"/>
+                </pre>
+
+                <h4>Choose skills you want to learn</h4>
+                <pre>
+                    <select>
+                        <option></option>
+                        <option value="l_css">CSS</option>
+                        <option value="l_django">Django</option>
+                        <option value="l_html">HTML</option>
+                        <option value="l_java">Java</option>
+                        <option value="l_javascript">Javascript</option>
+                        <option value="l_python">Python</option>
+                    </select>
+                    <select>
+                        <option></option>
+                        <option value="l_css">CSS</option>
+                        <option value="l_django">Django</option>
+                        <option value="l_html">HTML</option>
+                        <option value="l_java">Java</option>
+                        <option value="l_javascript">Javascript</option>
+                        <option value="l_python">Python</option>
+                    </select>
+                    <select>
+                        <option></option>
+                        <option value="l_css">CSS</option>
+                        <option value="l_django">Django</option>
+                        <option value="l_html">HTML</option>
+                        <option value="l_java">Java</option>
+                        <option value="l_javascript">Javascript</option>
+                        <option value="l_python">Python</option>
+                    </select>
+                </pre>
+
+                <h4>Choose skills you want can teach</h4>
+                <pre>
+                    <select>
+                        <option></option>
+                        <option value="t_css">CSS</option>
+                        <option value="t_django">Django</option>
+                        <option value="t_html">HTML</option>
+                        <option value="t_java">Java</option>
+                        <option value="t_javascript">Javascript</option>
+                        <option value="t_python">Python</option>
+                    </select>
+                    <select>
+                        <option></option>
+                        <option value="t_css">CSS</option>
+                        <option value="t_django">Django</option>
+                        <option value="t_html">HTML</option>
+                        <option value="t_java">Java</option>
+                        <option value="t_javascript">Javascript</option>
+                        <option value="t_python">Python</option>
+                    </select>
+                    <select>
+                        <option></option>
+                        <option value="t_css">CSS</option>
+                        <option value="t_django">Django</option>
+                        <option value="t_html">HTML</option>
+                        <option value="t_java">Java</option>
+                        <option value="t_javascript">Javascript</option>
+                        <option value="t_python">Python</option>
+                    </select>
+                </pre>
+
+                <button id="new_btn" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

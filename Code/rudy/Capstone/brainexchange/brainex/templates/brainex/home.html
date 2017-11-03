@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brain Exchange</title>
+</head>
+<style>
+    #container_div {
+        border:2pt solid #0e78ff;
+    }
+    #header_div, #body_div, #login_div, #logo  {
+        border:2pt solid black;
+    }
+    #header_div, #container_div{
+        width: 100%;
+        background-color: black;
+    }
+    #container_div {
+        height: 1000px;
+        background-color:white;
+        background-image: url("");
+    }
+    #logo {
+        height: 50px;
+        width: 50px;
+    }
+    #login_div {
+        background-color: yellow;
+        position: absolute;
+        padding:10px 10px 10px 10px;
+        display: inline;
+        width: 180px;
+    }
+    #login {
+        display: table-row;
+    }
+    #header_div {
+    }
+    #container_div {
+    }
+    h1 {
+        color:white;
+    }
+</style>
+<body>
+    <div id="container_div">
+        <div id="header_div">
+            <div id="logo">Logo</div><h1>BrainExchange</h1>
+        </div>
+        <div id="body_div">
+            <div id="login_div">
+                <form action="{% url 'brainex:login' %}" method="post">
+                    <input type="text" name="login_text" placeholder="Username"/>
+                    <input type="password" name="password_text" placeholder="Password"/>
+                    <button id="login">Login</button>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
