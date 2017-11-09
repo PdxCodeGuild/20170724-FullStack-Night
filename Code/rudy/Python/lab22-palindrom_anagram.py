@@ -5,14 +5,13 @@ def reverse_word(word):
     rev_word = (word[::-1])
     return rev_word
 
+
 def check_palindrome(word):
     word_orig = word
     word = word.replace(' ', '')
-    print(word)
     rev_word = reverse_word(word)
-    print(rev_word)
     if word == rev_word:
-        return word_orig
+        print(f'{word_orig} is a Palindrome!')
     else:
         print(f'nothing special about \'{word_orig}\'')
 
@@ -41,7 +40,7 @@ def main():
         word = input('Type word here ').lower()
         action = 'palindrome'
         print('...checking word for palindrome...')
-        word_checked = check_palindrome(word)
+        check_palindrome(word)
     if str(action[0]) == 'a':
         word1 = input('Type word here ').lower()
         word2 = input('Type word here ').lower()

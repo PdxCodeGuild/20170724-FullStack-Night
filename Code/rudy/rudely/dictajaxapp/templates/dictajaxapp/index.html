@@ -55,6 +55,21 @@
             xhttp.open("GET", url);
             xhttp.send();
         }
+        function http_post(url, data, success) {
+            var csrf_token = Cookies.get('csrftoken');
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    success(xhttp.responseText);
+                }
+            };
+            xhttp.open("POST", url);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.setRequestHeader('X-CSRFToken', csrf_token);
+            xhttp.send(JSON.stringify(data));
+        }
+
+
         // this function uses the http_get function
         function get_dictionary() {
             http_get("{% url 'dictajaxapp:getdict' %}", function(data) {
@@ -93,6 +108,7 @@
 
                     del_btn.onclick = function() {
                         var delete_id = this.word_id;
+                        // var data = {'delete_id': delete_id}
                         http_post("delete/"+delete_id+'/', {}, function(response) {
                             console.log(response);
                             get_dictionary();
@@ -145,19 +161,7 @@
         get_dictionary();
 
 
-        function http_post(url, data, success) {
-            var csrf_token = Cookies.get('csrftoken');
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    success(xhttp.responseText);
-                }
-            };
-            xhttp.open("POST", url);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.setRequestHeader('X-CSRFToken', csrf_token);
-            xhttp.send(JSON.stringify(data));
-        }
+
     </script>
 </body>
 </html>

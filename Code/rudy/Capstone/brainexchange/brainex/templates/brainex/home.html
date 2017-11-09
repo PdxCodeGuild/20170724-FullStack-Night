@@ -53,6 +53,8 @@
                     <input type="text" name="login_text" placeholder="Username"/>
                     <input type="password" name="password_text" placeholder="Password"/>
                     <button id="login">Login</button>
+                    <a href="{% url 'brainex:registration' %}">Register</a>
+                    <a style="display: block" href="{% url 'brainex:index' %}">Forgot Username/Password</a>
                     {% csrf_token %}
                 </form>
             </div>

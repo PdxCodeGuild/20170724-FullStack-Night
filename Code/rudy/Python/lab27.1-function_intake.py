@@ -77,11 +77,21 @@ def even_even(num_list):
 
 
 def combine_all(nums):
-    print(nums)
+    combined_list = []
     for num in nums:
-        print(num)
         for n in num:
-            print(n)
+            combined_list.append(n)
+    return combined_list
+
+
+def fibonacci():
+    n = int(input('How far down the fibonacci spiral would you like to go? Choose a number -> '))
+    fibonacci_list = []
+    i = 0
+    while i < n:
+
+        fibonacci_list.append(i)
+    return fibonacci_list
 
 
 def main():
@@ -117,9 +127,12 @@ def main():
     #even_count = even_even(num_list)
     #print(even_count)
 
-    #print('Problem 6')
-    nums = [[5,2,3],[4,5,1],[7,6,3]]
-    combine_all(nums)
+    #print('Problem 7')
+    #nums = [[5,2,3],[4,5,1],[7,6,3]]
+    #print(combine_all(nums))
+
+    #print('Problem 8')
+    print(fibonacci())
 
 
 main()

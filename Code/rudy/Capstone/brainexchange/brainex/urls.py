@@ -5,6 +5,7 @@ app_name = 'brainex'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^login/', views.login_user, name='login'),
+    url(r'^logout/', views.logout_user, name='logout_user'),
     url(r'^registration/', views.registration, name='registration'),
     url(r'^createuser/', views.create_user, name='createuser'),
     url(r'^profile/', views.profile, name='profile')

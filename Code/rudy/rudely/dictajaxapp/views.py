@@ -27,14 +27,13 @@ def createdict(request):
     synonym_text = data['synonym_text']
     dict_full = Dictionary(word=word_text, definition=def_text, synonym=synonym_text)
     dict_full.save()
-    return HttpResponse('word saved')
+    return HttpResponse('OK')
 
 
 def deletedict(request, delete_id):
-    print(delete_id)
-    # delete_data = get_object_or_404(Dictionary, pk=delete_id)
-    # delete_data.delete()
-    return HttpResponse('word deleted')
+    delete_data = get_object_or_404(Dictionary, pk=delete_id)
+    delete_data.delete()
+    return HttpResponse('OK')
 
 
 
