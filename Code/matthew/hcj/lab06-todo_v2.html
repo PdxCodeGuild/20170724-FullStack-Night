@@ -32,6 +32,9 @@
             button:focus {
                 outline:none;
             }
+            #completed_list {
+                text-decoration:line-through;
+            }
         </style>
     </head>
     <body>
@@ -46,16 +49,29 @@
         </div>
         <script type="text/javascript">
             var list = document.getElementById('todo_list');
+            var completed_list = document.getElementById('completed_list');
             function add_item() {
                 var text = document.getElementById('todo_input').value;
                 var li = document.createElement('li');
                 li.classList.add('todo_item');
                 var text_div = document.createElement('div');
                 text_div.innerHTML = text;
+
                 var button_complete = document.createElement('button');
                 button_complete.innerHTML = '&#x2713;';
+                button_complete.onclick = function() {
+                    list.removeChild(this.parentElement);
+                    var li = document.createElement('li');
+                    li.innerText = text;
+                    completed_list.appendChild(li);
+                };
+
                 var button_remove = document.createElement('button');
                 button_remove.innerHTML = '&#x2715;';
+                button_remove.onclick = function() {
+                    list.removeChild(this.parentElement);
+                };
+
 
 
 
