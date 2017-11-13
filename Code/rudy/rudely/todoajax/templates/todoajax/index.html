@@ -1,0 +1,46 @@
+{% load static %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+
+<script src="{% static 'todoajax/ajax.js' %}"></script>
+
+<h1>Page is routed!</h1>
+
+<input type="text" id="todo_input"/>
+<button id="todo_button">+</button>
+
+<ul id="todo_items">
+</ul>
+
+<script>
+
+    todo_input = document.getElementById('todo_input');
+    todo_button = document.getElementById('todo_button');
+    todo_items = document.getElementById('todo_items');
+
+        http_get("{% url 'todoajax:getdata' %
+    function refresh_list() {}", function(data){
+            console.log(data);
+
+            while (todo_items.hasChildNodes()) {
+                todo_items.removeChild(todo_items.lastChild);
+            }
+            for (var i=0; i<data.todo_items.length; ++i) {
+                var li = document.createElement('li');
+                li.innerHTML = data.todo_items[i];
+                todo_items.appendChild(li);
+            }
+        });
+    }
+    refresh_list();
+
+    todo_button.onclick = function() {
+        var data = {todo_text:todo_input.value};
+        http_post("{% url 'todoajax:setdata' %}", data, function(response) {
+            console.log(response);
+            refresh_list();
+            todo_input.value = '';
+        });
+    };
+</script>

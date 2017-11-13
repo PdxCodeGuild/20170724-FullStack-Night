@@ -1,0 +1,85 @@
+# Name
+v1 BrainExchange or YouTeach
+## Product Overview
+Platform to match learners to teachers of desired skill. Users input their skills and *preferences* and are returned a list of best matched teachers and students.
+## Specific Functionality
+#### HOME PAGE
+Very simple background, hamburger button (menu FAB), logo, text field and submit button for login. 
+Login for "returning user", defaulting new email addresses to create Profile Page.
+Login Functions:
+* __Email Address__ Text-Input w/ __Submit__ Button
+#### Profile Page (create/edit)
+Prompts the user to provide a unique user name and an email address for user name recovery, the user will click verify to ensure the user name is unique.
+Registration Functions:
+* __User Name__ Text-Input
+* __First Name__, __Last Name__ (private) Text-Input
+* __Email_address__ Text-Input
+* __Age/Short-Bio__ Text-Input
+* __Gender__ Boolean
+* __Skills to Learn__ Dropdown
+* __Level of Skill__ (brief discription of skill level can teach)
+* __Skills to Teach__ Dropdown
+* __Skill Level__ (brief discription of skill level to attain)
+#### Match's Page
+User arrives to a page with multiple sections including their profile w/ an edit function (returns to a Profile Page), matches output, and search.
+Search Section Functions:
+* __Skills to Learn__ (skills other users have listed they can teach)
+* __Skills to Teach__ (skills other users have listed they are interested in learning)
+* __Search__ Button
+
+Welcome to the Matches Page:
+You'll see 3 sections (two columns divs with a horizontal div stacked across the top) 
+1. USER PROFILE -On the left is your profile with a circular *picture, your bio, and list of your Skill (interested in __learning__ and willing to __teach__. Each skill will have a brief *description of how proficient they are at that skill.
+* __Edit Profile__ Button (takes user to version of the Profile Page to make edits)
+2. MATCHES -To the right is a smaller similar circular *picture of highest *rated matches. Each of the __match__'s will have both sets of skills and a *match_score.
+* __*Link__ Button (notifies match of interest to exchange
+3. SEARCH -Capping the columns from left of screen to right of screen. User can use drop downs and search through skills they can learn or what skills are in demand.
+
+In the background:
+* __Save__ Account - Emails or (user_name) to a database (Use List or Dictionary)
+* __Link__ user_data to Account 
+* __Save Edits()__ changes made to user profile
+* __Match()__ Programmatically compare *Skills Learn and *Skills Teach
+        -v1 Each match is worth one point, higher score will higher in Matches div
+* __Search()__ match search parameters of skills using match function
+
+#### Data Model
+__User__ Class (primary) -instance that reference the users account.
+Match (secondary) -child of User user accounts that are matched to the primary User data.
+Profile attributes -instance that reference data of a User or Match
+
+#### Technical Components
+Creating accounts will be done in Python to read, save & write CSV  using C.R.U.D.
+* Is there a better way to save, edit, and retrieve data of profiles
+Each dictionary will have a root of the user_account and header of edit-able data.
+User_Accounts will be referenced as matches on other user's match pages.
+
+
+Matching function will compare elements of a dictionary. Each match will add a value to a score. The higher score will move the user_account to descending order of a list. This will provide the order of how the matches will be ordered in the Match_div (from top down)
+
+I will use __Javascript, CSS, and HTML__ for the web page. __Python__ errr...Django to work the backend.
+
+
+#### Schedule
+
+* Design Web Pages
+1. Sketch/Label Framework of divs and elements.
+2. Write HTML divs in body and use CSS to maneuver divs on webpage
+3. Write HTML of elements inside corresponding divs
+* Javascript 
+1. Write out functions of the web page/map them to elements. Is there redundancy?
+2. Test functionality and importing of user data
+
+
+
+
+Further Work
+Desired Skill -(*Drop Down List populated by instructors skills)
+* *Location (private)
+* *Travel Distance
+
+Filters:
+* Age(range)
+* Gender Preference
+* Distance to Travel
+

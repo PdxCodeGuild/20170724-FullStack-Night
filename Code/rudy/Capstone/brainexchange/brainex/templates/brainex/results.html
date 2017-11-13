@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brain Ex | Matches</title>
+    <style>
+        #container_div {
+            overflow: hidden;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        #search_div {
+            position: static;
+            width: 90%;
+            height: 200px;
+        }
+        #profile_div {
+            position: relative;
+            display: inline-block;
+            width: 30%;
+            height: 1000px;
+            margin: 0;
+        }
+        #results_div {
+            position: relative;
+            display: inline-block;
+            width: 69%;
+            height:1000px;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container_div">
+        <h1>Match Results</h1>
+        <a href="{% url 'brainex:logout_user' %}">logout</a>
+        <div id="search_div">
+            <h3>Search</h3>
+            <h5>Skill Type:</h5>
+            <select>
+                <option value="search_type_learn">learn</option>
+                <option value="search_type_teach">teach</option>
+            </select>
+            <h5>Select Skill:</h5>
+            <select name="search_skill">
+                <option> - - - </option>
+                {% for skill in skills %}
+                <option value="{{skill.id}}">{{skill.skill_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="profile_div">
+            <h3>{{ user.username }}</h3>
+            <ul>
+            {% for user_skill in user.userskill_set.all %}
+            <li>{{user_skill.fk_skill.skill_name}}</li>
+            {% endfor %}
+        </ul>
+        </div>
+        <div id="results_div">
+            <h3>Results</h3>
+        </div>
+    </div>
+</body>
+</html>

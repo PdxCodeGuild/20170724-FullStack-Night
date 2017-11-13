@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brain Ex | Registration</title>
+</head>
+<body>
+    <div id="user_reg_container">
+        <h1> Let's Get Started</h1>
+        <form action="{% url 'brainex:createuser' %}" method="post">
+            {% csrf_token %}
+            <div id="user_reg_div">
+                <h4>Complete the Registration below</h4>
+                <pre>
+                <input class="new" type="text" placeholder="Username" name="new_username" value="username"/>
+                <input class="new" type="password" placeholder="Password" name="new_password" value="pass1234"/>
+                <input class="new" type="text" placeholder="First Name" name="new_first" value="firstname"/>
+                <input class="new" type="text" placeholder="Last Name" name="new_last" value="lastname"/>
+                <input class="new" type="text" placeholder="Email Address" name="new_email" value="test@test.com"/>
+                </pre>
+
+                <h4>Choose skills you want to learn</h4>
+                <pre>
+                    <select name="learn_skill_1">
+                        <option>-pick-3-</option>
+                        {% for skill in skills %}
+                        <option value="{{skill.id}}">{{skill.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="learn_skill_2">
+                        <option>-now-2-</option>
+                        {% for skill in skills %}
+                        <option value="{{skill.id}}">{{skill.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="learn_skill_3">
+                        <option>-last-1-</option>
+                        {% for skill in skills %}
+                        <option value="{{skill.id}}">{{skill.name}}</option>
+                        {% endfor %}
+                    </select>
+                </pre>
+
+                <h4>Choose skills you want can teach</h4>
+                <pre>
+                    <select name="teach_skill_1">
+                        <option>-teach-1-</option>
+                        {% for skill in skills %}
+                        <option value="{{skill.id}}">{{skill.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="teach_skill_2">
+                        <option>-2-good-</option>
+                        {% for skill in skills %}
+                        <option value="{{skill.id}}">{{skill.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="teach_skill_3">
+                        <option>-3-better-</option>
+                        {% for skill in skills %}
+                        <option value="{{skill.id}}">{{skill.name}}</option>
+                        {% endfor %}
+                    </select>
+                </pre>
+                <button id="new_btn" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementsByName('new_username')[0].value = 'user'+Math.floor(Math.random()*10000);
+    </script>
+</body>
+</html>

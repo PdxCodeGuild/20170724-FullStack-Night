@@ -1,6 +1,20 @@
 <html>
     <head>
         <style>
+            body {
+                text-align: center;
+                background-color: grey;
+                color: antiquewhite;
+            }
+            button {
+                background-color: aquamarine;
+                border: none;
+                padding: 10px;
+                text-align: center;
+                border-radius: 25px;
+                outline: none;
+                color: grey;
+            }
             #clock {
                 text-align: center;
                 font-size: 100px;
@@ -19,21 +33,39 @@
                 margin-left: 5px;
             }
             #countdown_timer {
+                margin-top: 50px;
                 text-align: center;
+                color: antiquewhite;
+            }
+            input {
+                color: grey;
+                background-color: antiquewhite;
+                border: grey;
+            }
+            #units {
+                color: grey;
+                background-color: antiquewhite;
             }
             #timer {
                 font-size: 100px;
-                margin-top: 100px;
+                margin-top: 50px;
                 font-weight: bold;
 
             }
             #div_stopwatch {
+                margin-top: 50px;
                 text-align: center;
             }
             #stopwatch {
                 font-size: 100px;
                 margin-top: 100px;
                 font-weight: bold;
+            }
+            #laps {
+                list-style-type: none;
+                font-size:30px;
+                font-weight: bold;
+                text-align: center;
             }
 
         </style>
@@ -42,6 +74,7 @@
         <button onclick="show_clock()">Clock</button>
         <button onclick="show_countdown()">Countdown</button>
         <button onclick="show_stopwatch()">Stopwatch</button>
+        <hr/>
         <div id="div_clock">
             <div id="clock"></div>
             <div id="whole_date">
@@ -52,7 +85,7 @@
             </div>
         </div>
         <div id="countdown_timer">
-            <input id="number" type="text"/>
+            <input id="user_input" type="text"/>
             <select id="units">
                 <option value="seconds">Seconds</option>
                 <option value="minutes" selected>Minutes</option>
@@ -68,17 +101,17 @@
             <button id="stopwatch_start" onclick="start_stopwatch()">Start</button>
             <button id="stopwatch_pause" onclick="pause_stopwatch()">Pause</button>
             <button id="stopwatch_resume" onclick="resume_stopwatch()">Resume</button>
+            <button id="stopwatch_lap" onclick="lap_stopwatch()">Lap</button>
             <button id="stopwatch_stop" onclick="stop_stopwatch()">Stop</button>
             <div id="stopwatch"></div>
+            <ul id="laps"></ul>
         </div>
-
-
-
     </body>
     <script>
 
-        document.getElementById('countdown_timer').style.display = "none";
-        document.getElementById('div_stopwatch').style.display = "none";
+        document.getElementById('countdown_timer').style.display = 'none';
+        document.getElementById('div_stopwatch').style.display = 'none';
+
 
         // -----------------------------CLOCK SECTION ---------------------------------------------------
         var interval = setInterval(update_clock, 1000);
@@ -113,7 +146,7 @@
             div_clock.style.display = "block";
             countdown_timer.style.display = "none";
             div_stopwatch.style.display = "none";
-            document.body.style.backgroundColor = 'transparent';
+            document.body.style.backgroundColor = 'grey'; //previously had transparent
         }
 
         function show_countdown() {
@@ -126,7 +159,7 @@
             div_clock.style.display = "none";
             countdown_timer.style.display = "none";
             div_stopwatch.style.display = "block";
-            document.body.style.backgroundColor = 'transparent';
+            document.body.style.backgroundColor = 'grey'; //previously had transparent
         }
 
         function add0(n) {
@@ -160,7 +193,7 @@
         var countdown_interval;
         function start_countdown() {
             countdown_date.setHours(0,0,0,0);
-            var countdown_time = document.getElementById('number').value;
+            var countdown_time = document.getElementById('user_input').value;
             var user_countdown_unit = document.getElementById('units');
             var countdown_unit = user_countdown_unit.options[user_countdown_unit.selectedIndex].value;
             //alt mthd: var countdown_units = document.querySelector.('#units options:checked').value;
@@ -174,7 +207,7 @@
             }
 
             countdown_interval = setInterval(update_countdown, 1000);
-            document.body.style.backgroundColor = 'transparent';
+            document.body.style.backgroundColor = 'grey'; //previously had transparent
             bt_countdown_start.style.display = 'none';
             bt_countdown_stop.style.display = 'initial';
             bt_countdown_pause.style.display = 'initial';
@@ -187,7 +220,7 @@
             countdown_date.setSeconds(seconds - 1);
             show_countdown_value();
             if (countdown_date.getSeconds() <= 0 && countdown_date.getMinutes() <= 0 && countdown_date.getHours() <= 0) {
-                document.body.style.backgroundColor = 'red';
+                document.body.style.backgroundColor = '#FE8402';
                 clearInterval(countdown_interval);
             }
         }
@@ -218,6 +251,10 @@
             bt_countdown_resume.style.display = 'none';
         }
 
+
+
+        // ---------------------------STOPWATCH SECTION --------------------------------------------------
+
         var stopwatch_date = new Date();
         var stopwatch_interval;
 
@@ -229,12 +266,11 @@
             document.getElementById('stopwatch').innerHTML = hms;
         }
 
-        // ---------------------------STOPWATCH SECTION --------------------------------------------------
-
         var bt_stopwatch_start = document.getElementById('stopwatch_start');
         var bt_stopwatch_pause = document.getElementById('stopwatch_pause');
         var bt_stopwatch_stop = document.getElementById('stopwatch_stop');
         var bt_stopwatch_resume = document.getElementById('stopwatch_resume');
+        var stopwatch_laps = document.getElementById('laps');
 
         bt_stopwatch_pause.style.display = "none";
         bt_stopwatch_resume.style.display = "none";
@@ -247,6 +283,12 @@
             bt_stopwatch_stop.style.display = 'initial';
             bt_stopwatch_start.style.display = 'none';
             bt_stopwatch_resume.style.display = 'none';
+            stopwatch_lap_count = 0;
+            var laps_ul = document.getElementById('laps');
+            while (laps_ul.firstChild) {
+                laps_ul.removeChild(laps_ul.firstChild);
+            }
+
         }
         function update_stopwatch() {
             var seconds = stopwatch_date.getSeconds();
@@ -280,5 +322,16 @@
             bt_stopwatch_start.style.dispaly = 'none';
             bt_stopwatch_resume.style.display = 'none';
         }
+
+        var stopwatch_lap_count = 0;
+        function lap_stopwatch() {
+            var stopwatch_time = document.getElementById('stopwatch').innerHTML;
+            console.log(stopwatch_time);
+            var lap_li = document.createElement('li');
+            stopwatch_lap_count += 1;
+            lap_li.innerHTML = 'Lap ' + stopwatch_lap_count + ' - ' + stopwatch_time;
+            document.getElementById('laps').appendChild(lap_li);
+        }
+
         </script>
 </html>

@@ -1,0 +1,26 @@
+<form action ="{% url 'todoapp:add' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="todo_text"/>
+    <button type="submit">Submit</button>
+</form>
+
+
+
+<ul>
+    {% for todo_item in todo_items %}
+    <li>
+        <form action ="{% url 'todoapp:complete' %}" method="post">
+            {{ todo_item.todo_text}}
+            {% csrf_token %}
+            <input type="hidden" name="todo_item_id" value="{{todo_item.id}}"/>
+            <button type="submit">Complete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<ul style="text-decoration: line-through">
+    {% for todo_item in todo_completed %}
+    <li>{{ todo_item.todo_text}}</li>
+    {% endfor %}
+</ul>
+
