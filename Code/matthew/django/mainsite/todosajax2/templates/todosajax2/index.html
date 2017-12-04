@@ -1,0 +1,47 @@
+
+{% load static %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+
+
+<input type="text" id="todo_input"/>
+<button id="todo_button">+</button>
+
+
+
+<ul id="todo_items">
+</ul>
+
+<script src="{% static 'todosajax2/ajax.js' %}"></script>
+
+<script>
+    todo_input = document.getElementById('todo_input');
+    todo_button = document.getElementById('todo_button');
+    todo_items = document.getElementById('todo_items');
+
+
+    todo_button.onclick = function() {
+        var data = {todo_text: todo_input.value};
+        http_post("{% url 'todosajax2:setdata' %}", data, function(response) {
+            console.log(response);
+            refresh_list();
+        });
+    };
+
+
+    function refresh_list() {
+        while (todo_items.hasChildNodes()) {
+            todo_items.removeChild(todo_items.lastChild);
+        }
+        http_get("{% url 'todosajax2:getdata' %}", function(data) {
+            console.log(data);
+            for (var i=0; i<data.todo_items.length; ++i) {
+                var li = document.createElement('li');
+                li.innerHTML = data.todo_items[i].text;
+                todo_items.appendChild(li);
+            }
+        });
+    }
+
+    refresh_list();
+</script>

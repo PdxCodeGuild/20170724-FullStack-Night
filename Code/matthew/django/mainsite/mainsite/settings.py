@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'todosajax2.apps.Todosajax2Config',
     'todosajax.apps.TodosajaxConfig',
     'dictapp.apps.DictappConfig',
     'ajaxdemo.apps.AjaxdemoConfig',

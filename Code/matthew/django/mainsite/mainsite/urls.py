@@ -24,5 +24,7 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url('^todos/', include('todos.urls')),
     url('^todosajax/', include('todosajax.urls')),
-    url(r'^urlshortener/', include('urlshortener.urls'))
+    url(r'^urlshortener/', include('urlshortener.urls')),
+    url(r'^todosajax2/', include('todosajax2.urls')),
+    url(r'^user/', include('userapp.urls'))
 ]
